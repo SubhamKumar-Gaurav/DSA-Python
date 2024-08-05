@@ -7,6 +7,7 @@
 #  LCM of a number - Naive approach, By Maths property 
 #  Check Prime - 3 approaches 
 
+
 import math 
 # GCD of a number :
 def gcd1(a,b) :   # Checking with each value 
