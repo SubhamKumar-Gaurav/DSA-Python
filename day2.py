@@ -150,3 +150,4 @@ def prime3(n) :  # super efficient approach , time : O(root(n)/6)
             i+=6 
         return True     
 print(prime3(101))     
+
