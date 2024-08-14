@@ -3,6 +3,7 @@
 #   Basics 
 #   Average or mean of a list 
 #   Separate odd/even 
+#   Slicing (list, tuple, string)
 
 
 # Basics :
@@ -92,6 +93,7 @@ print("even : ",even)
 print("odd : ",odd)
 print("\n") 
 
+# Two pinter approach : 
 # Separating odd, even using two pointer approach : (order need not be same)
 def sep2(l) :  # odd first then even 
     n=len(l)
@@ -104,4 +106,43 @@ def sep2(l) :  # odd first then even
         j+=1 
     return l 
 l=[1,3,2,8,4,3,7,8]
+print("Odd Even using 2 pointer approach : ")
 print(sep2(l)) 
+
+def sep3(l) :   # Even first then odd 
+    n=len(l)
+    i=-1 
+    j=0
+    while j!=n :
+        if l[j]%2==0 :
+            i+=1 
+            l[i],l[j]=l[j],l[i]  
+        j+=1 
+    return l 
+print("Even odd using 2 pointer approach : ")        
+print(sep3(l))
+print("\n") 
+
+
+# Slicing :
+# List
+l1=[10,20,30,40,50]
+l2=l1[:]
+print("l1 : ", l1)
+print("l2 : ", l2)
+print("l1 is l2 : ", l1 is l2 )
+print("l2 is l1 : ", l2 is l1 )
+# Tuple
+t1=(10,20,30,40,50)
+t2=t1[:]
+print("t1 : ", t1)
+print("t2 : ", t2)
+print("t1 is t2 : ", t1 is t2 )
+print("t2 is t1 : ", t2 is t1 )
+# String 
+s1="SKG"
+s2=s1[:]
+print("s1 : ", s1)
+print("s2 : ", s2)
+print("s1 is s2 : ", s1 is s2 )
+print("s2 is s1 : ", s2 is s1 )
