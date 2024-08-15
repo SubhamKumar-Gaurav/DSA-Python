@@ -138,7 +138,7 @@ t2=t1[:]
 print("t1 : ", t1)
 print("t2 : ", t2)
 print("t1 is t2 : ", t1 is t2 )
-print("t2 is t1 : ", t2 is t1 )
+print("t2 is t1 : ", t2 is t1 ) 
 # String 
 s1="SKG"
 s2=s1[:]
