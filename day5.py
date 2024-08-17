@@ -58,11 +58,11 @@ print("Returning the set having odd numbers : ",s2)
 
 # Dictionary comprehension : 
 l1=[1,3,4,2,5] 
-d1={x:x**3 for x in l} 
+d1={x:x**3 for x in l1} 
 print("Power of 3 : ",d1) 
 
 d2={x:f"ID{x}" for x in range(5)} 
-print("Set comprehension with format specifier : ", d2) 
+print("Dictionary comprehension with format specifier : ", d2) 
 print("\n") 
 
 l2=[101,103,102] 
