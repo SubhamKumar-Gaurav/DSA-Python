@@ -2,7 +2,7 @@
 # Hashing  
 #    Chaining 
 #    Open Addressing 
-#    Frequency of array elements - 
+#    Frequency of array elements - Naive approach , Dictionary approach 
 
 # Implementation of chaining : 
 class MyHash :
@@ -31,7 +31,8 @@ h.remove(56)
 print(h.search(56))
 
 
-# Frequencies of an array :
+# Frequencies of an array : 
+# Naive Approach 
 arr=[10,20,20,30,10] 
 def freq1(arr) :
     for i in range(len(arr)) :
@@ -47,5 +48,18 @@ def freq1(arr) :
             if arr[i]==arr[k] :
                 count+=1 
         print(arr[i],count)
-print("Frequencies of an array by Naive approach")
-freq1(arr)
+print("Frequencies of an array by Naive approach : ")
+freq1(arr) 
+
+# Dictionary approach - most efficient approach 
+array=[10,20,20,30,10] 
+def freq2(arr) :
+    freq_d={}
+    for i in arr :
+        if i in freq_d :
+            freq_d[i]+=1 
+        else :
+            freq_d[i]=1 
+    return freq_d 
+print("Frequency of array using dictionary : ")  
+print(freq2(array)) 
