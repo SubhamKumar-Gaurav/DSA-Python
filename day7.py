@@ -1,11 +1,8 @@
 # Day - 7 
-# Hashing 
-#  Introduction 
-#  Application 
-#  Direct Table Address 
-#  Hashing functions 
-#  Collision Handling 
-#  Chaining 
+# Hashing  
+#    Chaining 
+#    Open Addressing 
+#    Frequency of array elements - 
 
 # Implementation of chaining : 
 class MyHash :
@@ -32,3 +29,23 @@ h.insert(72)
 print(h.search(56))
 h.remove(56)
 print(h.search(56))
+
+
+# Frequencies of an array :
+arr=[10,20,20,30,10] 
+def freq1(arr) :
+    for i in range(len(arr)) :
+        flag=False 
+        for j in range(i) :
+            if arr[i]==arr[j] :
+                flag=True 
+                break 
+        if flag==True :
+            continue 
+        count=1
+        for k in range(i+1,len(arr)) :
+            if arr[i]==arr[k] :
+                count+=1 
+        print(arr[i],count)
+print("Frequencies of an array by Naive approach")
+freq1(arr)
