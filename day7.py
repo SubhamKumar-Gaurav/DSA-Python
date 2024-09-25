@@ -5,6 +5,9 @@
 #    Frequency of array elements - Naive approach , Dictionary approach 
 #    Implementation of Open addressing 
 #    Set in Python 
+#    Count distinct elements in a list 
+
+
 
 # Implementation of chaining : 
 class MyHash :
@@ -146,7 +149,7 @@ s4=set()
 print("s4 set : ", s4) 
 print("Type of s4 : ", type(s4))  
 
-# Set operations : 
+# Set operations : [ adding and updating ]
 print("Set operations : ")
 s={10,20} 
 s.add(30) 
@@ -156,4 +159,86 @@ print("again adding 30 : ", s)
 s.update([40,50]) 
 print("updating with [40,50] : ", s) 
 s.update({60,70},[80,90]) 
-print("updating with {60,70},[80,90] : ", s) 
+print("updating with {60,70},[80,90] : ", s)  
+
+# [ Removing an item from the set ]
+print("Removing an item from the set : ") 
+s={10,30,20,40} 
+s.discard(30) 
+print("Using discard function : ",s) 
+s.remove(20) 
+print("Using remove function : ",s) 
+s.clear() 
+print("Using clear function : ",s) 
+s.add(50) 
+# del s 
+# print("del operator : ", s) 
+
+# [ Union , intersection , difference ]  
+s1={2,4,6,8} 
+s2={3,6,9}  
+print("Union of s1 and s2 : ", s1.union(s2) )  
+print("Intersection of s1 and s2 : ", s1.intersection(s2) ) 
+print("Difference of s1 and s2 , s1-s2 : ", s1.difference(s2) ) 
+print("Difference of s1 and s2 , s2-s1 : ", s2.difference(s1) )  
+print("Symmetric difference of s1 and s2 : ", s1.symmetric_difference(s2) )  
+
+s1={2,4,6,8} 
+s2={4,8} 
+print(s1.isdisjoint(s2)) 
+print(s1<=s2)  # subset 
+print(s1<s2) 
+print(s1>=s2)  # superset 
+print(s1>s2) 
+
+
+# Dictionary in Python :  
+#   collection of key-value pair, unordered, all keys must be distinct, values may be repeated, uses hashing internally 
+d={110:"abc", 101:"xyz", 105:"pqr"} 
+print("Dictionary d : ", d )
+d={}
+d["laptop"]=40000 
+d["mobile"]=15000 
+d["earphone"]=1000 
+print("After inserting laptop, mobile, earphones : ",d)
+print(d["mobile"])  
+
+print("GET FUNCTION IN DICTIONARY :") 
+d1={110:"abc", 101:"xyz", 105:"pqr"} 
+print(d1.get(101))
+print(d1.get(125))
+print(d1.get(125,"NA")) 
+if 125 in d1 :
+    print(d1[125]) 
+else :
+    print("NA") 
+
+print("REMOVING AN ITEM FROM DICTIONARY : ") 
+d2={110:"abc", 101:"xyz", 105:"pqr", 106:"bcd"} 
+d2[101]="wxy" 
+print("Length of dictionary after adding 101:wxy - ",len(d))
+print(d2) 
+print(d2.pop(105)) 
+print("After popping 105 : ",d2) 
+del d2[106] 
+print("Removing 106 using del function : ",d2) 
+d2[108]="cde" 
+print(d2.popitem()) 
+
+
+# Count distinct elements in a list  
+# Approach 1 : Naive 
+l1=[10,20,10,30,30,20] 
+def distict1(l) :
+    res=1 
+    for i in range(1,len(l)) :
+        if l[i] not in l[:i] :
+            res+=1 
+    return res 
+print("Distinct elements in list by Naive Approach : ", distict1(l1))
+
+# Approach 2 : (Using set) 
+def distinct2(l) :
+    s=set(l) 
+    return len(s) 
+print("Distinct elements in list using sets : ", distinct2(l1))

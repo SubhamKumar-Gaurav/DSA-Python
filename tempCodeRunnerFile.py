@@ -1,2 +1,1 @@
-  # if n==1 :
-    #     return False
+print("del operator : ", s) 
