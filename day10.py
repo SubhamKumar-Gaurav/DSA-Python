@@ -1,6 +1,9 @@
 # Searching 
 #   Binary search  
 #   Recursive Binary Search in Python 
+#   Index of first occurence of an element in sorted array - 3 approaches 
+
+
 
 
 ## Binary Search (prerequisite : Array should be sorted) 
@@ -20,6 +23,7 @@ def binSearch(arr,x) :
 print("Binary search : ") 
 print("Element 60 : ", binSearch(arr,60))      
 print("Element 25 : ", binSearch(arr,25))      
+print("") 
 
 
 ## Recursive Binary Search in Python 
@@ -33,7 +37,64 @@ def bSearch(l,x,low,high) :
         return bSearch(l,x,low,mid-1) 
     else : 
         return bSearch(l,x,mid+1,high) 
+print("Recursive Binary Search : ")
 l=[10,20,30,40]
 print("Index of 20 in l : ", bSearch(l,20,0,3))
 print("Index of 40 in l : ", bSearch(l,40,0,3))
 print("Index of 25 in l : ", bSearch(l,25,0,3))
+print("") 
+
+## Index of first ocurence in a sorted array 
+# Approach - 1  : Naive Approach 
+def firstOccurence1(arr,x) :
+    n=len(arr) 
+    for i in range(n) : 
+        if arr[i]==x :
+            return i 
+    return -1 
+arr1=[1,10,10,10,20,20,20,40]
+print("Naive Approach : ")
+print("First occurence of 20 : ",firstOccurence1(arr1,20)) 
+print("") 
+
+# Approach - 2 :    Recursive Binary Search 
+def firstOccurence2(arr,low,high,x) :
+    if low>high :
+        return -1 
+    mid=(low+high)//2 
+    
+    if arr[mid]>x :
+        return firstOccurence2(arr,low,mid-1,x) 
+    elif arr[mid]<x :
+        return firstOccurence2(arr,mid+1,high,x) 
+    else :
+        if mid==0 or arr[mid-1]!=arr[mid] :
+            return mid 
+        else : 
+            return firstOccurence2(arr,low,mid-1,x) 
+arr2=[5,10,10,15,20,20,20]
+x=20 
+print("Recursive Binary Search Approach ")
+print("First occurence of 20 : ", firstOccurence2(arr2,0,6,20)) 
+print("")
+
+# Approach - 3 :  Iterative Binary Search 
+def firstOccurence3(arr,x) :
+    low=0
+    high=len(arr)-1 
+    while low<=high : 
+        mid=(low+high)//2 
+        if arr[mid]>x :
+            high=mid-1 
+        elif arr[mid]<x :
+            low=mid+1 
+        else :
+            if mid==0 or arr[mid-1]!=arr[mid] :
+                return mid 
+            else :
+                high=mid-1 
+    return -1 
+arr3=[5,10,10,20,20]
+print("Iterative Binary Search : ") 
+print("First occurence of 10 : ", firstOccurence3(arr3,10)) 
+print("")
