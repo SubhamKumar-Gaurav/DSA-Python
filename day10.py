@@ -2,7 +2,7 @@
 #   Binary search  
 #   Recursive Binary Search in Python 
 #   Index of first occurence of an element in sorted array - 3 approaches 
-
+#   Last occurence - 2 approaches 
 
 
 
@@ -98,3 +98,38 @@ arr3=[5,10,10,20,20]
 print("Iterative Binary Search : ") 
 print("First occurence of 10 : ", firstOccurence3(arr3,10)) 
 print("")
+
+
+## Last Occurence of an element in a sorted array 
+# Approach - 1 :   Naive approach 
+def lastOccurence1(l,x) :
+    for i in reversed(range(len(l))) :
+        if l[i]==x :
+            return i 
+    return -1 
+l1=[5,10,10,10,10,10,20,20]
+x1=10 
+print("Naive approach for last occurence ") 
+print("Last occurence of 10 : ", lastOccurence1(l1,x1)) 
+print("")
+
+# Approach - 2 :  Iterative Binary Search  
+def lastOccurence2(l,x) : 
+    low=0 
+    high=len(l)-1 
+    while low<=high :
+        mid=(low+high)//2  
+        if l[mid]>x :
+            high=mid-1
+        elif l[mid]<x : 
+            low=mid+1 
+        else :
+            if mid==len(l)-1 or l[mid]!=l[mid+1] :
+                return mid 
+            else : 
+                low=mid+1 
+    return -1 
+l=[5,10,10,10,10,20,20] 
+x=10
+print("Iterative Binary Search for last occurence ")
+print("Last occurence of 10 : ", lastOccurence2(l,x)) 
