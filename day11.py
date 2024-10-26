@@ -45,3 +45,4 @@ def occ(l,x) :   # last - first + 1
 l=[10,20,20,20,20,30,30,40,40,50]
 print("Total occurrences of 30 : ", occ(l,30)) 
 print("Total occurrences of 20 : ", occ(l,20)) 
+print("Total occurrences of 10 : ", occ(l,10)) 
