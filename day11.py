@@ -4,7 +4,7 @@
 #     Square root 
 
 
-# Count occurences in a sorted array  
+##  Count occurences in a sorted array  
 # Efficient solution 
 def f_occ(l,x) :      # function for first occurrence 
     low=0 
@@ -46,3 +46,11 @@ l=[10,20,20,20,20,30,30,40,40,50]
 print("Total occurrences of 30 : ", occ(l,30)) 
 print("Total occurrences of 20 : ", occ(l,20)) 
 print("Total occurrences of 10 : ", occ(l,10)) 
+
+
+## Count 1's in sorted binary list  
+def one_occ(l) :
+    first=f_occ(l,1)  
+    return len(l)-first
+l1=[0,0,0,0,1,1,1,1,1]
+print("Total occurrences of 1 : ", one_occ(l1)) 
