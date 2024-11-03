@@ -94,3 +94,24 @@ l2.sort()
 print("Using lt function and sorting on the basis of y , if x is same : ")
 for i in l2 : 
     print(i.x, i.y) 
+
+    
+## Sorted() in Python 
+l=[10,20,14] 
+ls=sorted(l) 
+print(l) 
+print(ls) 
+
+l=[10,-15,-2,1] 
+ls=sorted(l,key=abs,reverse=True) 
+print(ls) 
+
+t=(10,12,5,1) 
+print(sorted(t)) 
+
+s={"gfg", "courses", "python"} 
+print(sorted(s)) 
+
+st="gfg" 
+print(sorted(st)) 
+
