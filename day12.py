@@ -1,8 +1,9 @@
 # Sorting 
 #    Sorting in Python - sort() , sorted() 
 #    List sort in Python 
-
-
+#    Sorted() in Python 
+#    
+#    
 
 ## Sort() : 
 #   Works only for list 
@@ -114,4 +115,66 @@ print(sorted(s))
 
 st="gfg" 
 print(sorted(st)) 
+print("")
+# Stable sorts : Bubble sort, Insertion sort, Merge sort  ( maintains the order) 
+# Unstable sort : Selection sort, Quick sort, Heap sort   (does not maintain the order) 
 
+
+
+## Bubble sort :   O(n^2) 
+def bubbleSort(l) : 
+    n=len(l)
+    for i in range(n-1) : 
+        for j in range(n-i-1) : 
+            if l[j]>l[j+1] : 
+                l[j],l[j+1]=l[j+1],l[j] 
+    return l 
+l1=[10,30,12,3,5,6,19]
+print("Bubble Sort : ")
+print(bubbleSort(l1)) 
+print("")
+
+# Optimised approach : 
+def bubbleSort1(l) : 
+    n=len(l) 
+    for i in range(n-1) : 
+        swapped=False 
+        for j in range(n-i-1) : 
+            if l[j]>l[j+1] : 
+                l[j],l[j+1]=l[j+1],l[j] 
+                swapped=True 
+        if not swapped : 
+            return l 
+
+
+# Selection sort : 
+def selectionSort(l) : 
+    n=len(l) 
+    for i in range(n-1) : 
+        min_ind=i 
+        for j in range(i+1,n) : 
+            if l[j]<l[min_ind] : 
+                min_ind=j 
+        l[i],l[min_ind]=l[min_ind],l[i] 
+    return l 
+l2=[10,4,2,5,8,78,19] 
+print("Selection Sort : ") 
+print(selectionSort(l2)) 
+print("")
+
+## Insertion sort : 
+def insertionSort(l) : 
+    n=len(l)
+    for i in range(1,n) : 
+        x=l[i] 
+        j=i-1 
+        while j>=0 and x<l[j] : 
+            l[j+1]=l[j] 
+            j=j-1 
+        l[j+1]=x 
+    return l 
+
+l3=[12,4,3,9,56,96] 
+print("Insertion sort : ") 
+print(insertionSort(l3))
+print("") 
