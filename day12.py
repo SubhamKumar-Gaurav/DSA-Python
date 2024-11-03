@@ -59,4 +59,38 @@ l=[Point(1,15), Point(10,5), Point(1,8)]
 print("priority given to first appearing element : ")
 l.sort(key=myFun1) 
 for i in l :
-    print(i.x , i.y )
+    print(i.x , i.y ) 
+print("")
+
+# 2. Using lt function : 
+# Method 1 : Maintaining the same order ; if x is same 
+class Point : 
+    def __init__(self, x, y) : 
+        self.x=x 
+        self.y=y 
+    def __lt__(self,other) : 
+        return self.x < other.x  
+
+l1=[Point(1,15), Point(10,5), Point(3,8)] 
+l1.sort()  
+print("Using lt function and maintaining the same order : ")
+for i in l1 : 
+    print(i.x, i.y) 
+print("") 
+
+# Method 2 : Sorting on the basis of y ; if x is same 
+class Point : 
+    def __init__(self, x, y) : 
+        self.x=x 
+        self.y=y 
+    def __lt__(self,other) : 
+        if self.x==other.x : 
+            return self.y<other.y 
+        else :
+            return self.x < other.x  
+
+l2=[Point(1,15), Point(10,5), Point(1,8)] 
+l2.sort()  
+print("Using lt function and sorting on the basis of y , if x is same : ")
+for i in l2 : 
+    print(i.x, i.y) 
