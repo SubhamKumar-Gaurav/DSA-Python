@@ -178,3 +178,90 @@ l3=[12,4,3,9,56,96]
 print("Insertion sort : ") 
 print(insertionSort(l3))
 print("") 
+
+
+## Merge sort introduction : 
+# Divide and Conquer Algorithm (Divide, Conquer and Merge) 
+# Stable Algorithm 
+# Time : O(nlogn) and Space : O(n) 
+# Well suited for Linked Lists. Works in O(1) Aux Space 
+# In general for arrays, Quick Sort outperforms it 
+
+## Merge two sorted arrays 
+# Naive approach 
+def merge(a,b) : 
+    res=a+b 
+    res.sort() 
+    return res 
+
+
+# Efficient approach 
+def mergeLists(a,b) : 
+    m=len(a) 
+    n=len(b) 
+    i=0 
+    j=0 
+    res=[]
+    while i<m and j<n : 
+        if a[i]<b[j] : 
+            res.append(a[i]) 
+            i=i+1
+        else : 
+            res.append(b[j]) 
+            j=j+1 
+    while i<m : 
+        res.append(a[i]) 
+        i=i+1 
+    while j<n : 
+        res.append(b[j]) 
+        j=j+1 
+    return res 
+
+a=[10,15]
+b=[5,6,6,30,40] 
+print("Merge two sorted arrays : ") 
+print(mergeLists(a,b))  
+print("") 
+
+## Merge subarrays : 
+def merge(a,low,mid,high) : 
+    left=a[low:mid+1] 
+    right=a[mid+1:high+1] 
+    i=0 
+    j=0 
+    k=low 
+    while i<len(left) and j<len(right) : 
+        if left[i]<=right[j] : 
+            a[k]=left[i]
+            k=k+1 
+            i=i+1 
+        else : 
+            a[k]=right[j] 
+            k=k+1
+            j=j+1
+    while i<len(left) : 
+        a[k]=left[i] 
+        k=k+1
+        i=i+1
+    while j<len(right) : 
+        a[k]=right[j] 
+        k=k+1
+        j=j+1
+    return a 
+
+a=[10,15,20,11,13] 
+low=0 
+high=4
+mid=2 
+print("Merge sorted subarrays : ") 
+print(merge(a,low,mid,high))  
+
+
+## Merge Sort Algorithm 
+def mergeSort(a,l,r) : 
+    if r>l : 
+        m=(r+l)//2 
+        mergeSort(a,l,m) 
+        mergeSort(a,m+1,r) 
+        merge(a,l,m,r) 
+   
