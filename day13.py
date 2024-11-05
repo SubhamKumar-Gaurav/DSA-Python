@@ -2,6 +2,10 @@
 #    Union of two sorted arrays
 #    Intersection of two sorted arrays 
 #    Count inversions in an array 
+#    Partition a given array 
+#    Lomuto Partition 
+#    Hoare's Partition 
+
 
 
 ## Union of two sorted arrays 
@@ -102,7 +106,8 @@ def invCount(arr) :
     return res 
 a=[2,4,1,3,5] 
 print("Count inversions : ")
-print("Naive approach ", invCount(a), "\n")
+print("Naive approach ", invCount(a))
+
 
 # Efficient approach 
 def countInv(arr,l,r) : 
@@ -137,5 +142,23 @@ def countMerge(arr,l,m,r) :
         k+=1 
     return res 
 b=[8,5,11,2,6,3,13,9] 
-print("Efficient approach ", countInv(b,0,4)) 
+print("Efficient approach ", countInv(b,0,7), "\n") 
 
+
+## Partition a given array 
+def partition(arr,p) : 
+    n=len(arr) 
+    arr[p],arr[n-1]=arr[n-1],arr[p] 
+    temp=[]
+    for x in arr : 
+        if x<=arr[n-1] : 
+            temp.append(x) 
+    for i in arr : 
+        if i>arr[n-1] : 
+            temp.append(i) 
+    for i in range(n) : 
+        arr[i]=temp[i] 
+    return arr 
+a=[5,13,6,9,12,8,11] 
+print("Partition a given array : ") 
+print(partition(a,5), "\n")
