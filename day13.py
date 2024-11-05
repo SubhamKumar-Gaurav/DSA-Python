@@ -1,6 +1,7 @@
 # Day - 13 
 #    Union of two sorted arrays
 #    Intersection of two sorted arrays 
+#    Count inversions in an array 
 
 
 ## Union of two sorted arrays 
@@ -81,8 +82,60 @@ def intersection2(a,b,m,n) :
             print(a[i], end=" ") 
             i=i+1
             j=j+1 
-    return 
+     
 a=[3,5,10,10,10,15,15,20]
 b=[5,10,10,15,30] 
-print("Efficient solution : ") 
-print(intersection2(a,b,8,5),"\n") 
+# print("Efficient solution : ") 
+# print(intersection2(a,b,8,5)) 
+
+
+
+## Count inversions in an array  
+# Naive Approach  
+def invCount(arr) : 
+    n=len(arr) 
+    res=0 
+    for i in range(n-1) : 
+        for j in range(i+1,n) : 
+            if arr[i]>arr[j] : 
+                res+=1 
+    return res 
+a=[2,4,1,3,5] 
+print("Count inversions : ")
+print("Naive approach ", invCount(a), "\n")
+
+# Efficient approach 
+def countInv(arr,l,r) : 
+    res=0 
+    if l<r : 
+        m=(l+r)//2
+        res+=countInv(arr,l,m) 
+        res+=countInv(arr,m+1,r) 
+        res+=countMerge(arr,l,m,r) 
+    return res 
+
+def countMerge(arr,l,m,r) :  
+    left=arr[l:m+1] 
+    right=arr[m+1:r+1] 
+    res,i,j,k=0,0,0,l 
+    while i<len(left) and j<len(right) : 
+        if left[i]<=right[j] : 
+            arr[k]=left[i] 
+            i+=1 
+        else : 
+            arr[k]=right[j] 
+            j+=1 
+            res+=(len(left)-i) 
+        k+=1 
+    while i<len(left) : 
+        arr[k]=left[i] 
+        i+=1 
+        k+=1 
+    while j<len(right) : 
+        arr[k]=right[j] 
+        j+=1 
+        k+=1 
+    return res 
+b=[8,5,11,2,6,3,13,9] 
+print("Efficient approach ", countInv(b,0,4)) 
+
