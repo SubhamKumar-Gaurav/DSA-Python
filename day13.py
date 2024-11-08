@@ -197,3 +197,19 @@ def hoarePartition(arr,l,h) :
 arr=[5,3,8,4,2,7,1,10]
 print(hoarePartition(arr,0,7)) 
 print(arr)
+
+
+## Quick sort using Lomuto's partition : 
+def qLomutoSort(arr,l,h) : 
+    if l<h : 
+        p=partition(arr,l,h) 
+        qLomutoSort(arr,l,p-1) 
+        qLomutoSort(arr,p+1,h) 
+
+## Quick sort using Hoare's partition
+def qHoareSort(arr,l,h) : 
+    if l<h : 
+        p=partition(arr,l,h) 
+        qHoareSort(arr,l,p) 
+        qHoareSort(arr,p+1,h) 
+
