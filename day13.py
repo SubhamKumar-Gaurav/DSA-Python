@@ -5,7 +5,7 @@
 #    Partition a given array 
 #    Lomuto Partition 
 #    Hoare's Partition 
-
+#    Quick sort 
 
 
 ## Union of two sorted arrays 
@@ -145,7 +145,7 @@ b=[8,5,11,2,6,3,13,9]
 print("Efficient approach ", countInv(b,0,7), "\n") 
 
 
-## Partition a given array 
+## Partition a given array   Time : O(n)   ; Space : O(n)
 def partition(arr,p) : 
     n=len(arr) 
     arr[p],arr[n-1]=arr[n-1],arr[p] 
@@ -161,4 +161,39 @@ def partition(arr,p) :
     return arr 
 a=[5,13,6,9,12,8,11] 
 print("Partition a given array : ") 
-print(partition(a,5), "\n")
+print(partition(a,5), "\n") 
+
+
+## Lomuto Partition : 
+def lomuto(arr,l,h) : 
+    pivot=arr[h] 
+    i=l-1 
+    for j in range(l,h) : 
+        if arr[j]<pivot : 
+            i=i+1 
+            arr[i],arr[j]=arr[j],arr[i] 
+    arr[i+1],arr[h]=arr[h],arr[i+1]
+    return arr   
+arr=[10,80,30,90,50,70] 
+pivot=70 
+print("Lomuto Partition : ") 
+print(lomuto(arr,0,5),"\n") 
+
+## Hoares's partition 
+def hoarePartition(arr,l,h) : 
+    pivot=arr[l]
+    i=l-1 
+    j=h+1 
+    while True : 
+        i=i+1 
+        while arr[i]<pivot : 
+            i=i+1 
+        j=j-1 
+        while arr[j]>pivot : 
+            j=j-1 
+        if i>=j : 
+            return j  
+        arr[i],arr[j]=arr[j],arr[i] 
+arr=[5,3,8,4,2,7,1,10]
+print(hoarePartition(arr,0,7)) 
+print(arr)
