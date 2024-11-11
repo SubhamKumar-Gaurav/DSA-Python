@@ -79,4 +79,36 @@ head=insertBegin(head,20)
 head=insertBegin(head,30)
 print("Insert at the beginning of Linked List : ")
 printList(head)
+print("\n") 
+
+## Insert at the End of Linked List 
+def insertEnd(head,key) :  
+    if head==None : 
+        return Node(key)  
+    curr=head 
+    while curr.next!=None : 
+        curr=curr.next 
+    curr.next=Node(key) 
+    return head 
+head=None 
+head=insertEnd(head,10)
+head=insertEnd(head,20)
+head=insertEnd(head,30) 
+print("Insert at the End of Linked List : ")
+printList(head) 
 print("\n")
+
+## Insert at a given position of Singly Linked List 
+def insertPos(head,data,pos) : 
+    temp=Node(data) 
+    if pos==1 : 
+        temp.next=head
+        return temp 
+    curr=head 
+    for i in range(pos-2) : 
+        curr=curr.next 
+        if curr==None : 
+            return head 
+    temp.next=curr.next 
+    curr.next=temp 
+    return head    
