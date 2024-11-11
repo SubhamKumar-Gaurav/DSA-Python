@@ -65,4 +65,18 @@ head.next.next=Node(20)
 head.next.next.next=Node(25) 
 x=20
 print("Search in Linked List : ")
-print(searchList(head,x),"\n") 
+print(searchList(head,x),"\n")  
+
+
+## Insert at the beginning of Linked List 
+def insertBegin(head,key) :  
+    temp=Node(key) 
+    temp.next=head 
+    return temp 
+head=None 
+head=insertBegin(head,10)
+head=insertBegin(head,20)
+head=insertBegin(head,30)
+print("Insert at the beginning of Linked List : ")
+printList(head)
+print("\n")
