@@ -51,4 +51,11 @@ head.next.next=Node(30)
 head=delLastNode(head) 
 print("Delete last node : ")
 printList(head)
-print("\n")
+print("\n") 
+
+
+## Delete a node with pointer given to it 
+def delNode(ptr) : 
+    temp=ptr.next 
+    ptr.data=temp.data 
+    ptr.next=temp.next 
