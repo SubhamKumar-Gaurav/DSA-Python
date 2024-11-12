@@ -58,4 +58,22 @@ print("\n")
 def delNode(ptr) : 
     temp=ptr.next 
     ptr.data=temp.data 
-    ptr.next=temp.next 
+    ptr.next=temp.next  
+ 
+
+## Sorted Insert Linked List in Python 
+def sortedInsert(head,x) : 
+    temp=Node(x) 
+    if head==None : 
+        return temp 
+    elif x<head.data : 
+        temp.next=head 
+        return temp 
+    else : 
+        curr=head 
+        while curr.next!=None and curr.next.data<x : 
+            curr=curr.next 
+        temp.next=curr.next 
+        curr.next=temp 
+        return head 
+
