@@ -2,6 +2,9 @@
 #    Linked List 
 #    Traversing through a Linked List 
 #    Search in Linked List 
+#    Insert at the beginning of Linked List 
+#    Insert at the end of Linked List 
+#    Insert at given position in Singly Linked List 
 
 
 ## Simple Linked List implementation in Python 
@@ -94,6 +97,7 @@ head=None
 head=insertEnd(head,10)
 head=insertEnd(head,20)
 head=insertEnd(head,30) 
+head=insertEnd(head,40) 
 print("Insert at the End of Linked List : ")
 printList(head) 
 print("\n")
@@ -112,3 +116,4 @@ def insertPos(head,data,pos) :
     temp.next=curr.next 
     curr.next=temp 
     return head    
+
