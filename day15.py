@@ -4,7 +4,10 @@
 #    Delete last node in Linked List 
 #    Delete a node with pointer given to it 
 #    Sorted insert Linked List 
-
+#    Middle of Linked List 
+#    Nth node from end of Linked List 
+#    Remove duplicates from sorted singly linked list 
+#    Reverse a Linked List 
 
 class Node : 
     def __init__(self,k) :       
@@ -76,4 +79,32 @@ def sortedInsert(head,x) :
         temp.next=curr.next 
         curr.next=temp 
         return head 
+
+
+## Middle of a Linked List 
+# Naive approach 
+def printMidlle(head) : 
+    if head==None : 
+        return 
+    count=0 
+    curr=head 
+    while curr : 
+        curr=curr.next 
+        count+=1 
+    curr=head 
+    for i in range(count//2) : 
+        curr=curr.next 
+    print(curr.data) 
+
+# Efficient approach 
+def printMiddle(head) : 
+    if head==None : 
+        return 
+    slow=head 
+    fast=head 
+    while fast!=None and fast.next!=None : 
+        slow=slow.next 
+        fast=fast.next.next 
+    print(slow.data) 
+
 
