@@ -18,14 +18,37 @@ def printList(head) :
         print(curr.key, end=" ") 
         curr=curr.next 
 
+
+## Delete first Node 
 def delFirst(head) : 
     if head==None : 
         return None 
     else : 
         return head.next 
-
 head=Node(10) 
 head.next=Node(20) 
 head.next.next=Node(30)  
 head=delFirst(head) 
+print("Delete first Node : ")
 printList(head)  
+print("\n")
+
+
+## Delete last node  
+def delLastNode(head) : 
+    if head==None : 
+        return None 
+    if head.next==None : 
+        return None 
+    curr=head 
+    while curr.next.next!=None : 
+        curr=curr.next 
+    curr.next=None 
+    return head 
+head=Node(10) 
+head.next=Node(20) 
+head.next.next=Node(30) 
+head=delLastNode(head) 
+print("Delete last node : ")
+printList(head)
+print("\n")
