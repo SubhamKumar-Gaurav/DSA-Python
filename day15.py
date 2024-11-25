@@ -121,10 +121,25 @@ def printNthFromEnd(head,n) :
     curr=head 
     for i in range(1,l-n+1) : 
         curr=curr.next 
-    print(curr.data)
+    # print(curr.data)
  
 head=Node(10)
 head.next=Node(20)
 head.next.next=Node(30)
 print("Nth node from end of Linked List : ")
-print(printNthFromEnd(head,2))
+print(printNthFromEnd(head,2),"\n") 
+
+# Method - 2 (Using two Pointers/References) 
+def printNthfromend(head,n) : 
+    if head==None : 
+        return 
+    first=head 
+    for i in range(n) : 
+        if first==None : 
+            return 
+        first=first.next 
+    second=head 
+    while first!=None : 
+        second=second.next 
+        first=first.next 
+    print(second.data) 
