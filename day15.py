@@ -143,3 +143,14 @@ def printNthfromend(head,n) :
         second=second.next 
         first=first.next 
     print(second.data) 
+
+
+
+## Remove duplicates from a sorted Linked List 
+def removeDups(head) : 
+    curr=head 
+    while curr!=None and curr.next!=None : 
+        if curr.data==curr.next.data : 
+            curr.next=curr.next.next 
+        else : 
+            curr=curr.next 
