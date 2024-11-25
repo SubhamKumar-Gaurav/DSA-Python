@@ -108,3 +108,23 @@ def printMiddle(head) :
     print(slow.data) 
 
 
+## Nth node from end of Linked List  
+# Method -1  (using length of linked list) 
+def printNthFromEnd(head,n) : 
+    l=0 
+    curr=head 
+    while curr : 
+        curr=curr.next 
+        l+=1 
+    if n>l : 
+        return 
+    curr=head 
+    for i in range(1,l-n+1) : 
+        curr=curr.next 
+    print(curr.data)
+ 
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30)
+print("Nth node from end of Linked List : ")
+print(printNthFromEnd(head,2))
