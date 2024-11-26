@@ -197,5 +197,20 @@ head.next=Node(20)
 head.next.next=Node(30) 
 head.next.next.next=Node(40) 
 print("Reversing a List : (Efficient approach)") 
-print(reverseList2(head)) 
+print(reverseList2(head),"\n") 
 
+
+
+## Recursive reverse a Linked List (Method - 1) 
+def recursiveReverseList1(head) : 
+    ## Base case : 
+    if head==None : 
+        return head 
+    if head.next==None : 
+        return head 
+        
+    rest_head=recursiveReverseList1(head.next)
+    rest_tail=head.next 
+    rest_tail.next=head 
+    head.next=None 
+    return printList(rest_head) 
