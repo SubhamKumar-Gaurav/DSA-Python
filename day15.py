@@ -201,16 +201,39 @@ print(reverseList2(head),"\n")
 
 
 
-## Recursive reverse a Linked List (Method - 1) 
+## Recursive reverse a Linked List 
+## Method - 1
 def recursiveReverseList1(head) : 
     ## Base case : 
     if head==None : 
         return head 
     if head.next==None : 
         return head 
-        
+
     rest_head=recursiveReverseList1(head.next)
     rest_tail=head.next 
     rest_tail.next=head 
     head.next=None 
-    return printList(rest_head) 
+    return printList(rest_head)
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30) 
+head.next.next.next=Node(40) 
+print("Recursive Reverse of Linked List : Method - 1 ")
+print(recursiveReverseList1(head),"\n")
+
+
+## Method - 2
+def recursiveReverseList2(curr, prev=None) :
+    if curr==None : 
+        return prev
+    next=curr.next 
+    curr.next=prev 
+    return printList(recursiveReverseList2(next,curr))
+
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30) 
+head.next.next.next=Node(40) 
+print("Recursive Reverse of Linked List : Method - 2")
+print(recursiveReverseList2(head),"\n") 
