@@ -121,12 +121,12 @@ def printNthFromEnd(head,n) :
     curr=head 
     for i in range(1,l-n+1) : 
         curr=curr.next 
-    # print(curr.data)
+    print(curr.key)
  
 head=Node(10)
 head.next=Node(20)
 head.next.next=Node(30)
-print("Nth node from end of Linked List : ")
+print("Nth node from end of Linked List : (Using length of linked list)")
 print(printNthFromEnd(head,2),"\n") 
 
 # Method - 2 (Using two Pointers/References) 
@@ -142,7 +142,12 @@ def printNthfromend(head,n) :
     while first!=None : 
         second=second.next 
         first=first.next 
-    print(second.data) 
+    print(second.key) 
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30)
+print("Nth node from end of Linked List : (Using two Pointers/References) ")
+print(printNthFromEnd(head,3),"\n") 
 
 
 
@@ -154,3 +159,24 @@ def removeDups(head) :
             curr.next=curr.next.next 
         else : 
             curr=curr.next 
+
+
+
+## Reverse a Linked List in Python 
+# Approach - 1 (Naive Approach) 
+def reverseList1(head) : 
+    stack=[]
+    curr=head 
+    while curr is not None : 
+        stack.append(curr.key) 
+        curr=curr.next 
+    curr=head 
+    while curr is not None : 
+        curr.key=stack.pop() 
+        curr=curr.next 
+    return printList(head) 
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30) 
+print("Reversing a List : (Using stack)") 
+print(reverseList1(head))
