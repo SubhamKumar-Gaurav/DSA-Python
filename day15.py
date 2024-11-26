@@ -179,4 +179,23 @@ head=Node(10)
 head.next=Node(20)
 head.next.next=Node(30) 
 print("Reversing a List : (Using stack)") 
-print(reverseList1(head))
+print(reverseList1(head),"\n") 
+
+
+# Efficient approach 
+def reverseList2(head) : 
+    curr=head 
+    prev=None 
+    while curr is not None : 
+        next=curr.next
+        curr.next=prev 
+        prev=curr 
+        curr=next 
+    return printList(prev)  
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30) 
+head.next.next.next=Node(40) 
+print("Reversing a List : (Efficient approach)") 
+print(reverseList2(head)) 
+
