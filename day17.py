@@ -58,3 +58,26 @@ head.next.next.next.next=head
 print("Approach - 2 (Constant Time)")
 printCircular(delHead2(head))
 print("\n") 
+
+
+
+## Delete Kth node of Circular Linked List  
+def delKth(head,k) : 
+    if head==None : 
+        return None 
+    elif k==1 : 
+        return delHead2(head) 
+    else : 
+        curr=head 
+        for i in range(k-2) : 
+            curr=curr.next 
+        curr.next=curr.next.next 
+        return head 
+head=Node(10)
+head.next=Node(20) 
+head.next.next=Node(30) 
+head.next.next.next=Node(40) 
+head.next.next.next.next=Node(50) 
+head.next.next.next.next.next=head  
+print("Delete Kth node of Circular Linked List : ") 
+printCircular(delKth(head,3))
