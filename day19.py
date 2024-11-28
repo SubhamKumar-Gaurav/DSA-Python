@@ -34,6 +34,29 @@ head.next=temp1
 temp1.prev=head 
 temp1.next=temp2 
 temp2.prev=temp1 
-print("Delete Head of DLL ")
+print("Delete Head of DLL : ")
 printList(delHead(head)) 
-print("\n")
+print("\n")  
+
+
+## Delete last Node of DLL 
+def delLastNode(head) : 
+    if head==None : 
+        return None 
+    if head.next==None : 
+        return None 
+    curr=head 
+    while curr.next.next!=None : 
+        curr=curr.next 
+    curr.next=None 
+    return head 
+head=Node(10) 
+temp1=Node(20) 
+temp2=Node(30) 
+head.next=temp1 
+temp1.prev=head 
+temp1.next=temp2 
+temp2.prev=temp1 
+print("Delete Last Node of DLL : ")
+printList(delLastNode(head)) 
+print("\n") 
