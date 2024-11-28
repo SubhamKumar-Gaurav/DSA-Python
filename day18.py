@@ -30,3 +30,24 @@ head=insertBegin(head,20)
 print("Insert at the beginning of DLL : ")
 printList(head) 
 print("\n")  
+
+
+## Insert at the end of DLL 
+def insertEnd(head,x) : 
+    temp=Node(x) 
+    if head==None : 
+        return temp 
+    else :
+        curr=head 
+        while curr.next!=None : 
+            curr=curr.next 
+        curr.next=temp 
+        temp.prev=curr 
+        return head 
+head=None 
+head=insertEnd(head,10) 
+head=insertEnd(head,20) 
+head=insertEnd(head,30) 
+print("Insert at the End of DLL")
+printList(head) 
+print("\n") 
