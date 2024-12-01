@@ -75,7 +75,6 @@ print("\n")
 
 ## Applications of Stack : 
 # Function calls 
-# Ba;
 # Balanced paranthesis
 # Reversing items 
 # Infix to postfix and prefix 
