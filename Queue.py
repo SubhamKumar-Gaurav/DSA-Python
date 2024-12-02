@@ -81,3 +81,63 @@ q.enque(20)
 q.enque(30) 
 print(q.deque())
 print("\n")
+
+
+## Queue implementation using Circular List 
+class MyQueue : 
+    def __init__(self,c) : 
+        self.l=[None]*c 
+        self.cap=c 
+        self.size=0 
+        self.front=0 
+    def getFront(self) : 
+        if self.size==0 : 
+            return None 
+        else : 
+            return self.l[self.front] 
+    def getRear(self) : 
+        if self.size==0 : 
+            return None 
+        else : 
+            rear=(self.front+self.size-1)%self.cap 
+            return self.l[rear] 
+    def enque(self,x) : 
+        if self.size==self.cap : 
+            return 
+        else : 
+            rear=(self.front+self.size-1)%self.cap 
+            rear=(rear+1)%self.cap 
+            self.l[rear]=x 
+            self.size=self.size+1 
+    def deque(self) : 
+        if self.size==0 : 
+            return None 
+        else : 
+            res=self.l[self.front] 
+            self.front=(self.front+1)%self.cap 
+            self.size=self.size-1 
+            return res 
+
+
+## Implement stack using queue  
+class Stack : 
+    def __init__(self) : 
+        self.q1=deque() 
+        self.q2=deque()  
+    
+    def push(self,x) : 
+        self.q2.append(x) 
+        while self.q1 : 
+            self.q2.append(self.q1.popleft()) 
+        self.q1, self.q2=self.q2, self.q1  
+    def pop(self) : 
+        if self.q1 : 
+            self.q1.popleft() 
+    def top(self) : 
+        if self.q1 : 
+            return self.q1[0] 
+        else : 
+            return None 
+    def size(self) : 
+        return len(self.q1) 
+    
