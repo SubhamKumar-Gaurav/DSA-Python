@@ -4,6 +4,7 @@
 # 4 main operations of Deque 
 #  insertFront, insertRear, deleteFront, deleteRear 
  
+print("Program - 1 : ")
 from collections import deque 
 d=deque() 
 d.append(10)
@@ -13,4 +14,16 @@ d.appendleft(40)
 print("Deque d : ",d) 
 print("pop function : ",d.pop()) 
 print("popleft function : ",d.popleft()) 
-print(d)
+print(d) 
+print("\n")
+ 
+
+print("Program - 2 : ") 
+from collections import deque 
+d=deque([10,20,30,40,50]) 
+d.rotate(2) 
+print("Rotation of 2 in clockwise direction : ", d ) 
+d.rotate(-2) 
+print("Rotation of 2 in anti-clockwise direction : ", d , " [gives original deque] ") 
+d.reverse() 
+print("Reversed deque : ", d ) 
