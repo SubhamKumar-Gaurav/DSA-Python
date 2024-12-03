@@ -41,4 +41,15 @@ d.rotate(-2)
 print("Rotation of 2 in anti-clockwise direction : ", d , " [gives original deque] ") 
 d.reverse() 
 print("Reversed deque : ", d ) 
+print("\n")
+ 
 
+print("Program - 4 : ") 
+from collections import deque 
+d=deque([10,20,30,40,50]) 
+print("3rd element : ",d[2])
+d[2]=100 
+print("Updating 3rd element to 100 : ",d) 
+print("Front element : ",d[0]) 
+print("Rear element : ",d[-1]) 
+print("\n") 
