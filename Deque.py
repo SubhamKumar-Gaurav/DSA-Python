@@ -5,7 +5,8 @@
 #  insertFront, insertRear, deleteFront, deleteRear 
  
 print("Program - 1 : ")
-from collections import deque 
+from collections import deque
+from typing import Any 
 d=deque() 
 d.append(10)
 d.append(20)
@@ -53,3 +54,50 @@ print("Updating 3rd element to 100 : ",d)
 print("Front element : ",d[0]) 
 print("Rear element : ",d[-1]) 
 print("\n") 
+
+
+
+
+## Linked List implementation of Deque 
+class Node : 
+    def __init__(self, k) : 
+        self.key=k 
+        self.prev=None 
+        self.next=None 
+
+class MyDeque : 
+    def __init__(self) : 
+        self.front=None 
+        self.rear=None 
+        self.sz=0 
+    def size(self) : 
+        return self.sz 
+    def isEmpty(self) : 
+        return self.sz==0 
+    def insertRear(self,x) : 
+        temp=Node(x) 
+        if self.rear==None : 
+            self.front=temp 
+        else : 
+            self.rear.next=temp 
+            temp.prev=self.rear 
+        self.rear=temp 
+        self.sz=self.sz+1 
+    def deleteFront(self) : 
+        if self.front==None : 
+            return None 
+        else : 
+            res=self.front.key 
+            self.front=self.front.next 
+            if self.front==None : 
+                return None 
+            else : 
+                self.front.prev=None 
+            self.sz=self.sz+1 
+            return res 
+d=MyDeque() 
+d.insertRear(10) 
+d.insertRear(20) 
+d.insertRear(30) 
+d.deleteFront()
+print(d)
