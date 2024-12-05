@@ -1,9 +1,13 @@
 ## Deque 
+#   Implementation using 
+#      from collections module 
+#      using Linked list
+#      using List 
 
 
 # 4 main operations of Deque 
 #  insertFront, insertRear, deleteFront, deleteRear 
- 
+
 print("Program - 1 : ")
 from collections import deque
 from typing import Any 
@@ -100,4 +104,55 @@ d.insertRear(10)
 d.insertRear(20) 
 d.insertRear(30) 
 d.deleteFront()
+
+
+## List implementation of Deque 
+class MyDeque : 
+    def __init__(self, c) : 
+        self.l=[None]*c 
+        self.cap=c 
+        self.sz=0 
+        self.front=0 
+    def deleteFront(self) : 
+        if self.sz==0 : 
+            return None 
+        else : 
+            res=self.l[self.front] 
+            self.front=(self.front+1)%self.cap 
+            self.sz=self.sz-1 
+            return res 
+    def insertFront(self,x) : 
+        if self.sz==self.cap : 
+            return 
+        else : 
+            self.front=(self.front-1)%self.cap 
+            self.l[self.front]=x 
+            self.sz=self.sz+1 
+    def insertRear(self,x) : 
+        if self.sz==self.cap : 
+            return 
+        new_rear=(self.front+self.sz)%self.cap 
+        self.l[new_rear]=x 
+        self.sz=self.sz+1 
+    def deleteRear(self) : 
+        sz=self.sz 
+        if sz==0 : 
+            return None  
+        else :
+            rear=(self.front+sz-1)%self.cap  
+            self.sz=self.sz-1 
+            return self.l[rear] 
+print("List implementation of Deque : ")
+d=MyDeque(4)  
 print(d)
+d.insertRear(10) 
+print("insertRear(10) : ", d)
+d.insertFront(20) 
+print("insertFront(20) : ", d) 
+d.insertFront(30) 
+print("insertFront(30) : ", d) 
+d.deleteFront() 
+print("deleteFront : " , d) 
+d.deleteRear() 
+print("deleteRear() : ", d) 
+print("\n") 
