@@ -66,6 +66,19 @@ s1="ABC"
 s2="abc" 
 print(f"Lowercase of {s1} is {s1.lower()}")
 print(f"Uppercase of {s2} is {s2.upper()}") 
-
+print("\n")
 
 ## String comparison in Python 
+print("String Comparison in Python : ")
+s1="geeksforgeeks" 
+s2="ide" 
+print("s1<s2 : " , s1<s2)  # Compared based on Unicode values of first character 
+print("s1<=s2 : " , s1<=s2)
+print("s1>s2 : " , s1>s2)
+print("s1>=s2 : " , s1>=s2)
+print("s1==s2 : ",s1==s2) 
+print("s1!=s2 : ",s1!=s2) 
+print("abcd > abc : " , "abcd" > "abc" ) 
+print("ZAB > ABC : " , "ZAB" > "ABC" ) 
+print("abc > ABC : " , "abc" > "ABC" ) 
+print("x > abcd : ", "x" > "abcd")
