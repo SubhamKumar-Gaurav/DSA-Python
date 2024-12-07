@@ -3,7 +3,7 @@
 #   Escape sequemces and raw strings  
 #   Formatted string in Python 
 #   String comparison in Python 
-#   
+#   String operations 
 
 
 ## Basics 
@@ -111,4 +111,25 @@ s2="geeks"
 print(".index() gives index of first occurence : ", s1.index(s2)) 
 print(".rindex() gives index of last occurence : ", s1.rindex(s2))  
 print("Index in a given range : ", s1.index(s2,0,13)) 
-print("Index in a given range : ", s1.index(s2,1,13)) 
+print("Index in a given range : ", s1.index(s2,1,13))   
+print("\n") 
+
+
+
+## String Operations in Python (Part - 2) 
+print("String Operations in Python (Part - 2)")   
+s1="geeks" 
+print("length of s1 : " , len(s1))
+print("s1.upper() : ", s1.upper()) 
+print("s1.lower() : ", s1.lower()) 
+print("s1.islower() : ", s1.islower()) 
+print("s1.isupper() : ", s1.isupper()) 
+print("\n") 
+
+print("startswith and endswith function")
+s="GeeksforGeeks Python Course" 
+print("startswith : ",s.startswith("Geeks")) 
+print("endswith : ",s.endswith("Course")) 
+print("startswith fn. with parameter : ", s.startswith("Geeks",1)) 
+print("startswith fn. with parameter : ", s.startswith("Geeks",8,len(s)))  
+print("\n")
