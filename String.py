@@ -3,17 +3,17 @@
 #   Escape sequemces and raw strings  
 #   Formatted string in Python 
 #   String comparison in Python 
-
+#   
 
 
 ## Basics 
-#   Characters 'A' to 'Z' are stored as values from 65 to 90 
-#   Characters 'z' to 'z' are stored as values from 97 to 122
+print("Characters 'A' to 'Z' are stored as values from 65 to 90") 
+print("Characters 'z' to 'z' are stored as values from 97 to 122")
 print(ord("a")) 
 print(ord("A"))
 print(chr(97)) 
 print(chr(65)) 
-
+print("\n")
 
 ## Escape sequences and raw strings 
 #   s='Welcome to Geek's Course'   (Will throw an error)
@@ -30,6 +30,7 @@ print(s1)
 print("\n")
 
 ## Raw strings 
+print("Raw strings : ")
 s2="C:\project\name.py"
 print(s2) 
 
@@ -68,6 +69,7 @@ print(f"Lowercase of {s1} is {s1.lower()}")
 print(f"Uppercase of {s2} is {s2.upper()}") 
 print("\n")
 
+
 ## String comparison in Python 
 print("String Comparison in Python : ")
 s1="geeksforgeeks" 
@@ -81,4 +83,24 @@ print("s1!=s2 : ",s1!=s2)
 print("abcd > abc : " , "abcd" > "abc" ) 
 print("ZAB > ABC : " , "ZAB" > "ABC" ) 
 print("abc > ABC : " , "abc" > "ABC" ) 
-print("x > abcd : ", "x" > "abcd")
+print("x > abcd : ", "x" > "abcd")  
+print("\n") 
+
+
+## String Operations in Python (Part - 1) 
+print("String Operations in Python (Part - 1)") 
+
+print("Program - 1 (Check for substring)")
+s1="geeksforgeeks" 
+s2="geeks" 
+print("s2 in s1 : ",s2 in s1) 
+print("s2 not in s1 : ", s2 not in s1) 
+print("\n") 
+
+print("Program - 2 (String Concatenation)") 
+s1="geeks" 
+s2="forgeeks" 
+print("s1+s2 : ", s1+s2) 
+s4="Welcome to "+ s1 + s2
+print(s4) 
+print("\n")
