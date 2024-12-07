@@ -4,6 +4,8 @@
 #   Formatted string in Python 
 #   String comparison in Python 
 #   String operations 
+#   Reverse a string 
+
 
 
 ## Basics 
@@ -166,4 +168,14 @@ s1="geeks for geeks"
 print(s1.find("geeks"))
 print(s1.find("gfg")) 
 print(s1.find("geeks",1,len(s1)))
-print("\n") 
+print("\n")  
+
+
+## Reverse a string 
+s="geek" 
+rev=""
+for i in s : 
+    rev = i + rev 
+print("Reverse of s (method - 1): ", rev)  
+print("Reverse of s (method - 2): ", s[::-1])  
+print("\n")
