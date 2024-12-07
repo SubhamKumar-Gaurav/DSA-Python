@@ -5,7 +5,7 @@
 #   String comparison in Python 
 #   String operations 
 #   Reverse a string 
-
+#   Check if string is rotated 
 
 
 ## Basics 
@@ -178,4 +178,17 @@ for i in s :
     rev = i + rev 
 print("Reverse of s (method - 1): ", rev)  
 print("Reverse of s (method - 2): ", s[::-1])  
-print("\n")
+print("\n")  
+
+
+print("Check if string is rotated : ") 
+s1="ABCD"
+s2="CDAB" 
+def areRotations(s1,s2) : 
+    if len(s1)!=len(s2) : 
+        return False 
+    temp="" 
+    temp=s1+s1 
+    return temp.find(s2)==-1  
+print("ABCD and CDAB : ",areRotations(s1,s2)) 
+print("ABAB and ABBA : ",areRotations("ABAB","ABBA")) 
