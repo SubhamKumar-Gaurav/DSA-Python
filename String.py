@@ -132,4 +132,30 @@ print("startswith : ",s.startswith("Geeks"))
 print("endswith : ",s.endswith("Course")) 
 print("startswith fn. with parameter : ", s.startswith("Geeks",1)) 
 print("startswith fn. with parameter : ", s.startswith("Geeks",8,len(s)))  
-print("\n")
+print("\n") 
+
+
+print("split method: ") 
+s1="geeks for geeks" 
+print("s1.split() : ", s1.split())
+
+s2="geeks, for , geeks" 
+print("s2.split(',') : ", s2.split(",")) 
+print("\n") 
+
+print("join method : ")
+l=["geeksforgeeks", "python", "course"] 
+print(" ".join(l)) 
+print(",".join(l)) 
+print(", ".join(l)) 
+print("\n") 
+
+print("strip method : ") 
+s="__geeksforgeeks___" 
+print(s.strip("_")) 
+print(s.lstrip("_")) 
+print(s.rstrip("_"))    
+s1="geeks_for_geeks"
+print(s1.strip("_")) 
+s1="geeks for geeks"
+print(s1.strip("")) 
