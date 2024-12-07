@@ -2,11 +2,17 @@
 #   Basics 
 #   Escape sequemces and raw strings  
 #   Formatted string in Python 
+#   String comparison in Python 
+
+
 
 ## Basics 
 #   Characters 'A' to 'Z' are stored as values from 65 to 90 
 #   Characters 'z' to 'z' are stored as values from 97 to 122
-
+print(ord("a")) 
+print(ord("A"))
+print(chr(97)) 
+print(chr(65)) 
 
 
 ## Escape sequences and raw strings 
@@ -31,7 +37,9 @@ s3=r"C:\project\name.py"
 print("Raw string : ",s3)  
 print("\n")
 
-## Formatted string in Python '
+
+
+## Formatted string in Python 
 # Method - 1: USing % 
 name="ABC" 
 course="Python Course"
@@ -39,7 +47,7 @@ s="Welcome %s to the %s"%(name,course)
 print("Formatted string using (%) : ",s)  
 
 # Method - 2 : USing format() method 
-s="Welsome {0} to the {1}".format(name,course)
+s="Welcome {0} to the {1}".format(name,course)
 print("Using format() method : ", s)
 
 # Method - 3 : USing f-string 
@@ -57,4 +65,7 @@ print(f"Product of {a} and {b} is {a*b}")
 s1="ABC"
 s2="abc" 
 print(f"Lowercase of {s1} is {s1.lower()}")
-print(f"Uppercase of {s2} is {s2.upper()}")
+print(f"Uppercase of {s2} is {s2.upper()}") 
+
+
+## String comparison in Python 
