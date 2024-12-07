@@ -157,5 +157,13 @@ print(s.lstrip("_"))
 print(s.rstrip("_"))    
 s1="geeks_for_geeks"
 print(s1.strip("_")) 
-s1="geeks for geeks"
-print(s1.strip("")) 
+s2="geeks for geeks"
+print(s2.strip(" ")) 
+print("\n") 
+
+print("find method : ") 
+s1="geeks for geeks" 
+print(s1.find("geeks"))
+print(s1.find("gfg")) 
+print(s1.find("geeks",1,len(s1)))
+print("\n") 
