@@ -6,7 +6,8 @@
 #   String operations 
 #   Reverse a string 
 #   Check if string is rotated 
-
+#   Check for Palindrome 
+#   Check if a string is subsequence of other 
 
 ## Basics 
 print("Characters 'A' to 'Z' are stored as values from 65 to 90") 
@@ -222,4 +223,33 @@ s1="ABBA"
 print("ABBA : ",Palindrome(s1)) 
 s2="Aba"
 print("Aba : ",Palindrome(s2)) 
+print("\n") 
+
+
+##  Check if a string is subsequence of other 
+print("Check for subsequence : ")
+def isSubsequence(s1,s2) : 
+    m=len(s1) 
+    n=len(s2) 
+    i=0 
+    j=0 
+    while i<m and j<n : 
+        if s1[i]==s2[j] : 
+            i+=1 
+            j+=1 
+        else : 
+            i+=1 
+    if j==n : 
+        return True 
+    return False 
+
+s1="ABCD"
+s2="AD" 
+print("ABCD and AD : ",isSubsequence(s1,s2)) 
+s1="geeksforgeeks" 
+s2="grges" 
+print("geeksforgeeks and grges : ", isSubsequence(s1,s2))
+s1="ABCDE"
+s2="AED"
+print("ABCDE and AED : ", isSubsequence(s1,s2))  
 print("\n") 
