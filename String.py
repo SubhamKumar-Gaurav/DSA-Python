@@ -192,3 +192,34 @@ def areRotations(s1,s2) :
     return temp.find(s2)==-1  
 print("ABCD and CDAB : ",areRotations(s1,s2)) 
 print("ABAB and ABBA : ",areRotations("ABAB","ABBA")) 
+print("\n") 
+
+
+
+## Check for Palindrome 
+print("Check for Palindrome : ") 
+print("Method - 1  Using two pointers ")   
+def isPalindrome(s) : 
+    n=len(s) 
+    low=0 
+    high=n-1 
+    while low<high : 
+        if s[low]!=s[high] : 
+            return False 
+        low+=1 
+        high-=1 
+    return True 
+s1="abba"
+s2="aBA" 
+print("abba : ", isPalindrome(s1))
+print("aBA : ",isPalindrome(s2))
+print("\n")
+
+print("Method - 2   Using string reversal ")
+def Palindrome(s) : 
+    return s[::]==s[::-1] 
+s1="ABBA" 
+print("ABBA : ",Palindrome(s1)) 
+s2="Aba"
+print("Aba : ",Palindrome(s2)) 
+print("\n") 
