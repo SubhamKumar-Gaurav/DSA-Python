@@ -252,4 +252,38 @@ print("geeksforgeeks and grges : ", isSubsequence(s1,s2))
 s1="ABCDE"
 s2="AED"
 print("ABCDE and AED : ", isSubsequence(s1,s2))  
+print("\n")  
+
+
+ 
+## Check for Anagram 
+print("Check for Anagram : ") 
+print("Naive approach with Time : O(n logn )")
+def Anagram(s1,s2) : 
+    if len(s1)!=len(s2) : 
+        return False 
+    s1=sorted(s1) 
+    s2=sorted(s2) 
+    return s1==s2 
+s1="listen" 
+s2="silent" 
+print("listen and silent : ",Anagram(s1,s2)) 
+print("aab and abb : ",Anagram("aab","abb")) 
+print("\n") 
+
+
+print("Efficient solution with Time : O(n)") 
+def areAnagram(s1,s2) : 
+    if len(s1)!=len(s2) : 
+        return False 
+    counter=[0]*256 
+    for i in range(len(s1)) : 
+        counter[ord(s1[i])]+=1     
+        counter[ord(s2[i])]-=1    
+    for x in counter : 
+        if x!=0 : 
+            return False 
+    return True  
+print("listen and silent : ", areAnagram("listen", "silent"))  
+print("aab and abb : ",areAnagram("aab","abb"))
 print("\n") 
