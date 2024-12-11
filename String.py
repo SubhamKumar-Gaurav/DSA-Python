@@ -296,4 +296,32 @@ print("\n")
 
 
 ## Leftmost repeating character 
-print("Leftmost repeating character") 
+print("Leftmost repeating character :  ")  
+print("Approach - 1  [Naive approach]   Time: O(n^2)") 
+def leftmost1(s) : 
+    for i in range(len(s)) : 
+        for j in range(i+1,len(s)) : 
+            if s[i]==s[j] : 
+                return i 
+    return -1   
+s1="abbccd"
+s2="geeksforgeeks"
+print("abbccd : ", leftmost1(s1)) 
+print("geeksforgeeks : ", leftmost1(s2)) 
+print("\n") 
+
+
+print("Approach - 2  [Better approach]   Time: O(n)") 
+def leftmost2(s) : 
+    count=[0]*256 
+    for i in range(len(s)) : 
+        count[ord(s[i])]+=1 
+    for i in range(len(s)) : 
+        if count[ord(s[i])]>1 : 
+            return i 
+    return -1 
+s3="geeksforgeeks" 
+print("geeksforgeeks : ", leftmost2(s3)) 
+s4="abcd" 
+print("abcd : ", leftmost2(s4)) 
+print("\n") 
