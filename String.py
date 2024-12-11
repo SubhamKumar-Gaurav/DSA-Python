@@ -368,18 +368,34 @@ print("\n")
 ## Leftmost non-repeating character 
 print("Leftmost non-repeating character") 
 print("Naive Approach  Time : O(n^2) ")  
-def nonRep(s) : 
+def nonRep1(s) : 
     for i in range(len(s)) : 
         flag=False 
-        for j in range(i+1,len(s)) : 
-            if s[i]==s[j] : 
+        for j in range(len(s)) : 
+            if s[i]==s[j] and i!=j : 
                 flag=True 
                 break 
         if flag==False : 
             return i 
     return -1 
 s1="geeksforgeeks" 
-print("geeksforgeeks : ", nonRep(s1))
+print("geeksforgeeks : ", nonRep1(s1))
 s2="abcabc"
-print("abcabc : ", nonRep(s2)) 
+print("abcabc : ", nonRep1(s2)) 
+print("\n")   
+
+
+print("Efficient Approach  Time : O(n) ")  
+def nonRep2(s) : 
+    count=[0]*256 
+    for i in s : 
+        count[ord(i)]+=1 
+    for i in range(len(s)) : 
+        if count[ord(s[i])]==1 : 
+            return i 
+    return -1 
+s3="geeksforgeeks" 
+print("geeksforgeeks : ", nonRep2(s3))
+s4="abcabc"
+print("abcabc : ", nonRep2(s4)) 
 print("\n") 
