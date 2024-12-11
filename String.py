@@ -8,6 +8,11 @@
 #   Check if string is rotated 
 #   Check for Palindrome 
 #   Check if a string is subsequence of other 
+#   Check for Anagram
+#   Leftmost repeating character 
+#   Leftmost non-repeating character 
+#   Reverse words in a string 
+
 
 ## Basics 
 print("Characters 'A' to 'Z' are stored as values from 65 to 90") 
@@ -287,3 +292,8 @@ def areAnagram(s1,s2) :
 print("listen and silent : ", areAnagram("listen", "silent"))  
 print("aab and abb : ",areAnagram("aab","abb"))
 print("\n") 
+
+
+
+## Leftmost repeating character 
+print("Leftmost repeating character") 
