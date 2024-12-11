@@ -364,3 +364,22 @@ print("abccbd : ", leftmost4(s8))
 print("\n")  
 
 
+
+## Leftmost non-repeating character 
+print("Leftmost non-repeating character") 
+print("Naive Approach  Time : O(n^2) ")  
+def nonRep(s) : 
+    for i in range(len(s)) : 
+        flag=False 
+        for j in range(i+1,len(s)) : 
+            if s[i]==s[j] : 
+                flag=True 
+                break 
+        if flag==False : 
+            return i 
+    return -1 
+s1="geeksforgeeks" 
+print("geeksforgeeks : ", nonRep(s1))
+s2="abcabc"
+print("abcabc : ", nonRep(s2)) 
+print("\n") 
