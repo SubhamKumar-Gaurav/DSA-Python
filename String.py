@@ -385,7 +385,7 @@ print("abcabc : ", nonRep1(s2))
 print("\n")   
 
 
-print("Efficient Approach  Time : O(n) ")  
+print("Better Approach with two traversals ")  
 def nonRep2(s) : 
     count=[0]*256 
     for i in s : 
@@ -398,4 +398,27 @@ s3="geeksforgeeks"
 print("geeksforgeeks : ", nonRep2(s3))
 s4="abcabc"
 print("abcabc : ", nonRep2(s4)) 
-print("\n") 
+print("\n")  
+
+
+print("Efficient solution ") 
+import sys 
+def nonRep3(s) :  
+    fI=[-1]*256 
+    for i in range(len(s)) : 
+        if fI[ord(s[i])]==-1 : 
+            fI[ord(s[i])]=i 
+        else : 
+            fI[ord(s[i])]=-2 
+    res=sys.maxsize 
+    for i in range(256) : 
+        if fI[i]>0 : 
+            res=min(res,fI[i]) 
+    if res==sys.maxsize : 
+        return -1 
+    return res 
+s5="geeksforgeeks" 
+print("geeksforgeeks : ", nonRep3(s5))
+s6="abcabc"
+print("abcabc : ", nonRep3(s6)) 
+print("\n")  
