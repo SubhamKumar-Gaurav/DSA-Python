@@ -419,6 +419,26 @@ def nonRep3(s) :
     return res 
 s5="geeksforgeeks" 
 print("geeksforgeeks : ", nonRep3(s5))
-s6="abcabc"
-print("abcabc : ", nonRep3(s6)) 
+s6="abbdca"
+print("abbdca : ", nonRep3(s6)) 
 print("\n")  
+
+## Just an approach , actually strings are immutable 
+print("Reverse words in a string ")
+def reverse(s,b,e) : 
+    while b<e : 
+        s[b],s[e]=s[e],s[b] 
+        b+=1 
+        e-=1 
+def reverseWords(s) : 
+    n=len(s) 
+    b=0 
+    for e in range(n) : 
+        if e==" " : 
+            reverse(s,b,e-1) 
+            b=e+1 
+    reverse(s,b,e-1) 
+    reverse(s,0,n-1)
+    return s 
+s1="Welcome to DSA" 
+print(reverseWords(s))
