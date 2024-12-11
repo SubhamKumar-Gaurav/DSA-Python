@@ -1,6 +1,7 @@
-## Day - 18   Doubly Linked List 
-#    Insert at the Beginning of DLL 
-#    Insert at the End of DLL 
+## Day - 18   Doubly Linked List - 
+#    Insertion operation :
+#       Insert at the Beginning of DLL 
+#       Insert at the End of DLL 
 
 
 class Node : 
