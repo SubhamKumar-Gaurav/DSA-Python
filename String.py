@@ -345,3 +345,20 @@ print("abccdd : ", leftmost3(s5))
 s6="geeksforgeeks"
 print("geeksforgeeks : ", leftmost3(s6)) 
 print("\n") 
+
+
+
+print("Approach - 4   Efficient Approach - 2 ")  
+def leftmost4(s) : 
+    visited=[False]*256 
+    for i in range(len(s)-1,-1,-1) : 
+        if visited[ord(s[i])]==True : 
+            res=i 
+        else : 
+            visited[ord(s[i])]=True 
+    return res 
+s7="geeksforgeeks"
+print("geeksforgeeks : ", leftmost4(s7)) 
+s8="abccbd"
+print("abccbd : ", leftmost4(s8)) 
+print("\n")
