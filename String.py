@@ -324,4 +324,24 @@ s3="geeksforgeeks"
 print("geeksforgeeks : ", leftmost2(s3)) 
 s4="abcd" 
 print("abcd : ", leftmost2(s4)) 
+print("\n")   
+
+
+print("Approach - 3  Efficient Approach - 1 ") 
+import sys 
+def leftmost3(s) : 
+    fIndex=[-1]*256 
+    res=sys.maxsize
+    for i in range(len(s)) : 
+        if fIndex[ord(s[i])]==-1 : 
+            fIndex[ord(s[i])]=i 
+        else : 
+            res=min(res,fIndex[ord(s[i])])
+    if res==sys.maxsize : 
+        return -1 
+    return res 
+s5="abccbd"
+print("abccdd : ", leftmost3(s5)) 
+s6="geeksforgeeks"
+print("geeksforgeeks : ", leftmost3(s6)) 
 print("\n") 
