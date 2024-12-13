@@ -6,7 +6,8 @@
 print("Basic terms in Tree Data Structure")  
 # node, root, leaf, child, parent, subtree, descendants, ancestors, degree   
 
-## Applications of Tree 
+
+print("Applications of Tree") 
 #  To represent hierarchical data 
 #      - Organization structure 
 #      - Folder structure 
