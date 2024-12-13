@@ -32,3 +32,11 @@ root=Node(10)
 root.left=Node(20)
 root.right=Node(20)
 root.left.left=Node(40) 
+
+
+## Tree Traversal 
+#      Breadth First (Level order)
+#      Depth First  
+#         - Inorder 
+#         - Preorder 
+#         - Postorder 
