@@ -3,7 +3,7 @@
 
 
 
-print("Basic terms in Tree Data Structure")  
+## Basic terms in Tree Data Structure  
 # node, root, leaf, child, parent, subtree, descendants, ancestors, degree   
 
 
@@ -60,4 +60,28 @@ root.left=Node(20)
 root.right=Node(30) 
 root.right.left=Node(40) 
 root.right.right=Node(50) 
+print("Inorder Traversal of Tree : ")
 inorder(root) 
+print("\n") 
+
+
+##  Preorder Traversal  
+class Node : 
+    def __init__(self, k): 
+        self.key=k 
+        self.left=None 
+        self.right=None 
+def preorder(root) : 
+    if root!=None : 
+        print(root.key) 
+        preorder(root.left)
+        inorder(root.right)  
+
+root=Node(10) 
+root.left=Node(20)
+root.right=Node(30) 
+root.right.left=Node(40) 
+root.right.right=Node(50) 
+print("Preorder Traversal of Tree : ")
+preorder(root) 
+print("\n")
