@@ -75,7 +75,7 @@ def preorder(root) :
     if root!=None : 
         print(root.key) 
         preorder(root.left)
-        inorder(root.right)  
+        preorder(root.right)  
 
 root=Node(10) 
 root.left=Node(20)
@@ -84,4 +84,29 @@ root.right.left=Node(40)
 root.right.right=Node(50) 
 print("Preorder Traversal of Tree : ")
 preorder(root) 
-print("\n")
+print("\n") 
+
+
+
+##  Postorder Traversal  
+class Node : 
+    def __init__(self, k): 
+        self.key=k 
+        self.left=None 
+        self.right=None 
+def postorder(root) : 
+    if root!=None : 
+        postorder(root.left)
+        postorder(root.right)
+        print(root.key)   
+
+root=Node(10) 
+root.left=Node(20)
+root.right=Node(30) 
+root.right.left=Node(40) 
+root.right.right=Node(50) 
+print("Postorder Traversal of Tree : ")
+postorder(root) 
+print("\n") 
+
+
