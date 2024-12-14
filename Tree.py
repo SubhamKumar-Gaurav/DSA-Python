@@ -1,5 +1,13 @@
 ##  Tree 
 #     Basic terms 
+#     Applications of Tree
+#     Binary Tree 
+#     Tree Traversal 
+#     Depth first 
+#       - Inorder 
+#       - Preorder 
+#       - Postorder
+#     Height of Binary Tree 
 
 
 
