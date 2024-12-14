@@ -119,6 +119,7 @@ print("\n")
 
 
 ##  Height of Binary Tree 
+# Code - 1  (with the variables rh and lh)
 def height(root) : 
     if root==None : 
         return 0 
@@ -130,5 +131,20 @@ root=Node(10)
 root.left=Node(20) 
 root.right=Node(30) 
 root.right.left=Node(40)
+print("Height of the Tree : ", height(root))
+
+
+##  Code - 2 (Shorter implementation)
+def height(root) : 
+    if root==None : 
+        return 0 
+    else : 
+        return max(height(root.left),height(root.right))+1 
+root=Node(10)
+root.left=Node(8) 
+root.right=Node(30) 
+root.right.left=Node(40)
+root.right.right=Node(50) 
+root.right.right.left=Node(50) 
 print("Height of the Tree : ", height(root))
 print("\n") 
