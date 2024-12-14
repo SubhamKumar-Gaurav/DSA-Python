@@ -118,3 +118,17 @@ postorder(root)
 print("\n") 
 
 
+##  Height of Binary Tree 
+def height(root) : 
+    if root==None : 
+        return 0 
+    else : 
+        lh=height(root.left)
+        rh=height(root.right)
+        return max(rh,lh)+1 
+root=Node(10)
+root.left=Node(20) 
+root.right=Node(30) 
+root.right.left=Node(40)
+print("Height of the Tree : ", height(root))
+print("\n") 
