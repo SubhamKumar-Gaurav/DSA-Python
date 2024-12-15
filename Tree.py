@@ -8,7 +8,10 @@
 #       - Preorder 
 #       - Postorder
 #     Height of Binary Tree 
-
+#     Print Node at K distance 
+#     Level Order Traversal  
+#     Size of Binary Tree   
+#     Maximum in Binary Tree
 
 
 ## Basic terms in Tree Data Structure  
@@ -148,3 +151,28 @@ root.right.right=Node(50)
 root.right.right.left=Node(50) 
 print("Height of the Tree : ", height(root))
 print("\n") 
+
+
+## Print Node at K distance
+def printKDist(root,k) : 
+    if root is None : 
+        return 
+    if k==0 : 
+        print(root.key, end=" ")
+    else : 
+        printKDist(root.left, k-1)
+        printKDist(root.right, k-1)
+root=Node(10)
+root.left=Node(20)
+root.right=Node(30)
+root.left.left=Node(40)
+root.left.right=Node(50)
+root.right.right=Node(70)
+root.right.right=Node(80)
+print("Node at k=2 distance : ") 
+printKDist(root,2)
+print("\n") 
+
+#     Level Order Traversal  
+#     Size of Binary Tree   
+#     Maximum in Binary Tree
