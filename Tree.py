@@ -246,14 +246,30 @@ print("\n")
 
  
 ## Maximum in Binary Tree
+#  Code - 1
 import math   
-def getMax(root) : 
+def getMax1(root) : 
     if root==None : 
         return -math.inf
     else : 
-        lm=getMax(root.left)
-        rm=getMax(root.right) 
+        lm=getMax1(root.left)
+        rm=getMax1(root.right) 
         return max(root.key, lm, rm) 
+root=Node(10) 
+root.left=Node(80) 
+root.right=Node(15) 
+root.right.left=Node(40) 
 print("Maximum in Binary Tree : ")
-print(getMax(root)) 
-print("\n")
+print(getMax1(root)) 
+print("\n") 
+
+
+# Code - 2
+def getMax2(root) : 
+    if root==None : 
+        return -math.inf 
+    else : 
+        return max(root.key, getMax2(root.left), getMax2(root.right)) 
+print("Maximum in Binary Tree : ") 
+print(getMax2(root)) 
+print("\n") 
