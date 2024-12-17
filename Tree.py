@@ -244,5 +244,16 @@ print("Height of Tree : ")
 print(treeSize2(root))
 print("\n") 
 
-
+ 
 ## Maximum in Binary Tree
+import math   
+def getMax(root) : 
+    if root==None : 
+        return -math.inf
+    else : 
+        lm=getMax(root.left)
+        rm=getMax(root.right) 
+        return max(root.key, lm, rm) 
+print("Maximum in Binary Tree : ")
+print(getMax(root)) 
+print("\n")
