@@ -218,12 +218,12 @@ print("\n")
 
 ## Size of Binary Tree   
 # Code - 1 
-def treeSize(root) : 
+def treeSize1(root) : 
     if root==None : 
         return 0 
     else : 
-        ls=treeSize(root.left)
-        rs=treeSize(root.right)
+        ls=treeSize1(root.left)
+        rs=treeSize1(root.right)
         return ls + rs + 1 
 root=Node(10) 
 root.left=Node(20) 
@@ -231,7 +231,17 @@ root.right=Node(30)
 root.left.left=Node(40) 
 root.left.right=Node(50) 
 print("Height of Tree : ") 
-print(treeSize(root))
+print(treeSize1(root))
+print("\n") 
+
+# Code - 2 (Shorter implementation)
+def treeSize2(root) : 
+    if root==None : 
+        return 0 
+    else : 
+        return 1 + treeSize2(root.left) + treeSize2(root.right) 
+print("Height of Tree : ")
+print(treeSize2(root))
 print("\n") 
 
 
