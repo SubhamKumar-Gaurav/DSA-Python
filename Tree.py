@@ -198,7 +198,7 @@ def printLevelOrder(root) :
     q.append(root) 
     while len(q)>0 : 
         node=q.popleft() 
-        print(node.key) 
+        print(node.key, end=" ") 
         if node.left is not None : 
             q.append(node.left) 
         if node.right is not None : 
@@ -211,8 +211,9 @@ root.left.right=Node(50)
 root.right.right=Node(60) 
 root.left.right.left=Node(70)
 root.left.right.right=Node(80)
-
-
+print("Level Order Traversal using deque ") 
+print(printLevelOrder(root))
+print("\n")
 
 #     Size of Binary Tree   
 #     Maximum in Binary Tree
