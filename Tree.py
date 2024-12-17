@@ -215,5 +215,24 @@ print("Level Order Traversal using deque ")
 print(printLevelOrder(root))
 print("\n")
 
-#     Size of Binary Tree   
-#     Maximum in Binary Tree
+
+## Size of Binary Tree   
+# Code - 1 
+def treeSize(root) : 
+    if root==None : 
+        return 0 
+    else : 
+        ls=treeSize(root.left)
+        rs=treeSize(root.right)
+        return ls + rs + 1 
+root=Node(10) 
+root.left=Node(20) 
+root.right=Node(30) 
+root.left.left=Node(40) 
+root.left.right=Node(50) 
+print("Height of Tree : ") 
+print(treeSize(root))
+print("\n") 
+
+
+## Maximum in Binary Tree
