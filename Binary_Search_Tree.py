@@ -16,12 +16,24 @@
 
 ## Search in BST  
 # Recursive implementation 
-def searchBST(root, key) : 
+def searchBST1(root, key) : 
     if root is None : 
         return False 
     elif root.key==key : 
         return True 
     elif root.key>key : 
-        return searchBST(root.left, key) 
+        return searchBST1(root.left, key) 
     else : 
-        return searchBST(root.right, key) 
+        return searchBST1(root.right, key) 
+
+
+# Iterative implementation 
+def searchBST2(root, key) : 
+    while root!=None : 
+        if root.key==key : 
+            return True 
+        elif root.key>key : 
+            root=root.left 
+        else : 
+            root=root.right 
+    return False 
