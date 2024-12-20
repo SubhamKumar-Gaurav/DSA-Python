@@ -13,6 +13,12 @@
 #     Applications of BST   
 
 
+## Binary Tree in Python
+class Node : 
+    def __init__(self, k): 
+        self.left=None 
+        self.right=None 
+        self.key=k 
 
 ## Search in BST  
 # Recursive implementation 
@@ -25,6 +31,11 @@ def searchBST1(root, key) :
         return searchBST1(root.left, key) 
     else : 
         return searchBST1(root.right, key) 
+root=Node(10) 
+root.left=Node(20) 
+root.right=Node(30) 
+root.left.left=Node(40) 
+root.left.right=Node(50) 
 
 
 # Iterative implementation 
