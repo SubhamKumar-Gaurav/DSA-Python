@@ -22,6 +22,7 @@ class Node :
 
 ## Search in BST  
 # Recursive implementation 
+print("Search in BST - Recursive approach ")
 def searchBST1(root, key) : 
     if root is None : 
         return False 
@@ -40,8 +41,12 @@ root.right.right=Node(80)
 root.right.right.left=Node(50) 
 root.right.right.right=Node(100) 
 print("40 : ", searchBST1(root, 40))
+print("4 : ", searchBST1(root, 4))
+print("\n") 
+
 
 # Iterative implementation 
+print("Search in BST -Iterative approach ")
 def searchBST2(root, key) : 
     while root!=None : 
         if root.key==key : 
@@ -51,3 +56,14 @@ def searchBST2(root, key) :
         else : 
             root=root.right 
     return False 
+root=Node(20) 
+root.left=Node(10) 
+root.right=Node(40) 
+root.left.left=Node(5) 
+root.right.left=Node(30) 
+root.right.right=Node(80) 
+root.right.right.left=Node(50) 
+root.right.right.right=Node(100) 
+print("100 : ", searchBST2(root, 100))
+print("15 : ", searchBST2(root, 15)) 
+print("\n") 
