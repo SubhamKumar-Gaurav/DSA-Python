@@ -20,6 +20,12 @@ class Node :
         self.right=None 
         self.key=k 
 
+## Print Tree 
+def printTree(root) : 
+    h=height(root) 
+    for k in range(h) : 
+        printKDist(root,k) 
+    print("\n") 
 
 ## Search in BST  
 # Recursive implementation 
@@ -84,6 +90,7 @@ def height(root) :
     else : 
         return max(height(root.left),height(root.right))+1 
 
+
 ## Insert in BST  
 # Recursive approach 
 def insert1(root, key) : 
@@ -134,4 +141,35 @@ print("Insert in BST (Iterative approach) : ")
 h=height(root) 
 for k in range(h) : 
     printKDist(root,k) 
-print("\n")
+print("\n") 
+
+
+## Deletion in BST  
+def getSucc(curr, key) : 
+    while curr.key!=None : 
+        curr=curr.left
+    return curr.key 
+
+def delNode(root, key) : 
+    if root==None : 
+        return 
+    if root.key>key : 
+        root.left=delNode(root.left, key) 
+    elif root.key<key : 
+        root.right=delNode(root.right, key) 
+    else : 
+        if root.left==None : 
+            return root.right 
+        elif root.right==None : 
+            return root.left 
+        else : 
+            succ=getSucc(root.right, key) 
+            root.key=succ 
+            root.right=delNode(root.right, succ) 
+        return root 
+root=Node(10) 
+root.left=Node(5) 
+root.right=Node(20) 
+root.right.left=Node(18) 
+root.right.right=Node(100)  
+printTree(delNode(root, 100)) 
