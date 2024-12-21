@@ -106,3 +106,32 @@ h=height(root)
 for k in range(h) : 
     printKDist(root,k) 
 print("\n")
+
+
+# Iterative approach 
+def insert2(root, key) :    
+    parent=None 
+    curr=root 
+    while curr!=None :  
+        parent=curr 
+        if curr.key==key : 
+            return root 
+        elif root.key<key : 
+            curr=curr.left 
+        else : 
+            curr=curr.right 
+    if parent==None : 
+        return Node(key) 
+    if parent.key>key : 
+        parent.left=Node(key) 
+    else : 
+        parent.right=Node(key) 
+    return root 
+
+root=insert2(root, 200) 
+print("Insert in BST (Iterative approach) : ") 
+
+h=height(root) 
+for k in range(h) : 
+    printKDist(root,k) 
+print("\n")
