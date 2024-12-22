@@ -166,10 +166,37 @@ def delNode(root, key) :
             succ=getSucc(root.right, key) 
             root.key=succ 
             root.right=delNode(root.right, succ) 
-        return root 
+        return  
 root=Node(10) 
 root.left=Node(5) 
 root.right=Node(20) 
 root.right.left=Node(18) 
 root.right.right=Node(100)  
 printTree(delNode(root, 100)) 
+
+
+## Floor of BST 
+print("Floor of BST : ") 
+def getFloor(root, x) : 
+    res=None 
+    while root!=None : 
+        if root.key==x : 
+            return root.key 
+        elif root.key>x : 
+            root=root.left 
+        else : 
+            res=root 
+            root=root.right
+    return res.key
+root=Node(50)
+root.left=Node(30)
+root.right=Node(70) 
+root.left.left=Node(20)
+root.left.right=Node(40)
+root.right.left=Node(60)
+root.right.right=Node(80) 
+root.right.left.left=Node(55)
+root.right.left.right=Node(65) 
+print("Floor of 58 : ",getFloor(root,58))
+print("Floor of 50 : ",getFloor(root,50)) 
+print("\n") 
