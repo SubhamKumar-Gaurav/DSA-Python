@@ -199,4 +199,31 @@ root.right.left.left=Node(55)
 root.right.left.right=Node(65) 
 print("Floor of 58 : ",getFloor(root,58))
 print("Floor of 50 : ",getFloor(root,50)) 
+print("\n")  
+
+
+## Ceil of BST 
+print("Ceil of BST : ")
+def getCeil(root, x) : 
+    res=None 
+    while root!=None : 
+        if root.key==x : 
+            return root.key 
+        elif root.key<x : 
+            root=root.right 
+        else : 
+            res=root 
+            root=root.left 
+    return res.key 
+root=Node(50) 
+root.left=Node(30) 
+root.left.left=Node(20) 
+root.left.right=Node(40) 
+root.right=Node(70) 
+root.right.left=Node(60) 
+root.right.left.left=Node(55) 
+root.right.left.right=Node(65) 
+root.right.right=Node(78)  
+print("Ceil of 69 : ",getCeil(root, 69))
+print("Ceil of 63 : ",getCeil(root, 63)) 
 print("\n") 
