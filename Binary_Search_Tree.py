@@ -252,3 +252,12 @@ print("\n")
 #          2. Rigth Right 
 #          3. Left Right 
 #          4. Right Left 
+
+
+
+## Red Black Tree 
+#     Every node is either Red or Black 
+#     Root is always black 
+#     No two consecutive reds 
+#     No. of black nodes from every node to all of its descendant leaves should be same 
+#     No. of nodes on the path from a node to its farthest descendant leaf should not be more than twice than the no. of nodes on the path to its closest descendant leaf 
