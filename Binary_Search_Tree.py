@@ -261,3 +261,12 @@ print("\n")
 #     No two consecutive reds 
 #     No. of black nodes from every node to all of its descendant leaves should be same 
 #     No. of nodes on the path from a node to its farthest descendant leaf should not be more than twice than the no. of nodes on the path to its closest descendant leaf 
+
+
+
+## Applications of BST 
+#    1. To maintain sorted stream of data (or sorted set of data) 
+#    2. To implement doublt ended priority queue 
+#    3. To solve problems like : 
+#           a) Count smaller/greater in a strem 
+#           b) Floor/Ceiling/Greater?Smaller in a stream 
