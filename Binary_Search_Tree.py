@@ -234,4 +234,21 @@ print("\n")
 #    2. Red Black Tree 
 
 
-## AVL Tree   
+## AVL Tree    
+#   It is a BST 
+#   It is balanced (For every node, difference between left and right heights does not exceed one)
+#     Balance Factor = | lh - rh | 
+#     Balance Factor <= 1
+
+## Operations in AVL Tree 
+#    Search will be same 
+#    Insert and Delete will differ 
+
+## Insert operations 
+#     Perform normal BST insert 
+#     Traverse all ancestors of the newly inserted node from the node to root 
+#     If find an unbalanced node, check for any of the below cases 
+#          1. Left Left 
+#          2. Rigth Right 
+#          3. Left Right 
+#          4. Right Left 
