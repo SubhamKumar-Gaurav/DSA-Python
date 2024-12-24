@@ -98,3 +98,13 @@ def deleteKey(self, i) :
     else : 
         self.decreaseKey(i, -math.inf) 
         self.extractMin() 
+
+
+## Build Heap 
+class myMinHeap : 
+    def __init__(self, l=[]):
+        self.arr=l 
+        i=(len(l)-2)//2 
+        while i>=0 : 
+            self.minHeapify(i) 
+            i=i-1 
