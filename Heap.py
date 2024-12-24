@@ -33,4 +33,19 @@ print("Heap implementation")
 #    Left child 
 #    Right child 
 #    Parent 
-#    Min Heapify 
+#    Min Heapify  
+
+
+## Binary Heap insert 
+class myMinHeap : 
+    def __init__(self):
+        self.arr=[] 
+    def inert(self,x) : 
+        arr=self.arr 
+        arr.append(x) 
+        i=len(arr)-1 
+        while i>0 and arr[self.parent(i)]>arr[i] : 
+            p=self.parent(i) 
+            arr[i], arr[p]= arr[p], arr[i] 
+            i=p 
+#  ..........
