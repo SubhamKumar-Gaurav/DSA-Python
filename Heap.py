@@ -20,7 +20,6 @@
 
 
 ## Heap implementation 
-print("Heap implementation")  
 ## Main operations 
 #    Constructor (simple)
 #    Insert 
@@ -29,7 +28,7 @@ print("Heap implementation")
 #    Delete 
 #    Constructor (enhanced with build heap) 
 
-## Utility Functions 
+##  Utility Functions 
 #    Left child 
 #    Right child 
 #    Parent 
@@ -48,4 +47,21 @@ class myMinHeap :
             p=self.parent(i) 
             arr[i], arr[p]= arr[p], arr[i] 
             i=p 
-#  ..........
+#  .......... 
+
+
+## Binary Heap (Extract min and Heapify) 
+def minHeapify(self, i) : 
+    arr=self.arr 
+    lt=self.lchild(i) 
+    rt=self.rchild(i)  
+    smallest=i 
+    n=len(arr) 
+    if lt<n and arr[lt]<arr[smallest] : 
+        smallest=lt 
+    if rt<n and arr[rt]<arr[smallest] : 
+        smallest=rt 
+    if smallest!=i : 
+        arr[smallest], arr[i] = arr[i], arr[smallest] 
+        self.minHeapify(smallest) 
+    
