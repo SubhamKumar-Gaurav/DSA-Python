@@ -20,4 +20,17 @@
 
 
 ## Heap implementation 
-print("Heap implementation") 
+print("Heap implementation")  
+## Main operations 
+#    Constructor (simple)
+#    Insert 
+#    Extract min 
+#    Decrease key
+#    Delete 
+#    Constructor (enhanced with build heap) 
+
+## Utility Functions 
+#    Left child 
+#    Right child 
+#    Parent 
+#    Min Heapify 
