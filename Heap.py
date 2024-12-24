@@ -153,5 +153,15 @@ print("\n")
 
 pq=[5,20,1,30,4]
 heapq.heapify(pq) 
-print("heapq.nlargest(2,pq) : ", heapq.nlargest(2,pq))
-print("heapq.nsmallest(2,pq) : ", heapq.nsmallest(2,pq))
+print("heapq.nlargest(2,pq) : ", heapq.nlargest(2,pq)) 
+print("heapq.nsmallest(2,pq) : ", heapq.nsmallest(2,pq)) 
+print("\n") 
+
+pq=[5,20,1,30,4] 
+heapq.heapify(pq) 
+print("heapq.heappushpop(pq,2) : ",heapq.heappushpop(pq,2)) 
+print(pq) 
+print("heapq.heappushpop(pq,0) : ", heapq.heappushpop(pq,0)) 
+print(pq)  
+print("heapq.heapreplace(pq,-1) : ",heapq.heapreplace(pq,-1)) 
+print(pq) 
