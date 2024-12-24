@@ -88,4 +88,13 @@ def decreaseKey(self, i, x) :
         p=self.parent(i) 
         arr[i], arr[p] = arr[p], arr[i] 
         i=p 
-        
+
+
+# Delete 
+def deleteKey(self, i) : 
+    n=len(self.arr) 
+    if i>=n : 
+        return 
+    else : 
+        self.decreaseKey(i, -math.inf) 
+        self.extractMin() 
