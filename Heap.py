@@ -77,3 +77,15 @@ def extractMin(self) :
     arr[0]=arr[n-1] 
     self.minHeapify(0)
     return res 
+
+
+## Decrease Key and Delete operations   
+#  Decrease Key 
+def decreaseKey(self, i, x) : 
+    arr=self.arr
+    arr[i]=x 
+    while i!=0 and arr[self.parent(i)>arr(i)] : 
+        p=self.parent(i) 
+        arr[i], arr[p] = arr[p], arr[i] 
+        i=p 
+        
