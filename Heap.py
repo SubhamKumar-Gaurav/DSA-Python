@@ -150,3 +150,8 @@ print("heapq.heappush(pq,3) : ",pq)
 print("heapq.heappop(pq) : ",heapq.heappop(pq))
 print(pq) 
 print("\n") 
+
+pq=[5,20,1,30,4]
+heapq.heapify(pq) 
+print("heapq.nlargest(2,pq) : ", heapq.nlargest(2,pq))
+print("heapq.nsmallest(2,pq) : ", heapq.nsmallest(2,pq))
