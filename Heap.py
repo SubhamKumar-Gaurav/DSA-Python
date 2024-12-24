@@ -51,6 +51,7 @@ class myMinHeap :
 
 
 ## Binary Heap (Extract min and Heapify) 
+# minHeapify 
 def minHeapify(self, i) : 
     arr=self.arr 
     lt=self.lchild(i) 
@@ -64,4 +65,15 @@ def minHeapify(self, i) :
     if smallest!=i : 
         arr[smallest], arr[i] = arr[i], arr[smallest] 
         self.minHeapify(smallest) 
-    
+
+import math
+# Extract min 
+def extractMin(self) : 
+    arr=self.arr 
+    n=len(arr) 
+    if n==0 : 
+        return math.inf 
+    res=arr[0] 
+    arr[0]=arr[n-1] 
+    self.minHeapify(0)
+    return res 
