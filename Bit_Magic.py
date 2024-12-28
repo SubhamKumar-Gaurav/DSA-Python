@@ -98,3 +98,14 @@ def countSetBits2(n) :
     return res 
 print("Count set bits 40 : ", countSetBits2(40))
 print("\n") 
+
+## Approach - 3  Lookup Table 
+def countSetBits3(n) : 
+    tbl=[0]*256 
+    for i in range(256) : 
+        tbl[i]=(i&1) + tbl[i//2] 
+    return tbl[n&0xff] + tbl[(n>>8)&0xff] + tbl[(n>>16)&0xff] + tbl[(n>>24)&0xff] 
+
+print("Count set bits in 15 : ",countSetBits3(15))
+print("Count set bits in 5 : ",countSetBits3(5)) 
+print("\n") 
