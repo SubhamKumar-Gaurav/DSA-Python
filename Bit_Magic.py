@@ -85,4 +85,16 @@ def countSetBits02(n) :
     return res 
 print("Count Set bits in 5 : ",countSetBits02(5))
 print("Count Set bits in 13 : ",countSetBits02(13)) 
+print("\n")   
+
+
+## Approach - 2  Brian Kernigam's Algorithm 
+print("Brian Kernigam's Algorithm")
+def countSetBits2(n) : 
+    res=0 
+    while n : 
+        n = n & (n-1)
+        res+=1 
+    return res 
+print("Count set bits 40 : ", countSetBits2(40))
 print("\n") 
