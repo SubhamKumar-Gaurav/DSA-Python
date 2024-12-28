@@ -6,6 +6,7 @@
 #   Find the only odd 
 #   Power of 2
 #   One Odd occuring 
+#   Two odd occuring
 #   Power set using Bitwise 
 
 
@@ -60,4 +61,28 @@ def isKthBitSetRight(n,k) :
         return "No"
 print("n=5, k=1 : ", isKthBitSetRight(5,1)) 
 print("n=5, k=2 : ", isKthBitSetRight(5,2)) 
+print("\n") 
+
+
+## Count set bits (3 approaches)
+# Naive solution 
+print("Count set bits - Naive solution")
+def countSetBits01(n) : 
+    res=0 
+    while n :
+        if n%2==1 : 
+            res+=1 
+        n=n//2 
+    return res 
+print("Set bits in 5 : ",countSetBits01(5))
+print("Set bits in 13 : ",countSetBits01(13))
+
+def countSetBits02(n) : 
+    res=0 
+    while n :
+        res = res + (n&1)
+        n=n//2 
+    return res 
+print("Count Set bits in 5 : ",countSetBits02(5))
+print("Count Set bits in 13 : ",countSetBits02(13)) 
 print("\n") 
