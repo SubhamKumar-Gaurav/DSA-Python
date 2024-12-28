@@ -27,4 +27,11 @@ x=5
 print("Left shift operator ") 
 print(x<<1)  # Multiplying with 2^1 
 print(x<<2)  # Multiplying with 2^2 
-print(x<<10)  # Multiplying with 2^10  
+print(x<<3)  # Multiplying with 2^3  
+print("\n") 
+
+x=50 
+print("Right shift operator ") 
+print(x>>1)  # Floor division with 2^1  
+print(x>>2)  # Floor division with 2^2  
+print(x>>3)  # Floor division with 2^3  
