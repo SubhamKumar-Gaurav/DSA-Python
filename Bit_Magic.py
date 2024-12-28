@@ -20,4 +20,6 @@ x=3
 y=6 
 print("bitwise AND (&) of 3 and 6 : ", x&y)
 
-print("bitwise OR (|) of 3 and 6 : ", 3|6)
+print("bitwise OR (|) of 3 and 6 : ", 3|6) 
+
+print("bitwise XOR (^) of 3 and 6 : ", 3^6) 
