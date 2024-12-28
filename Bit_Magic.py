@@ -39,4 +39,25 @@ print("\n")
 
 x=5 
 print("Negation of 5 : ", ~x)
+print("\n")    
+
+
+
+## Check Kth bit is set or not   
+# Method - 1 (Left shift)
+def isKthBitSetLeft(n,k) : 
+    if n & (1<<(k-1)) : 
+        return "Yes" 
+    else : 
+        return "No" 
+print("n=5, k=3 : ", isKthBitSetLeft(5,3)) 
+
+# Method - 2 (Right Shift) 
+def isKthBitSetRight(n,k) : 
+    if (n>>(k-1)) & 1 : 
+        return "Yes" 
+    else : 
+        return "No"
+print("n=5, k=1 : ", isKthBitSetRight(5,1)) 
+print("n=5, k=2 : ", isKthBitSetRight(5,2)) 
 print("\n") 
