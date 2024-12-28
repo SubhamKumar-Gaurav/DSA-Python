@@ -18,4 +18,6 @@ print("decimal of 0b1100 : ", int("0b1100",2))
 
 x=3 
 y=6 
-print("bitwise AND of 3 and 6 : ", x&y)
+print("bitwise AND (&) of 3 and 6 : ", x&y)
+
+print("bitwise OR (|) of 3 and 6 : ", 3|6)
