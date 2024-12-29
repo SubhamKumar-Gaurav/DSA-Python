@@ -133,4 +133,19 @@ def findOdd2(l) :
     for x  in l : 
         res = res^x 
     return res 
-print("[10,20,20,30,10] : ", findOdd2(l)) 
+l=[10,20,20,30,10,30,10]
+print("[10,20,20,30,10,30,10] : ", findOdd2(l)) 
+print("\n") 
+
+
+## Power of 2 
+def isPow2(n) : 
+    if n==0 : 
+        return False 
+    while n!=1 : 
+        if n%2!=0 : 
+            return False 
+        n=n//2 
+    return True 
+print("Power of 2 check for n=4 : ", isPow2(4))
+print("Power of 2 check for n=6 : ", isPow2(6))
