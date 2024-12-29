@@ -113,8 +113,8 @@ print("\n")
 
 ## Find the only odd  times occuring number 
 # Method - 1 Using count 
-print("Find the only odd") 
-def findOdd(l) : 
+print("Find the only odd using count") 
+def findOdd1(l) : 
     res=None 
     for x in l : 
         count=l.count(x) 
@@ -123,4 +123,14 @@ def findOdd(l) :
             return res  
     return res 
 l=[10,20,20,30,10]
-print("[10,20,20,30,10] : ", findOdd(l)) 
+print("[10,20,20,30,10] : ", findOdd1(l)) 
+
+
+# Method - 2 Using XOR 
+print("Find only odd using bitwise XOR") 
+def findOdd2(l) : 
+    res=0 
+    for x  in l : 
+        res = res^x 
+    return res 
+print("[10,20,20,30,10] : ", findOdd2(l)) 
