@@ -158,4 +158,21 @@ def isPower2(n) :
     return (n&(n-1))==0 
 print("Power of 2 check for n=16 : ", isPower2(16))
 print("Power of 2 check for n=18 : ", isPower2(18)) 
+print("\n") 
 
+
+## One odd occuring  (Same as find only odd) 
+
+## Two odd occuring 
+print("Two odd occuring (Naive)")
+def twoOddOccuring1(l) : 
+    for i in l : 
+        count=0 
+        for j in l : 
+            if i==j : 
+                count+=1 
+        if count%2==1 : 
+            print(i, end=" ")
+l=[3,4,3,4,5,4,4,6,7,7] 
+print("[3,4,3,4,5,4,4,6,7,7] : ", end= " ")
+twoOddOccuring1(l)
