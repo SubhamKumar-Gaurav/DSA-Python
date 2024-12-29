@@ -138,7 +138,8 @@ print("[10,20,20,30,10,30,10] : ", findOdd2(l))
 print("\n") 
 
 
-## Power of 2 
+## Power of 2
+# Naive approach  
 def isPow2(n) : 
     if n==0 : 
         return False 
@@ -149,3 +150,12 @@ def isPow2(n) :
     return True 
 print("Power of 2 check for n=4 : ", isPow2(4))
 print("Power of 2 check for n=6 : ", isPow2(6))
+
+# Efficient approach 
+def isPower2(n) : 
+    if n==0 : 
+        return False
+    return (n&(n-1))==0 
+print("Power of 2 check for n=16 : ", isPower2(16))
+print("Power of 2 check for n=18 : ", isPower2(18)) 
+
