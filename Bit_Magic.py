@@ -164,6 +164,7 @@ print("\n")
 ## One odd occuring  (Same as find only odd) 
 
 ## Two odd occuring 
+# Naive approach 
 print("Two odd occuring (Naive)")
 def twoOddOccuring1(l) : 
     for i in l : 
@@ -175,4 +176,24 @@ def twoOddOccuring1(l) :
             print(i, end=" ")
 l=[3,4,3,4,5,4,4,6,7,7] 
 print("[3,4,3,4,5,4,4,6,7,7] : ", end= " ")
-twoOddOccuring1(l)
+twoOddOccuring1(l)   
+print("\n")
+
+# Efficient approach 
+print("Two odd occuring (Efficient)")
+def twoOddOccuring2(l) : 
+    xors=0 
+    res1=0 
+    res2=0 
+    for i in l : 
+        xors=xors^i 
+    sn = xors & ~(xors-1) 
+    for i in l : 
+        if i & sn != 0 : 
+            res1 = res1 ^ i 
+        else : 
+            res2 = res2 ^ i 
+    print(res1, res2)  
+l=[3,4,3,4,5,4,4,6,7,7,6,7] 
+print("[3,4,3,4,5,4,4,6,7,7,6,7]  : ", end=" ")
+twoOddOccuring2(l) 
