@@ -108,4 +108,19 @@ def countSetBits3(n) :
 
 print("Count set bits in 15 : ",countSetBits3(15))
 print("Count set bits in 5 : ",countSetBits3(5)) 
-print("\n") 
+print("\n")  
+
+
+## Find the only odd  times occuring number 
+# Method - 1 Using count 
+print("Find the only odd") 
+def findOdd(l) : 
+    res=None 
+    for x in l : 
+        count=l.count(x) 
+        if count%2==1 : 
+            res=x
+            return res  
+    return res 
+l=[10,20,20,30,10]
+print("[10,20,20,30,10] : ", findOdd(l)) 
