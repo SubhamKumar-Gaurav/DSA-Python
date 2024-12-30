@@ -34,4 +34,20 @@ l=[10,20,30,40,50]
 d=3 
 print("Using pop and append")
 leftRotate(l,d) 
-print("\n") 
+print("\n")   
+
+# Using reverse function  Time: O(n) 
+def reverse(l,b,e) : 
+    while b<e : 
+        l[b], l[e]= l[e], l[b]
+        b+=1 
+        e-=1 
+def leftRotate(l,d) : 
+    n=len(l)
+    reverse(l,0,d-1) 
+    reverse(l,d,n-1)
+    reverse(l,0,n-1)
+    return l
+l=[10,20,30,40,50]
+d=3
+print(leftRotate(l,d))
