@@ -210,4 +210,4 @@ def powSet(s) :
         print()
 s="abc" 
 print("Power set of 'abc' : ", end=" ")
-powSet(s)
+powSet(s) 
