@@ -67,6 +67,7 @@ print(leftRotate(l,d))
 print("\n")   
 
 ## Maximum difference 
+#  Naive Approach    Time : O(n^2)
 print("Maximum difference (Naive approach)")
 def maxdiff(arr) : 
     n=len(arr) 
@@ -77,4 +78,18 @@ def maxdiff(arr) :
     return res 
 l=[2,3,10,6,4,8,1] 
 print("[2,3,10,6,4,8,1] : ", maxdiff(l)) 
+print("\n") 
+
+# Two variable     Time : O(n) 
+print("Maximum difference using two variables") 
+def maxDiff(arr) : 
+    n = len(arr) 
+    res = arr[1]-arr[0] 
+    minval = arr[0] 
+    for i in range(1,n) : 
+        res = max(res, arr[i]-minval) 
+        minval=min(minval,arr[i])
+    return res 
+l=[2,3,10,6,4,8,1]
+print("[2,3,10,6,4,8,1] : ", maxDiff(l)) 
 print("\n") 
