@@ -66,6 +66,7 @@ d=3
 print(leftRotate(l,d)) 
 print("\n")   
 
+
 ## Maximum difference 
 #  Naive Approach    Time : O(n^2)
 print("Maximum difference (Naive approach)")
@@ -92,4 +93,21 @@ def maxDiff(arr) :
     return res 
 l=[2,3,10,6,4,8,1]
 print("[2,3,10,6,4,8,1] : ", maxDiff(l)) 
-print("\n") 
+print("\n")    
+
+
+## Stock buy and sell 
+# Naive solution  
+def maxProfit(arr,b,e) : 
+    if e<=b : 
+        return 0 
+    res=0 
+    for i in range(b,e) : 
+        for j in range(i+1,e+1) : 
+            if arr[j]>arr[i] : 
+                curr=arr[j]-arr[i]+maxProfit(arr,b,i-1)+maxProfit(arr,j+1,e)  
+                res=max(res,curr) 
+    return res 
+l=[1,5,3,8,12] 
+print("Stock buy and sell (Naive - recursive) ") 
+print("[1,5,3,8,12] : ", maxProfit(l,0,4)) 
