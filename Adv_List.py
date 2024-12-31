@@ -49,6 +49,7 @@ leftRotate(l,d)
 print("\n")   
 
 # Using reverse function  Time: O(n) 
+print("Using reverse function : ")
 def reverse(l,b,e) : 
     while b<e : 
         l[b], l[e]= l[e], l[b]
@@ -62,4 +63,18 @@ def leftRotate(l,d) :
     return l
 l=[10,20,30,40,50]
 d=3
-print(leftRotate(l,d))
+print(leftRotate(l,d)) 
+print("\n")   
+
+## Maximum difference 
+print("Maximum difference (Naive approach)")
+def maxdiff(arr) : 
+    n=len(arr) 
+    res=arr[1]-arr[0] 
+    for i in range(n-1) : 
+        for j in range(i+1,n) : 
+            res=max(res,arr[j]-arr[i]) 
+    return res 
+l=[2,3,10,6,4,8,1] 
+print("[2,3,10,6,4,8,1] : ", maxdiff(l)) 
+print("\n") 
