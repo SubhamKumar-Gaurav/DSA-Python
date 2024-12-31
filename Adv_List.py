@@ -1,6 +1,18 @@
 ## Advanced List  
 #   Left rotate by d places 
-
+#   Maximum difference 
+#   Stock buy and sell 
+#   Trapping rain water 
+#   Maximum subarray sum 
+#   Longest Even Odd subarray 
+#   Maximum Circular Sum Subarray 
+#   Majority element 
+#   Minimum consecutive flips 
+#   Sliding window technique 
+#   Subarray with given sum 
+#   Prefix sum technique 
+#   Equilibrium point 
+#   Maximum appearing element in ranges 
 
 
 
