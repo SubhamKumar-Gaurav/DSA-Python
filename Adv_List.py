@@ -111,3 +111,17 @@ def maxProfit(arr,b,e) :
 l=[1,5,3,8,12] 
 print("Stock buy and sell (Naive - recursive) ") 
 print("[1,5,3,8,12] : ", maxProfit(l,0,4)) 
+print("\n") 
+
+# Efficient approach   
+def maxProfit2(arr) : 
+    res=0 
+    n=len(arr)
+    for i in range(1,n) :  
+        if arr[i]>arr[i-1] : 
+            res+= arr[i]-arr[i-1] 
+    return res 
+arr=[1,5,3,8,12] 
+print("Stock buy and sell: Efficient " )
+print("[1,5,3,8,12] : ",maxProfit2(arr))   
+print("\n") 
