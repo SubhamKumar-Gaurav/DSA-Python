@@ -194,8 +194,8 @@ def maxSum2(arr) :
         maxEnding=max(maxEnding+arr[i], arr[i]) 
         res=max(res, maxEnding) 
     return res 
-arr=[-5,1,-2,3,-1,2,-2] 
-print("[-5,1,-2,3,-1,2,-2] : ", maxSum2(arr)) 
+arr=[-3, 8, -2, 4, -5, 6] 
+print("[-3, 8, -2, 4, -5, 6] : ", maxSum2(arr)) 
 print("\n")  
 
 
