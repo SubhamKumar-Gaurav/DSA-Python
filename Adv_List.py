@@ -171,7 +171,7 @@ print("\n")
 
 ## Maximum subarray sum  
 print("Maximum subarray sum: Naive")  
-def maxSum(arr) : 
+def maxSum1(arr) : 
     n=len(arr) 
     res=0 
     for i in range(n) : 
@@ -181,5 +181,18 @@ def maxSum(arr) :
             res=max(res,curr) 
     return res 
 arr=[1,-2,3,-1,2] 
-print("[1,-2,3,-1,2] : ", maxSum(arr)) 
+print("[1,-2,3,-1,2] : ", maxSum1(arr)) 
 print("\n")  
+
+print("Maximum subarray sum : Efficient ")
+def maxSum2(arr) : 
+    n=len(arr) 
+    res=arr[0]
+    maxEnding=arr[0] 
+    for i in range(1,n) : 
+        maxEnding=max(maxEnding+arr[i], arr[i]) 
+        res=max(res, maxEnding) 
+    return res 
+arr=[-5,1,-2,3,-1,2,-2] 
+print("[-5,1,-2,3,-1,2,-2] : ", maxSum2(arr)) 
+print("\n") 
