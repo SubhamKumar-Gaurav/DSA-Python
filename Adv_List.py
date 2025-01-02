@@ -125,3 +125,22 @@ arr=[1,5,3,8,12]
 print("Stock buy and sell: Efficient " )
 print("[1,5,3,8,12] : ",maxProfit2(arr))   
 print("\n") 
+
+
+## Trapping rain water 
+print("Trapping rain water : Naive") 
+def getWater1(arr) : 
+    n=len(arr) 
+    res=0 
+    for i in range(1,n-1) : 
+        lmax=arr[i] 
+        for j in range(0,i) : 
+            lmax=max(lmax,arr[j]) 
+        rmax=arr[j] 
+        for j in range(i+1,n) : 
+            rmax=max(rmax,arr[j]) 
+        res+=(min(lmax,rmax)-arr[i])
+    return res 
+arr=[3,0,1,2,5] 
+print("[3,0,1,2,5] : ",getWater1(arr)) 
+print("\n") 
