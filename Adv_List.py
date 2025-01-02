@@ -202,7 +202,7 @@ print("\n")
 
 ## Longest Even Odd subarray  
 print("Maximum length even odd subarray: Naive")
-def maxEvenOdd(arr) : 
+def maxEvenOdd1(arr) : 
     n=len(arr) 
     res=1 
     for i in range(n) : 
@@ -215,5 +215,23 @@ def maxEvenOdd(arr) :
         res=max(res,curr) 
     return res 
 arr=[5, 10, 20, 6, 3, 8]
-print("[5, 10, 20, 6, 3, 8] : ", maxEvenOdd(arr))
+print("[5, 10, 20, 6, 3, 8] : ", maxEvenOdd1(arr))
+print("\n") 
+
+
+print("Maximum length even odd subarray: Efficient")
+print("Also Kadane's algorithm ")
+def maxEvenOdd2(arr) : 
+    n=len(arr) 
+    res=1 
+    curr=1 
+    for i in range(1,n) : 
+        if arr[i]%2 != arr[i-1]%2 : 
+            curr+=1 
+            res=max(res,curr)
+        else : 
+            curr=1       
+    return res 
+arr=[7,10,13,14]
+print("[7,10,13,14] : ",maxEvenOdd2(arr)) 
 print("\n") 
