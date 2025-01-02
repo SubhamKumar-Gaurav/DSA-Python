@@ -184,6 +184,7 @@ arr=[1,-2,3,-1,2]
 print("[1,-2,3,-1,2] : ", maxSum1(arr)) 
 print("\n")  
 
+
 print("Maximum subarray sum : Efficient ")
 def maxSum2(arr) : 
     n=len(arr) 
@@ -195,4 +196,8 @@ def maxSum2(arr) :
     return res 
 arr=[-5,1,-2,3,-1,2,-2] 
 print("[-5,1,-2,3,-1,2,-2] : ", maxSum2(arr)) 
-print("\n") 
+print("\n")  
+
+
+
+## Longest Even Odd subarray  
