@@ -201,3 +201,19 @@ print("\n")
 
 
 ## Longest Even Odd subarray  
+print("Maximum length even odd subarray: Naive")
+def maxEvenOdd(arr) : 
+    n=len(arr) 
+    res=1 
+    for i in range(n) : 
+        curr=1 
+        for j in range(i+1,n) : 
+            if (arr[j]%2==0 and arr[j-1]%2!=0) or (arr[j]%2!=0 and arr[j-1]%2==0) : 
+                curr+=1 
+            else : 
+                break 
+        res=max(res,curr) 
+    return res 
+arr=[5, 10, 20, 6, 3, 8]
+print("[5, 10, 20, 6, 3, 8] : ", maxEvenOdd(arr))
+print("\n") 
