@@ -167,3 +167,19 @@ def getWater2(arr) :
 arr=[2,0,2]
 print("[2,0,2] : ",getWater2(arr)) 
 print("\n") 
+
+
+## Maximum subarray sum  
+print("Maximum subarray sum: Naive")  
+def maxSum(arr) : 
+    n=len(arr) 
+    res=0 
+    for i in range(n) : 
+        curr=0 
+        for j in range(i,n) : 
+            curr+=arr[j] 
+            res=max(res,curr) 
+    return res 
+arr=[1,-2,3,-1,2] 
+print("[1,-2,3,-1,2] : ", maxSum(arr)) 
+print("\n")  
