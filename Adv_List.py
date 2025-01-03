@@ -254,3 +254,27 @@ def maxCircularSum(arr) :
 arr=[5,-2,3,4] 
 print("[5,-2,3,4] : ",maxCircularSum(arr)) 
 print("\n") 
+
+print("Maximum Circular Sum Subarray: Efficient")
+def normalMaxSum(arr) : 
+    n=len(arr) 
+    res=arr[0] 
+    maxEnding=arr[0]
+    for i in range(1,n) : 
+        maxEnding=max(maxEnding+arr[i], arr[i]) 
+        res=max(res, maxEnding)
+    return res 
+def overallMaxSum(arr) : 
+    n=len(arr) 
+    max_normal=normalMaxSum(arr) 
+    if max_normal<0 : 
+        return max_normal 
+    arr_sum=0 
+    for i in range(n) : 
+        arr_sum+=arr[i] 
+        arr[i]=-arr[i] 
+    max_circular=arr_sum+normalMaxSum(arr) 
+    return max(max_circular, max_normal) 
+arr=[8,-4,3,-5,4]
+print("[8,-4,3,-5,4] : ",overallMaxSum(arr)) 
+print("\n") 
