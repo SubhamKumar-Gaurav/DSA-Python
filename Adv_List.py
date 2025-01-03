@@ -298,7 +298,8 @@ print("[8,3,4,8,8] : ", findMajority(arr))
 print("\n") 
 
 
-print("Majority element: Efficient (Moore's Voting Algorithm)") 
+print("Majority element: Efficient")
+print("Moore's Voting Algorithm") 
 def findMajority2(arr) : 
     n=len(arr) 
     # Find a candidate 
@@ -322,5 +323,4 @@ def findMajority2(arr) :
     return res
 arr=[8,8,6,6,6,4,6] 
 print("[8,8,6,6,6,4,6] : ", findMajority2(arr)) 
-print("\n") 
- 
+print("\n")
