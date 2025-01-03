@@ -296,3 +296,31 @@ def findMajority(arr) :
 arr=[8,3,4,8,8]
 print("[8,3,4,8,8] : ", findMajority(arr)) 
 print("\n") 
+
+
+print("Majority element: Efficient (Moore's Voting Algorithm)") 
+def findMajority2(arr) : 
+    n=len(arr) 
+    # Find a candidate 
+    res=0 
+    count=1 
+    for i in range(1,n) : 
+        if arr[i]==arr[res] : 
+            count+=1 
+        else : 
+            count-=1 
+        if count==0 : 
+            res=i 
+            count=1 
+    # Check if the candidate is actually a majority 
+    count=0 
+    for i in range(n) : 
+        if arr[i]==arr[res] : 
+            count+=1 
+    if count<=n/2 : 
+        return -1 
+    return res
+arr=[8,8,6,6,6,4,6] 
+print("[8,8,6,6,6,4,6] : ", findMajority2(arr)) 
+print("\n") 
+ 
