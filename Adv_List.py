@@ -255,8 +255,9 @@ arr=[5,-2,3,4]
 print("[5,-2,3,4] : ",maxCircularSum(arr)) 
 print("\n") 
 
+
 print("Maximum Circular Sum Subarray: Efficient")
-def normalMaxSum(arr) : 
+def normalMaxSum(arr) :    # Kadane's algorithm
     n=len(arr) 
     res=arr[0] 
     maxEnding=arr[0]
@@ -266,14 +267,14 @@ def normalMaxSum(arr) :
     return res 
 def overallMaxSum(arr) : 
     n=len(arr) 
-    max_normal=normalMaxSum(arr) 
+    max_normal=normalMaxSum(arr)   # Normal sum
     if max_normal<0 : 
         return max_normal 
-    arr_sum=0 
+    arr_sum=0     # For total sum of arr
     for i in range(n) : 
         arr_sum+=arr[i] 
         arr[i]=-arr[i] 
-    max_circular=arr_sum+normalMaxSum(arr) 
+    max_circular=arr_sum+normalMaxSum(arr)   # Circular sum
     return max(max_circular, max_normal) 
 arr=[8,-4,3,-5,4]
 print("[8,-4,3,-5,4] : ",overallMaxSum(arr)) 
