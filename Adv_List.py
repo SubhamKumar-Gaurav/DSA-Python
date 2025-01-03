@@ -279,3 +279,20 @@ def overallMaxSum(arr) :
 arr=[8,-4,3,-5,4]
 print("[8,-4,3,-5,4] : ",overallMaxSum(arr)) 
 print("\n") 
+
+
+## Majority element 
+print("Majority element: Naive") 
+def findMajority(arr) : 
+    n=len(arr) 
+    for i in range(n) : 
+        count=1 
+        for j in range(i+1,n) : 
+            if arr[i]==arr[j] : 
+                count+=1 
+        if count>n/2 : 
+            return i 
+    return -1 
+arr=[8,3,4,8,8]
+print("[8,3,4,8,8] : ", findMajority(arr)) 
+print("\n") 
