@@ -320,7 +320,25 @@ def findMajority2(arr) :
             count+=1 
     if count<=n/2 : 
         return -1 
-    return res
+    return res 
 arr=[8,8,6,6,6,4,6] 
 print("[8,8,6,6,6,4,6] : ", findMajority2(arr)) 
 print("\n")
+ 
+
+## Minimum consecutive flips
+print("Minimum consecutive flips")   
+def minConsFlips(arr) : 
+    n=len(arr) 
+    for i in range(1,n) : 
+        if arr[i]!=arr[i-1] : 
+            if arr[i]!=arr[0] : 
+                print("From ", i , "to ", end=" ") 
+            else : 
+                print(i-1) 
+    if arr[n-1]!=arr[0] : 
+        print(n-1) 
+arr=[0,0,1,1,0,0,1,1,0] 
+print("[0,0,1,1,0,0,1,1,0] : ")
+minConsFlips(arr)
+print("\n") 
