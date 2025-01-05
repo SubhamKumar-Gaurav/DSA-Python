@@ -417,3 +417,33 @@ print("[1,4,20,3,10,5] , 33 :",givenSumSub(arr,s))
 arr=[2,4]
 s=3 
 print("[2,4] , 3 : ",givenSumSub(arr,s))
+print("\n") 
+
+
+## PrefixSum Technique 
+# Given a fixed array and multiple range sum queries, how to answer the queries efficiently 
+# Naive solution 
+def getSum(arr,l,r) : 
+    res=0 
+    for i in range(l,r+1) : 
+        res+=arr[i]
+    return res 
+
+
+## Efficient solution 
+print("Prefix Sum Technique : ")
+arr=[2,8,3,9,6,5,4]
+n=len(arr) 
+pSum=[0]*n 
+pSum[0]=arr[0]
+for i in range(1,n) : 
+    pSum[i]=pSum[i-1]+arr[i]
+def getSump(l,r) : 
+    if l==0 : 
+        return pSum[r] 
+    else : 
+        return pSum[r]-pSum[l-1]  
+print("arr = [2,8,3,9,6,5,4] ")
+print("getSum(arr,0,3) : ",getSum(arr,0,3))
+print("getSum(arr,2,3) : ",getSum(arr,2,3))
+print("\n") 
