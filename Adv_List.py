@@ -342,3 +342,23 @@ arr=[0,0,1,1,0,0,1,1,0]
 print("[0,0,1,1,0,0,1,1,0] : ")
 minConsFlips(arr)
 print("\n") 
+
+
+## Sliding window technique 
+# Naive solution
+print("Maximum sum of k consecutive elements: Naive")   
+def maxKSum(arr,k) : 
+    n=len(arr)
+    res=float("-inf") 
+    i=0 
+    while (i+k-1<n) : 
+        curr=0 
+        for j in range(k) : 
+            curr+=arr[i+j] 
+        res=max(curr,res) 
+        i+=1 
+    return res 
+arr=[10,5,-2,20,1] 
+k=3 
+print("[10,5,-2,20,1] : ",maxKSum(arr,k)) 
+print("\n") 
