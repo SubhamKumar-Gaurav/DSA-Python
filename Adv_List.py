@@ -396,3 +396,24 @@ arr=[1,4,20,3,10,5]
 s=33 
 print("[1,4,20,3,10,5] : ", isSubSum(arr,s))
 print("\n") 
+
+
+print("Efficient (Sliding window with variable size)") 
+def givenSumSub(arr,sum_) :  
+    n=len(arr) 
+    curr=0 
+    s=0 
+    for e in range(n) : 
+        curr+=arr[e] 
+        while curr>sum_ : 
+            curr-=arr[s] 
+            s+=1 
+        if curr==sum_ : 
+            return True
+    return False 
+arr=[1,4,20,3,10,5] 
+s=33 
+print(givenSumSub(arr,s)) 
+arr=[2,4]
+s=3 
+print(givenSumSub(arr,s))
