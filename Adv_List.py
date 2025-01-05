@@ -447,3 +447,22 @@ print("arr = [2,8,3,9,6,5,4] ")
 print("getSum(arr,0,3) : ",getSum(arr,0,3))
 print("getSum(arr,2,3) : ",getSum(arr,2,3))
 print("\n") 
+
+
+## Equilibrium point 
+print("Equilibrium point: Naive approach ") 
+def eqPoint(arr) : 
+    n=len(arr) 
+    for i in range(n) : 
+        ls=0 
+        rs=0 
+        for j in range(i) : 
+            ls+=arr[j] 
+        for k in range(i+1,n) : 
+            rs+=arr[k]
+        if ls==rs : 
+            return True 
+    return False 
+arr=[3,4,8,-9,20,6] 
+print("[3,4,8,-9,20,6] : ", eqPoint(arr)) 
+print("\n") 
