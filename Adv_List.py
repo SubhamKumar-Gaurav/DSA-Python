@@ -484,7 +484,7 @@ print("\n")
 
 ## Maximum appearing element in ranges    
 print("Maximum appearing element in ranges (Naive)") 
-def maxAppear(left, right) : 
+def maxAppear1(left, right) : 
     freq=[0]*100 
     for i in range(len(left)) :
         for j in range(left[i], right[i]+1) : 
@@ -492,5 +492,17 @@ def maxAppear(left, right) :
     return freq.index(max(freq)) 
 left=[1,2,4]
 right=[4,5,7] 
-print(maxAppear(left, right)) 
+print(maxAppear1(left, right)) 
+print("\n") 
+
+print("Maximum appearing element in ranges (Efficient)")    
+def maxAppear2(left, right) : 
+    freq=[0]*101 
+    for i in range(len(left)) : 
+        freq[left[i]]+=1 
+        freq[right[i]+1]-=1 
+    for i in range(1,101) : 
+        freq[i]+=freq[i-1] 
+    return freq.index(max(freq)) 
+print(maxAppear2(left, right)) 
 print("\n") 
