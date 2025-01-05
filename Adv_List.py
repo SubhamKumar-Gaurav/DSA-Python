@@ -379,3 +379,20 @@ arr=[1,8,30,-5,20,7]
 k=4
 print("[1,8,30,-5,20,7] : ",kMaxSum(arr,k)) 
 print("\n") 
+
+
+## Subarray with given sum 
+print("Subarray with given sum: Naive") 
+def isSubSum(arr,s) : 
+    n=len(arr)
+    for i in range(n) :
+        curr=0 
+        for j in range(i,n) : 
+            curr+=arr[j] 
+            if curr==s : 
+                return True 
+    return False 
+arr=[1,4,20,3,10,5]
+s=33 
+print("[1,4,20,3,10,5] : ", isSubSum(arr,s))
+print("\n") 
