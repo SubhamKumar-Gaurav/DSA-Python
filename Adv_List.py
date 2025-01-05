@@ -362,3 +362,20 @@ arr=[10,5,-2,20,1]
 k=3 
 print("[10,5,-2,20,1] : ",maxKSum(arr,k)) 
 print("\n") 
+
+# Efficient approach (Sliding window technique) 
+print("K max Sum: Sliding window")
+def kMaxSum(arr,k) : 
+    n=len(arr) 
+    res=0 
+    for i in range(k) : 
+        res+=arr[i] 
+    curr=res
+    for i in range(n-k) : 
+        curr = curr + arr[i+k] - arr[i] 
+        res=max(res,curr) 
+    return res 
+arr=[1,8,30,-5,20,7]
+k=4
+print("[1,8,30,-5,20,7] : ",kMaxSum(arr,k)) 
+print("\n") 
