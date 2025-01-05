@@ -394,7 +394,7 @@ def isSubSum(arr,s) :
     return False 
 arr=[1,4,20,3,10,5]
 s=33 
-print("[1,4,20,3,10,5] : ", isSubSum(arr,s))
+print("[1,4,20,3,10,5], 33 : ", isSubSum(arr,s))
 print("\n") 
 
 
@@ -413,7 +413,7 @@ def givenSumSub(arr,sum_) :
     return False 
 arr=[1,4,20,3,10,5] 
 s=33 
-print(givenSumSub(arr,s)) 
+print("[1,4,20,3,10,5] , 33 :",givenSumSub(arr,s)) 
 arr=[2,4]
 s=3 
-print(givenSumSub(arr,s))
+print("[2,4] , 3 : ",givenSumSub(arr,s))
