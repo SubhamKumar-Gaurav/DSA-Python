@@ -466,3 +466,17 @@ def eqPoint(arr) :
 arr=[3,4,8,-9,20,6] 
 print("[3,4,8,-9,20,6] : ", eqPoint(arr)) 
 print("\n") 
+
+print("Equilibrium point: Efficient approach")
+def ePoint(arr) : 
+    n=len(arr) 
+    rs=sum(arr) 
+    ls=0 
+    for i in range(n) : 
+        rs-=arr[i] 
+        if ls==rs : 
+            return True 
+    return False 
+arr=[3,4,8,-9,9,7] 
+print("[3,4,8,-9,9,7] : ", ePoint(arr)) 
+print("\n") 
