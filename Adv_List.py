@@ -479,4 +479,18 @@ def ePoint(arr) :
     return False 
 arr=[3,4,8,-9,9,7] 
 print("[3,4,8,-9,9,7] : ", ePoint(arr)) 
+print("\n")  
+
+
+## Maximum appearing element in ranges    
+print("Maximum appearing element in ranges (Naive)") 
+def maxAppear(left, right) : 
+    freq=[0]*100 
+    for i in range(len(left)) :
+        for j in range(left[i], right[i]+1) : 
+            freq[j]+=1 
+    return freq.index(max(freq)) 
+left=[1,2,4]
+right=[4,5,7] 
+print(maxAppear(left, right)) 
 print("\n") 
