@@ -60,3 +60,18 @@ def Josephus(n,k) :
         return (Josephus(n-1,k)+k)%n 
 print("n=5, k=3 : ", Josephus(5,3)) 
 print("\n") 
+
+
+## Subset sum problem 
+print("Subset sum problem")
+def subsetSum(arr,n,sum) : 
+    if n==0 : 
+        if sum==0 : 
+            return 1 
+        else : 
+            return 0 
+    return subsetSum(arr,n-1,sum) + subsetSum(arr,n-1,sum-arr[n-1])
+arr=[10,20,15]
+n=len(arr) 
+print("[10,20,15], sum=25 : ", subsetSum(arr,n,25))
+print("\n") 
