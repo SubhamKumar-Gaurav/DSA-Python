@@ -75,3 +75,20 @@ arr=[10,20,15]
 n=len(arr) 
 print("[10,20,15], sum=25 : ", subsetSum(arr,n,25))
 print("\n") 
+
+
+## Print all permutations of a string 
+print("Print all permutations : ") 
+def permute(s,i) : 
+    n=len(s) 
+    if (i==n-1) : 
+        print("".join(s))
+        return 
+    for j in range(i,n) : 
+        s[i], s[j] = s[j], s[i] 
+        permute(s,i+1)
+        s[i], s[j] = s[j], s[i] 
+s=["A","B","C"]
+print('["A","B","C"] : ')
+permute(s,0)
+print("\n") 
