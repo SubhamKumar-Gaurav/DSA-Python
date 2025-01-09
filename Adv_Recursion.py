@@ -25,6 +25,7 @@ print("\n")
 
 
 ## Subset of a given string 
+print("Subset of a given string")
 def sub(str, curr, ind) : 
     if ind==len(str) : 
         print(curr, end=" ")
@@ -33,3 +34,18 @@ def sub(str, curr, ind) :
     sub(str,curr+str[ind],ind+1) 
 s="ABC" 
 print(sub(s," ",0)) 
+print("\n")
+
+
+## Tower of Hanoi
+print("Tower of Hanoi")
+def TOH(n,A,B,C) : 
+    if n==1 : 
+        print("Move 1 from", A , "to", C)
+    else : 
+        TOH(n-1,A,C,B) 
+        print("Move", n, "from", A, "to", C)
+        TOH(n-1,B,A,C)
+print("n=3, A, B, C : ") 
+TOH(3,"A", "B", "C")  
+print("\n") 
