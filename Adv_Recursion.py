@@ -49,3 +49,14 @@ def TOH(n,A,B,C) :
 print("n=3, A, B, C : ") 
 TOH(3,"A", "B", "C")  
 print("\n") 
+
+
+## Josephus problem 
+print("Josephus problem")  
+def Josephus(n,k) : 
+    if n==1 : 
+        return 0 
+    else : 
+        return (Josephus(n-1,k)+k)%n 
+print("n=5, k=3 : ", Josephus(5,3)) 
+print("\n") 
