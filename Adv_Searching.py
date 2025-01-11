@@ -88,7 +88,7 @@ def getPeak1(arr) :
     if arr[0]>arr[1] : 
         return arr[0] 
     if arr[n-1]>arr[n-2] : 
-        arr[n-1]
+        return arr[n-1]
     for i in range(1,n-1) : 
         if arr[i]>=arr[i-1] and arr[i]>=arr[i+1] : 
             return arr[i]
@@ -96,7 +96,7 @@ arr=[5,10,20,15,7]
 print("Get peak element: Naive ")
 print("[5,10,20,15,7] : ",getPeak1(arr))
 print("\n") 
-
+ 
 # 2. Efficient approach 
 def getPeak2(arr) : 
     n=len(arr)
@@ -115,6 +115,7 @@ arr=[5,20,40,30,20,50,60]
 print("[5,20,40,30,20,50,60] : ",getPeak2(arr)) 
 print("\n") 
 
+
 ## Count occurences in a sorted array 
 # 1. Naive approach (Linear traversal) 
 # 2. Simple Binary search and then linear traversal for same element. O(log n) + O(n) (Worst case)
@@ -122,18 +123,53 @@ print("\n")
 
 
 ## Two Pointers approach 
-# Find if arr[i]+arr[j] == x 
+# Find if arr[i]+arr[j] == x   (i!=j)
 # 1. Naive approach : O(n^2)
 # 2. Using Two pointer approach : O(n)
+print("Two Pointers approach ")
 def isPair(arr,x) : 
     i=0 
     j=len(arr)-1 
-    while i<=j : 
-        pairSum=arr[i]+arr[j]
+    while i<j : 
+        pairSum=arr[i]+arr[j] 
         if pairSum==x : 
             return True 
         elif pairSum<x : 
             i=i+1 
         else : 
-            j=j+1 
+            j=j-1 
     return False 
+arr=[2,5,8,12,30]
+x=17
+print("[2,5,8,12,30] : ", isPair(arr,x))
+print("\n") 
+
+
+## Triplet in a sorted array   (arr[i]+arr[j]+arr[k])==x 
+# 1. Naive approach : O(n^3) 
+# 2. Using two pointer : O(n^2)  
+print("Triplet in a sorted array ")
+def isPair(arr,x,si) : 
+    i=si 
+    j=len(arr)-1 
+    while i<j : 
+        pairSum=arr[i]+arr[j] 
+        if pairSum==x : 
+            return True 
+        elif pairSum<x : 
+            i=i+1 
+        else : 
+            j=j-1 
+    return False 
+
+
+def isTriplet(arr,x) : 
+    n=len(arr)
+    for i in range(n-3) : 
+        if isPair(arr,x-arr[i],i+1) : 
+            return True 
+    return False 
+arr=[2,3,4,8,9,20,40]
+x=32
+print("[2,3,4,8,9,20,40] : ", isTriplet(arr,x))
+print("\n") 
