@@ -4,8 +4,8 @@
 #    Find a Peak element 
 #    Count occurences in a sorted array 
 #    Two Pointers approach 
-#    
-#    
+#    Triplet in a sorted array
+#    Median of two sorted arrays 
 
 
 
@@ -164,7 +164,7 @@ def isPair(arr,x,si) :
 
 def isTriplet(arr,x) : 
     n=len(arr)
-    for i in range(n-3) : 
+    for i in range(n-2) : 
         if isPair(arr,x-arr[i],i+1) : 
             return True 
     return False 
@@ -172,3 +172,47 @@ arr=[2,3,4,8,9,20,40]
 x=32
 print("[2,3,4,8,9,20,40] : ", isTriplet(arr,x))
 print("\n") 
+
+
+## Median of two sorted arrays 
+# Naive approach : O(n*log(n))  where [n = len(arr1)+len(arr2)] 
+# Efficient approach (Binary Search) 
+def getMedian(a1,a2) : 
+    def bSearchMedian(arr) : 
+        n=len(arr) 
+        if n%2==0 : 
+            return (arr[n//2]+arr[n//2 -1])/2 
+        else : 
+            return arr[n//2]
+
+    n1=len(a1)
+    n2=len(a2) 
+
+    # Check if one of the arrays is empty 
+    if n1==0 and n2!=0 : 
+        return bSearchMedian(a2) 
+    elif n2==0 and n1!=0 : 
+        return bSearchMedian(a1) 
+
+    # Set arr1 as smaller array 
+    if n2<n1 : 
+        a1, a2 = a2, a1 
+        n2, n1 = n1, n2 
+
+    b1, e1 = 0, n1 
+    while b1<=e1 : 
+        i1=(b1+e1)//2 
+        i2=(n1+n2+1)//2 - i1  
+        mnr1 = float('inf') if i1==n1 else a1[i1] 
+        mxl1 = float('-inf') if i1==0 else a1[i1-1] 
+        mnr2 = float('inf') if i2==n2 else a2[i2] 
+        mxl2 = float('-inf') if i2==0 else a2[i2-1] 
+        if mxl1<=mnr2 and mxl2<=mnr1 : 
+            if (n1+n2)%2==0 : 
+                return (max(mxl1,mxl2)+min(mnr1,mnr2))//2 
+            else : 
+                return max(mxl1,mxl2) 
+        elif mxl1>mnr2 : 
+            e1 = i1 - 1
+        else :     # mxl2>mnr1 
+            b1 = i1 + 1 
