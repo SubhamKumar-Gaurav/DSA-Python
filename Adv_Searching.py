@@ -150,7 +150,7 @@ print("\n")
 # 2. Using two pointer : O(n^2)  
 print("Triplet in a sorted array ")
 def isPair(arr,x,si) : 
-    i=si 
+    i=si   # starting index (i+1)  
     j=len(arr)-1 
     while i<j : 
         pairSum=arr[i]+arr[j] 
@@ -161,7 +161,6 @@ def isPair(arr,x,si) :
         else : 
             j=j-1 
     return False 
-
 
 def isTriplet(arr,x) : 
     n=len(arr)
