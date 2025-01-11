@@ -2,8 +2,8 @@
 #    Search in an Infinite sized array 
 #    Search in sorted rotated array 
 #    Find a Peak element 
-
-
+#    Count occurences in a sorted array 
+#    
 
 ## Search in an Infinite sized array  
 ## 1. Naive Approach 
@@ -110,3 +110,8 @@ def getPeak2(arr) :
 arr=[5,20,40,30,20,50,60]
 print("[5,20,40,30,20,50,60] : ",getPeak2(arr)) 
 print("\n") 
+
+## Count occurences in a sorted array 
+# 1. Naive approach (Linear traversal) 
+# 2. Simple Binary search and then linear traversal for same element. O(log n) + O(n) (Worst case)
+# 3. Best approach : last_occurence - first_occurence + 1   O(log n)
