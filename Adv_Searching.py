@@ -1,6 +1,8 @@
 ## Advanced searching 
 #    Search in an Infinite sized array 
 #    Search in sorted rotated array 
+#    Find a Peak element 
+
 
 
 ## Search in an Infinite sized array  
@@ -42,6 +44,7 @@ print("Search in infinite arr (Efficient) : ",searchInfy2(arr,x))
 print("\n") 
 
 
+
 ## Search in sorted rotated array 
 # 1. Naive approach: Linear Search 
 
@@ -68,4 +71,24 @@ def searchSortRot(arr,x) :
 arr=[10,20,30,40,50,8,9] 
 x=30 
 print("Search in sorted rotated array : ",searchSortRot(arr,x))
+print("\n") 
+
+
+
+## Find a Peak element 
+# 1. Naive approach 
+def getPeak1(arr) : 
+    n=len(arr) 
+    if n==1 : 
+        return arr[0] 
+    if arr[0]>arr[1] : 
+        return arr[0] 
+    if arr[n-1]>arr[n-2] : 
+        arr[n-1]
+    for i in range(1,n-1) : 
+        if arr[i]>=arr[i-1] and arr[i]>=arr[i+1] : 
+            return arr[i]
+arr=[5,10,20,15,7]
+print("Get peak element: Naive ")
+print("[5,10,20,15,7] : ",getPeak1(arr))
 print("\n") 
