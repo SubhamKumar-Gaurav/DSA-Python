@@ -6,7 +6,8 @@
 #    Two Pointers approach 
 #    Triplet in a sorted array
 #    Median of two sorted arrays 
-
+#    Repeating element  (Part-1) 
+#    Repeating element  (Part-2) 
 
 
 ## Search in an Infinite sized array  
@@ -174,6 +175,7 @@ print("[2,3,4,8,9,20,40] : ", isTriplet(arr,x))
 print("\n") 
 
 
+
 ## Median of two sorted arrays 
 # Naive approach : O(n*log(n))  where [n = len(arr1)+len(arr2)] 
 # Efficient approach (Binary Search) 
@@ -216,3 +218,34 @@ def getMedian(a1,a2) :
             e1 = i1 - 1
         else :     # mxl2>mnr1 
             b1 = i1 + 1 
+
+
+## Repeating element (Part-1) 
+# 1. Super Naive     Time : O(n^2) , Space: O(1)
+def repeat(arr) : 
+    n=len(arr) 
+    for i in range(n-1) : 
+        for j in range(i+1,n) : 
+            if arr[i]==arr[j] : 
+                return arr[j] 
+
+# 2. Naive      Time : O(n logn),   Space: O(1)
+def repeat(arr) : 
+    n=len(arr)
+    arr.sort()
+    for i in range(n-1) : 
+        if arr[i]==arr[i+1] : 
+            return arr[i] 
+
+# 3. Efficient :   Time: O(n) , Space: O(n) 
+def repeat(arr) : 
+    n=len(arr) 
+    visit=[False]*n 
+    for i in range(n) : 
+        if visit[arr[i]] :  
+            return arr[i] 
+        arr[i]=True 
+    return -1 
+
+
+## Repeating element  (Part-2) 
