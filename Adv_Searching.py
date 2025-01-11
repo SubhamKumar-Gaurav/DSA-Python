@@ -3,7 +3,11 @@
 #    Search in sorted rotated array 
 #    Find a Peak element 
 #    Count occurences in a sorted array 
+#    Two Pointers approach 
 #    
+#    
+
+
 
 ## Search in an Infinite sized array  
 ## 1. Naive Approach 
@@ -115,3 +119,21 @@ print("\n")
 # 1. Naive approach (Linear traversal) 
 # 2. Simple Binary search and then linear traversal for same element. O(log n) + O(n) (Worst case)
 # 3. Best approach : last_occurence - first_occurence + 1   O(log n)
+
+
+## Two Pointers approach 
+# Find if arr[i]+arr[j] == x 
+# 1. Naive approach : O(n^2)
+# 2. Using Two pointer approach : O(n)
+def isPair(arr,x) : 
+    i=0 
+    j=len(arr)-1 
+    while i<=j : 
+        pairSum=arr[i]+arr[j]
+        if pairSum==x : 
+            return True 
+        elif pairSum<x : 
+            i=i+1 
+        else : 
+            j=j+1 
+    return False 
