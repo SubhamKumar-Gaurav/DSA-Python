@@ -250,6 +250,7 @@ def repeat(arr) :
 
 ## Repeating element  (Part-2)  
 print("Repeating element - II ")
+print("For elements from 1 to max(arr)")
 def repeat(arr) : 
     slow=arr[0]
     fast=arr[0]
