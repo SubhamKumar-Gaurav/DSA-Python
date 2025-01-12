@@ -267,3 +267,36 @@ def repeat(arr) :
 arr=[1,3,2,4,6,5,7,3]
 print("[1,3,2,4,6,5,7,3] : ",repeat(arr))
 print("\n") 
+
+# For elements from 0 to max(arr)
+def repeat1(arr) : 
+    slow=arr[0]+1 
+    fast=arr[0]+1 
+    slow=arr[slow]+1 
+    fast=arr[arr[fast]+1] 
+    while slow!=fast : 
+        slow=arr[slow]+1 
+        fast=arr[arr[fast]+1] 
+    slow=arr[0]+1 
+    while slow!=fast : 
+        slow=arr[slow]+1 
+        fast=arr[fast]+1 
+    return slow-1 
+
+
+## Allocate min no. of pages 
+print("Allocate min no. of pages") 
+print("Recursive solution")
+def minPages(arr,n,k) : 
+    if k==1 : 
+        return sum(arr[0:n]) 
+    if n==1 : 
+        return arr[0] 
+    res=float("inf") 
+    for i in range(1,n) : 
+        res=min(res,max(minPages(arr,i,k-1),sum(arr[i:n]))) 
+    return res 
+arr=[10,20,30,40]
+k=2 
+print("[10,20,30,40] : ",minPages(arr,4,k)) 
+print("\n") 
