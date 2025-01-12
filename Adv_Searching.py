@@ -248,4 +248,21 @@ def repeat(arr) :
     return -1 
 
 
-## Repeating element  (Part-2) 
+## Repeating element  (Part-2)  
+print("Repeating element - II ")
+def repeat(arr) : 
+    slow=arr[0]
+    fast=arr[0]
+    slow=arr[slow]
+    fast=arr[arr[fast]]
+    while slow!=fast : 
+        slow=arr[slow]
+        fast=arr[arr[fast]]
+    slow=arr[0]
+    while slow!=fast : 
+        slow=arr[slow]
+        fast=arr[fast]
+    return slow 
+arr=[1,3,2,4,6,5,7,3]
+print("[1,3,2,4,6,5,7,3] : ",repeat(arr))
+print("\n") 
