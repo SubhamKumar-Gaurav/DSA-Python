@@ -300,3 +300,37 @@ arr=[10,20,30,40]
 k=2 
 print("[10,20,30,40] : ",minPages(arr,4,k)) 
 print("\n") 
+
+print("using Binary Search") 
+def isFeasible(arr,k,ans) : 
+    n=len(arr)
+    req=1 
+    s=0 
+    for i in range(n) : 
+        if (s+arr[i])>ans :
+            req+=1 
+            s=arr[i]
+        else : 
+            s+=arr[i]
+    return req<=k 
+
+def allocateMinPages(arr, k) :  
+    n=len(arr) 
+    low=max(arr) 
+    high=sum(arr) 
+    res=0 
+    while low<=high : 
+        mid=(low+high)//2 
+        if isFeasible(arr,k,mid) : 
+            res=mid 
+            high=mid-1 
+        else : 
+            low=mid+1 
+    return res 
+arr=[10,20,10,30]
+print("[10,20,10,30], k=2 : ",allocateMinPages(arr,2))
+arr=[10,20,30,40]
+print("[10,20,30,40], k=2 : ",allocateMinPages(arr,2))
+arr=[10,5,30,1,2,5,10,10]
+print("[10,5,30,1,2,5,10,10], k=3 : ",allocateMinPages(arr,3))
+print("\n") 
