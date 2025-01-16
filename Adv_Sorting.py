@@ -32,7 +32,20 @@ def qSort(arr,l,r) :
 
 ## Kth smallest 
 # Naive approach 
-def KthSmallest(arr,k) : 
+def kthsmallest(arr,k) : 
     n=len(arr) 
     arr.sort() 
     return arr[k-1]
+  
+
+def KthSmallest(arr,k) :
+    l=0 
+    r=len(arr)-1 
+    while l<=r : 
+        p=lomuto(arr,l,r) 
+        if p==k-1 : 
+            return p 
+        elif p>k-1 : 
+            r=p-1 
+        else : 
+            l=p+1 
