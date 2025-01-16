@@ -29,3 +29,10 @@ def qSort(arr,l,r) :
         p=partition(arr,l,r) 
         qSort(arr,l,p) 
         l=p+1 
+
+## Kth smallest 
+# Naive approach 
+def KthSmallest(arr,k) : 
+    n=len(arr) 
+    arr.sort() 
+    return arr[k-1]
