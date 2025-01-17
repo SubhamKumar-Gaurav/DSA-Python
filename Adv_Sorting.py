@@ -119,3 +119,22 @@ def posNeg(arr) :
         if i>=j : 
             return arr 
         arr[i], arr[j] = arr[j], arr[i] 
+
+
+
+
+## Sort an array with three types of element 
+def sort3Types(arr) :  
+    temp=[]
+    for x in arr : 
+        if x==0 : 
+            temp.append(x) 
+    for x in arr : 
+        if x==1 : 
+            temp.append(x) 
+    for x in arr : 
+        if x==2 : 
+            temp.append(x) 
+    for i in range(len(arr)) : 
+        arr[i]=temp[i] 
+    return arr 
