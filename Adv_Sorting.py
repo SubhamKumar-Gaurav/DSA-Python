@@ -54,10 +54,21 @@ def KthSmallest(arr,k) :
 
 
 ## Minimum difference in an array 
+# Naive 
 def minDiff(arr) : 
     n=len(arr)
     res=float("inf") 
     for i in range(1,n) : 
         for j in range(i) : 
             res=min(res,abs(arr[i]-arr[j])) 
+    return res 
+
+
+# Efficient 
+def mindiff(arr) : 
+    n=len(arr) 
+    arr.sort() 
+    res=float('inf') 
+    for i in range(1,n) : 
+        res=min(res,abs(arr[i]-arr[i-1])) 
     return res 
