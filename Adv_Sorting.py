@@ -63,7 +63,6 @@ def minDiff(arr) :
             res=min(res,abs(arr[i]-arr[j])) 
     return res 
 
-
 # Efficient 
 def mindiff(arr) : 
     n=len(arr) 
@@ -71,4 +70,18 @@ def mindiff(arr) :
     res=float('inf') 
     for i in range(1,n) : 
         res=min(res,abs(arr[i]-arr[i-1])) 
+    return res 
+
+
+## Chocolate distribution problem  
+def choco(arr,m) : 
+    n=len(arr)
+    if m==0 or n==0 : 
+        return 0
+    if n<m : 
+        return -1 
+    arr.sort() 
+    res=arr[m-1]-arr[0] 
+    for i in range(1,n-m+1) : 
+        res=min(res,arr[i+m-1]-arr[i]) 
     return res 
