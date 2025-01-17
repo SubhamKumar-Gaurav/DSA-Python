@@ -30,6 +30,8 @@ def qSort(arr,l,r) :
         qSort(arr,l,p) 
         l=p+1 
 
+
+
 ## Kth smallest 
 # Naive approach 
 def kthsmallest(arr,k) : 
@@ -37,7 +39,7 @@ def kthsmallest(arr,k) :
     arr.sort() 
     return arr[k-1]
   
-
+# Using Lomuto partition  (code to be reviewed)
 def KthSmallest(arr,k) :
     l=0 
     r=len(arr)-1 
@@ -45,7 +47,17 @@ def KthSmallest(arr,k) :
         p=lomuto(arr,l,r) 
         if p==k-1 : 
             return p 
-        elif p>k-1 : 
-            r=p-1 
+        elif len(p)>k-1 : 
+            r=len(p)-1 
         else : 
-            l=p+1 
+            l=len(p)+1 
+
+
+## Minimum difference in an array 
+def minDiff(arr) : 
+    n=len(arr)
+    res=float("inf") 
+    for i in range(1,n) : 
+        for j in range(i) : 
+            res=min(res,abs(arr[i]-arr[j])) 
+    return res 
