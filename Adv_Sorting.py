@@ -85,3 +85,21 @@ def choco(arr,m) :
     for i in range(1,n-m+1) : 
         res=min(res,arr[i+m-1]-arr[i]) 
     return res 
+
+
+## Sort an array with two types of element 
+def sortArr(arr) : 
+    n=len(arr) 
+    res=[0]*n 
+    i=0  
+    for j in range(n) : 
+        if arr[j]<0 : 
+            res[i]=arr[j] 
+            i+=1 
+    for j in range(n) : 
+        if arr[j]>=0 : 
+            res[i]=arr[j] 
+            i+=1 
+    arr=res  
+    return res 
+  
