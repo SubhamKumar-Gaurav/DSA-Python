@@ -88,6 +88,7 @@ def choco(arr,m) :
 
 
 ## Sort an array with two types of element 
+# Segregate positive and negative : Naive 
 def sortArr(arr) : 
     n=len(arr) 
     res=[0]*n 
@@ -103,3 +104,18 @@ def sortArr(arr) :
     arr=res  
     return res 
   
+
+## Segregate positive and negative : using Hoare's partition 
+def posNeg(arr) : 
+    i=-1 
+    j=len(arr) 
+    while True : 
+        i+=1 
+        while arr[i]<0 : 
+            i+=1 
+        j-=1 
+        while arr[j]>=0 : 
+            j-=1 
+        if i>=j : 
+            return arr 
+        arr[i], arr[j] = arr[j], arr[i] 
