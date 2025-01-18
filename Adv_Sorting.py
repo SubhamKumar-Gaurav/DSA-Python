@@ -155,5 +155,20 @@ def segregate3(arr) :
             arr[high], arr[mid] = arr[mid], arr[high] 
             high-=1 
     return arr 
-arr=[1,2,1,1,2,0] 
-print(segregate3(arr))
+
+
+## Merge overlapping intervals 
+def mergeIntervals(arr) : 
+    n=len(arr)
+    arr.sort(key=lambda x: x[0])
+    res=0 
+    for i in range(1,n) : 
+        if arr[res][1]>=arr[i][0] : 
+            arr[res][1]=max(arr[res][1], arr[i][1]) 
+        else : 
+            res+=1 
+            arr[res]=arr[i]
+    for i in range(res+1) : 
+        print(arr[i], end=" ")      
+arr=[[5,10], [2,3], [6,8], [1,7], [1,10], [2,3]] 
+mergeIntervals(arr) 
