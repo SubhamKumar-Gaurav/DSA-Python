@@ -169,6 +169,4 @@ def mergeIntervals(arr) :
             res+=1 
             arr[res]=arr[i]
     for i in range(res+1) : 
-        print(arr[i], end=" ")      
-arr=[[5,10], [2,3], [6,8], [1,7], [1,10], [2,3]] 
-mergeIntervals(arr) 
+        print(arr[i], end=" ")   
