@@ -194,8 +194,20 @@ def maxGuests(arr,dept) :
 
 
 # Counting Sort 
-# Naive Approach
+# Naive approach 
+def countingSort(arr,k) : 
+    count=[0]*k 
+    for x in arr : 
+        count[x]+=1 
+    index=0 
+    for i in range(k) : 
+        for j in range(count[i]) : 
+            arr[index]=i 
+        index+=1 
+    return arr 
 
+
+# Efficient Approach
 def countingsort(arr,k) :
     output = [0] * len(arr)
     count = [0] * k
