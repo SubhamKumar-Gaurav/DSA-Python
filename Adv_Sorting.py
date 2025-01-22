@@ -223,3 +223,31 @@ def countingsort(arr,k) :
         arr[i] = output[i]    
     print(arr)
     
+
+
+## Cycle sort   
+def cycleSort(arr) : 
+    n=len(arr) 
+    for cs in range(n-1) : 
+        item=arr[cs] 
+        pos=cs 
+        for i in range(cs+1,n) : 
+            if arr[i]<item : 
+                pos+=1 
+
+        if pos==cs : 
+            continue 
+        while item==arr[pos] : 
+            pos+=1 
+        arr[pos], item = item, arr[pos] 
+        
+        while pos!=cs : 
+            pos=cs 
+            for i in range(cs+1,n) : 
+                if arr[i]<item : 
+                    pos+=1 
+            while item==arr[pos] :
+                pos+=1 
+            arr[pos], item = item, arr[pos]
+    return arr 
+
