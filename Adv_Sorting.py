@@ -234,13 +234,11 @@ def cycleSort(arr) :
         for i in range(cs+1,n) : 
             if arr[i]<item : 
                 pos+=1 
-
         if pos==cs : 
             continue 
         while item==arr[pos] : 
             pos+=1 
         arr[pos], item = item, arr[pos] 
-        
         while pos!=cs : 
             pos=cs 
             for i in range(cs+1,n) : 
