@@ -274,3 +274,20 @@ def countingSort(arr,exp) :
         i-=1 
     for i in range(len(arr)) : 
         arr[i]=output[i] 
+
+
+## Bucket sort      - assumption: arr contains non negative values 
+def bucketSort(arr,k) : 
+    rs=max(arr)+1                ## rs - range size 
+    bkt=[[] for i in range(k)] 
+    for x in arr : 
+        i = min((k * x) // rs, k - 1) 
+        bkt[i].append(x) 
+    for i in range(k) : 
+        bkt[i].sort() 
+    idx=0 
+    for i in range(k) : 
+        for j in range(len(bkt[i])) : 
+            arr[idx] = bkt[i][j]
+            idx+=1 
+    return arr 
