@@ -1,7 +1,7 @@
 ## Matrix 
 #    Multidimensional array in python 
 #    Passing a 2D array as argument  
-#    Matrix in Snake 
+#    Matrix in Snake Pattern 
 #    Matrix Boundary Traversal
 #    Transpose of a Matrix 
 #    Rotate matrix anticlockwise by 90 degree 
@@ -62,3 +62,17 @@ if __name__=="__main__" :
     printMatrix(mat)
 print("\n") 
 
+
+## Matrix in Snake Pattern 
+print("Matrix in Snake Pattern : ")
+def snakePattern(mat) : 
+    for i in range(len(mat)) : 
+        if i%2==0 :
+            for j in range(len(mat[i])) :  
+                print(mat[i][j], end=" ") 
+        else : 
+            for j in range(len(mat[i])-1, -1, -1) : 
+                print(mat[i][j], end=" ") 
+mat=[[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]]
+snakePattern(mat)
+print("\n") 
