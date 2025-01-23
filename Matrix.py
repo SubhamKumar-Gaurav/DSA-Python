@@ -46,3 +46,19 @@ arr[0][0]=1
 for r in arr : 
     print(r) 
 print() 
+
+
+
+## Passing a 2D array as argument 
+print("Passing a 2D array as argument : ")
+def printMatrix(mat) : 
+    M=len(mat)
+    N=len(mat[0]) 
+    for i in range(M) : 
+        for j in range(N) : 
+            print(mat[i][j], end=" ") 
+if __name__=="__main__" : 
+    mat=[[10,20], [30,40], [50,60]] 
+    printMatrix(mat)
+print("\n") 
+
