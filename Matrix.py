@@ -183,3 +183,24 @@ def searchinMatrix(mat,x) :
         else : 
             i+=1 
     return "Not Found" 
+
+
+## Median of a row wise sorted matrix 
+import bisect 
+def getMed(mat) : 
+    r,c=len(mat), len(mat[0]) 
+    mn, mx = mat[0][0], mat[0][c-1] 
+    for i in range(1,r) : 
+        mn=min(mn, mat[i][0]) 
+        mx=max(mx, mat[i][c-1]) 
+    tPos=(r*c+1)//2 
+    while mn<mx : 
+        mid=(mn+mx)//2 
+        midPos=0 
+        for i in range(r) : 
+            midPos+=bisect.bisect_right(mat[i], mid) 
+        if midPos<tPos : 
+            mn=mid+1 
+        else : 
+            mx=mid 
+    return mn 
