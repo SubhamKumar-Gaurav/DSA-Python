@@ -64,7 +64,6 @@ print("\n")
 
 
 ## Matrix in Snake Pattern 
-print("Matrix in Snake Pattern : ")
 def snakePattern(mat) : 
     for i in range(len(mat)) : 
         if i%2==0 :
@@ -77,7 +76,6 @@ def snakePattern(mat) :
 
 
 ## Matrix Boundary Traversal 
-print("Matrix Boundary Traversal")
 def boundary(mat) : 
     r=len(mat)
     c=len(mat[0])
@@ -98,8 +96,7 @@ def boundary(mat) :
             print(mat[i][0], end=" ")
 
 
-## Transpose of a Matrix 
-print("Transpose of a Matrix")  
+## Transpose of a Matrix  
 def transpose(mat) : 
     n=len(mat) 
     for i in range(n) : 
@@ -112,3 +109,17 @@ def transpose(mat) :
 
 ## Rotate matrix anticlockwise by 90 degree 
 # Naive solution 
+def rotate90(mat) : 
+    n=len(mat)
+    temp=[[0 for _ in range(n)] for _ in range(n)]  
+    for i in range(n) : 
+        for j in range(n) : 
+            temp[n-j-1][i]=mat[i][j] 
+    for i in range(n) : 
+        for j in range(n) : 
+            mat[i][j]=temp[i][j]
+    return mat 
+
+    
+arr=[[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]] 
+print(rotate90(arr)) 
