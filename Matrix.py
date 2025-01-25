@@ -156,3 +156,16 @@ def spiral(mat) :
             for i in range(bottom, top-1, -1) : # left column (reversed order)
                 print(mat[i][left], end=" ") 
             left+=1  
+
+
+## Search in row-wise and column-wise sorted matrix 
+# Naive approach 
+def searchInMat(mat,x) : 
+    rows=len(mat) 
+    cols=len(mat[0])
+    for i in range(rows) :
+        for j in range(cols) : 
+            if mat[i][j]==x : 
+                print("Found at (", i, ',', j, ")")
+                return 
+    return "Not Found"
