@@ -166,6 +166,20 @@ def searchInMat(mat,x) :
     for i in range(rows) :
         for j in range(cols) : 
             if mat[i][j]==x : 
-                print("Found at (", i, ',', j, ")")
-                return 
+                return f"Found at ({i},{j})"
     return "Not Found"
+
+# Efficient approach 
+def searchinMatrix(mat,x) : 
+    rows=len(mat) 
+    cols=len(mat[0]) 
+    i=0 
+    j=cols-1 
+    while i<rows and j>=0 : 
+        if mat[i][j]==x : 
+            return f"Found at ({i},{j})"
+        elif mat[i][j]>x : 
+            j-=1 
+        else : 
+            i+=1 
+    return "Not Found" 
