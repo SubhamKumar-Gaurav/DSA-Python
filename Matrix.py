@@ -120,7 +120,7 @@ def rotate90(mat) :
             mat[i][j]=temp[i][j]
     return mat 
 
-
+# Efficient solution 
 def rotate90acc(mat) : 
     n=len(mat)
     for i in range(n) :   ## Transpose 
@@ -131,3 +131,28 @@ def rotate90acc(mat) :
         for j in range(n//2) : 
             mat[j][i], mat[n-j-1][i] = mat[n-j-1][i], mat[j][i] 
     return mat 
+ 
+
+## Spiral Traversal of a matrix 
+def spiral(mat) : 
+    rows=len(mat) 
+    cols=len(mat[0]) 
+    top=0 
+    left=0 
+    right=cols-1 
+    bottom=rows-1 
+    while top<=bottom and left<=right : 
+        for i in range(left, right+1) :    # top row 
+            print(mat[top][i], end=" ") 
+        top+=1 
+        for i in range(top, bottom+1) :    # right column 
+            print(mat[i][right], end=" ")
+        right-=1 
+        if top<=bottom : 
+            for i in range(right, left-1, -1) :  # bottom row (reversed order)
+                print(mat[bottom][i], end=" ") 
+            bottom-=1 
+        if left<=right : 
+            for i in range(bottom, top-1, -1) : # left column (reversed order)
+                print(mat[i][left], end=" ") 
+            left+=1  
