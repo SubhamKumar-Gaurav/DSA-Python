@@ -120,6 +120,14 @@ def rotate90(mat) :
             mat[i][j]=temp[i][j]
     return mat 
 
-    
-arr=[[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]] 
-print(rotate90(arr)) 
+
+def rotate90acc(mat) : 
+    n=len(mat)
+    for i in range(n) :   ## Transpose 
+        for j in range(i+1,n) : 
+            mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
+
+    for i in range(n) :   ## reversing columns 
+        for j in range(n//2) : 
+            mat[j][i], mat[n-j-1][i] = mat[n-j-1][i], mat[j][i] 
+    return mat 
