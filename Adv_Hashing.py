@@ -32,3 +32,17 @@ def intersection_a_b(arr1,arr2) :
                 res+=1 
                 break 
     return res 
+
+# Efficient approach 
+def inter_section(arr1, arr2) : 
+    m=len(arr1) 
+    n=len(arr2) 
+    us=set() 
+    for i in arr1 : 
+        us.add(i) 
+    res=0 
+    for i in range(n) : 
+        if arr2[i] in us : 
+            res+=1 
+            us.remove(arr2[i]) 
+    return res 
