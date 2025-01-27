@@ -80,3 +80,14 @@ def unionSize(arr1, arr2) :
     for i in arr2 : 
         us.add(i) 
     return len(us) 
+
+
+## Pair with given sum 
+# Naive approach 
+def pairSum(arr, x)  : 
+    n=len(arr)
+    for i in range(n) :  
+        for j in range(i+1, n) : 
+            if arr[i]+arr[j]==x : 
+                return True 
+    return False 
