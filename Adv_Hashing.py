@@ -46,3 +46,26 @@ def inter_section(arr1, arr2) :
             res+=1 
             us.remove(arr2[i]) 
     return res 
+
+
+
+## Union of two unsorted array  
+# Naive approach 
+def unionSize(arr1, arr2) : 
+    m=len(arr1)
+    n=len(arr2)
+    c=[0]*(m+n) 
+    for i in range(m) :
+        c[i]=arr1[i] 
+    for i in range(n) : 
+        c[m+i]=arr2[i]
+    res=0 
+    for i in range(m+n) : 
+        flag=False 
+        for j in range(i) : 
+            if c[i]==c[j] : 
+                flag=True 
+                break 
+        if flag==False : 
+            res+=1 
+    return res 
