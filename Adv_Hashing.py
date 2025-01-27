@@ -110,4 +110,16 @@ def isZero(arr) :
         for j in range(i+1,n)  : 
             if sum(arr[i:j+1])==0 : 
                 return True 
+    return False  
+
+# Efficient approach 
+def isZeroSum(arr) : 
+    n=len(arr) 
+    h=set() 
+    preSum=0 
+    for i in range(n) : 
+        preSum+=arr[i] 
+        if preSum==0 or preSum in h : 
+            return True 
+        h.add(preSum) 
     return False 
