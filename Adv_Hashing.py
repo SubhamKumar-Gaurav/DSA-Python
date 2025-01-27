@@ -91,3 +91,12 @@ def pairSum(arr, x)  :
             if arr[i]+arr[j]==x : 
                 return True 
     return False 
+
+# Efficient approach 
+def pairSum(arr, x)  : 
+    us=set() 
+    for i in arr : 
+        if x-i in us : 
+            return True
+        us.add(i) 
+    return False 
