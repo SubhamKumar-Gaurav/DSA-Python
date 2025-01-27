@@ -123,3 +123,16 @@ def isZeroSum(arr) :
             return True 
         h.add(preSum) 
     return False 
+
+
+## Subarray with given Sum 
+# Naive approach
+def isSubSum(arr, x) : 
+    n=len(arr) 
+    for i in range(n) : 
+        curr=0 
+        for j in range(i,n) : 
+            curr+=arr[j]
+            if curr==x : 
+                return True 
+    return False 
