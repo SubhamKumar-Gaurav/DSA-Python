@@ -100,3 +100,14 @@ def pairSum(arr, x)  :
             return True
         us.add(i) 
     return False 
+
+
+## Subarray with 0 sum   
+# naive approach 
+def isZero(arr) : 
+    n=len(arr) 
+    for i in range(n) : 
+        for j in range(i+1,n)  : 
+            if sum(arr[i:j+1])==0 : 
+                return True 
+    return False 
