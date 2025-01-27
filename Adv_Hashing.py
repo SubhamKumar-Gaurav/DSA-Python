@@ -136,3 +136,16 @@ def isSubSum(arr, x) :
             if curr==x : 
                 return True 
     return False 
+
+# Efficient approach 
+def isSubarrSum(arr, x) : 
+    n=len(arr) 
+    s, curr = 0, 0 
+    for e in range(n) : 
+        curr+=arr[e] 
+        while curr>x : 
+            curr-=arr[s] 
+            s+=1 
+        if curr==x : 
+            return True 
+    return False 
