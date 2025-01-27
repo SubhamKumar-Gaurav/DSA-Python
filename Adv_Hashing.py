@@ -69,3 +69,14 @@ def unionSize(arr1, arr2) :
         if flag==False : 
             res+=1 
     return res 
+
+# Efficient approach 
+def unionSize(arr1, arr2) : 
+    m=len(arr1) 
+    n=len(arr2) 
+    us=set()
+    for i in arr1 : 
+        us.add(i) 
+    for i in arr2 : 
+        us.add(i) 
+    return len(us) 
