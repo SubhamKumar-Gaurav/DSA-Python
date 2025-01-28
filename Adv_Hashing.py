@@ -317,3 +317,19 @@ def countDistinct(arr, k) :
         if mp[x]==0 : 
             del mp[x] 
         print(len(mp))
+
+
+## More than n/k occurences 
+def NbyK_occ(arr, k) : 
+    n=len(arr) 
+    arr.sort() 
+    i=1 
+    count=1 
+    while (i<n) : 
+        while i<n and arr[i]==arr[i-1] : 
+            count+=1 
+            i+=1 
+        if count > n//k : 
+            print(arr[i-1], end=" ") 
+        count=1 
+        i+=1 
