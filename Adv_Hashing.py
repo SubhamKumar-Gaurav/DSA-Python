@@ -282,3 +282,17 @@ def findLongest(arr) :
             curr=1 
     res=max(res, curr) 
     return res 
+
+# Efficient approach 
+def findLongest(arr) : 
+    s=set() 
+    res=0 
+    for i in arr : 
+        s.add(i) 
+    for i in arr : 
+        if (i-1) not in s : 
+            curr=1 
+            while curr+i in s : 
+                curr+=1 
+            res=max(res, curr) 
+    return res 
