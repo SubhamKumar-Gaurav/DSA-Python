@@ -162,3 +162,17 @@ def isPalPer(s) :
             if odd>1 : 
                 return False 
     return True 
+
+
+## Longest Subarray with given sum 
+# Naive approach 
+def longestSubarrayWithSum(arr, x) : 
+    n=len(arr) 
+    res=0 
+    for i in range(n) : 
+        curr_sum=0 
+        for j in range(i,n) : 
+            curr_sum+=arr[j] 
+            if curr_sum==x : 
+                res=max(res,j-i+1) 
+    return res 
