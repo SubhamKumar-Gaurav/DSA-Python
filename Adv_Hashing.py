@@ -211,3 +211,22 @@ def longest01Sub(arr) :
             if c0==c1 : 
                 res=max(res, j-i+1 )
     return res 
+
+# Efficient approach 
+def longest01Sub(arr) : 
+    n=len(arr) 
+    for i in range(n) : 
+        if arr[i]==0 : 
+            arr[i]=-1 
+    mydict=dict() 
+    x=0 
+    res=0 
+    for i in range(n) : 
+        x+=arr[i] 
+        if x==0 : 
+            res=i+1 
+        if x in mydict : 
+            res=max(res, i-mydict[x]) 
+        else : 
+            mydict[x]=i 
+    return res 
