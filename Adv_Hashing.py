@@ -333,3 +333,10 @@ def NbyK_occ(arr, k) :
             print(arr[i-1], end=" ") 
         count=1 
         i+=1 
+    
+# Efficient method 
+def printNbyK(arr, k) : 
+    c=Counter(arr) 
+    for x in c : 
+        if c[x] > n//k : 
+            print(x, end=" ")
