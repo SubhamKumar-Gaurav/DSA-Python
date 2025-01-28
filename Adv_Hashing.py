@@ -246,3 +246,25 @@ def longestCommonSpan(arr1, arr2) :
             if sum1==sum2 : 
                 res=max(res, j-i+1) 
     return res 
+
+# Efficient approach 
+def longestComSpan(arr1, arr2) :
+    n=len(arr1) 
+    temp=[]
+    for i in range(n) : 
+        temp.append(arr1[i]-arr2[i])
+    pre_sum=0 
+    mydict=dict() 
+    res=0 
+    for i in range(n) : 
+        pre_sum+=temp[i]
+        if pre_sum==0 : 
+            res=i+1  
+        if pre_sum in mydict : 
+            res=max(res, i-mydict[pre_sum])
+        else : 
+            mydict[pre_sum]=i 
+    return res 
+ar1=[0,1,0,0,0,0]        
+ar2=[1,0,1,0,0,1]        
+print(longestComSpan(ar1, ar2)) 
