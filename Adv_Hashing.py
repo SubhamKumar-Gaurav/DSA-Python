@@ -265,6 +265,20 @@ def longestComSpan(arr1, arr2) :
         else : 
             mydict[pre_sum]=i 
     return res 
-ar1=[0,1,0,0,0,0]        
-ar2=[1,0,1,0,0,1]        
-print(longestComSpan(ar1, ar2)) 
+
+
+## Longest consecutive subsequence 
+# Naive appraoch 
+def findLongest(arr) : 
+    n=len(arr) 
+    arr.sort() 
+    res=1 
+    curr=1 
+    for i in range(1,n) : 
+        if arr[i]==arr[i-1]+1 : 
+            curr+=1 
+        else : 
+            res=max(res, curr) 
+            curr=1 
+    res=max(res, curr) 
+    return res 
