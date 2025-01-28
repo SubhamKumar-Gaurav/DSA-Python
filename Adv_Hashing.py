@@ -193,3 +193,21 @@ def longestSubSum(arr, x) :
         if pre_sum-x in mydict : 
             res=max(res, i-mydict[pre_sum-x]) 
     return res 
+
+
+## Longest subarray with equal number of zero and one 
+# Naive approach 
+def longest01Sub(arr) : 
+    n=len(arr) 
+    res=0 
+    for i in range(n) :
+        c0=0 
+        c1=0 
+        for j in range(i,n) : 
+            if arr[j]==0 : 
+                c0+=1 
+            else : 
+                c1+=1 
+            if c0==c1 : 
+                res=max(res, j-i+1 )
+    return res 
