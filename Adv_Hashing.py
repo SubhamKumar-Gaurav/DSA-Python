@@ -176,3 +176,20 @@ def longestSubarrayWithSum(arr, x) :
             if curr_sum==x : 
                 res=max(res,j-i+1) 
     return res 
+
+
+# Efficient approach 
+def longestSubSum(arr, x) : 
+    n=len(arr) 
+    mydict={}
+    pre_sum=0 
+    res=0 
+    for i in range(n) : 
+        pre_sum+=arr[i] 
+        if pre_sum==x : 
+            res=i+1 
+        if pre_sum not in mydict : 
+            mydict[pre_sum]=i 
+        if pre_sum-x in mydict : 
+            res=max(res, i-mydict[pre_sum-x]) 
+    return res 
