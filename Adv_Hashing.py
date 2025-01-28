@@ -303,3 +303,17 @@ def findLongest(arr) :
 def printDistinct(arr, k) : 
     for i in range(n-k+1) : 
         print(len(set(arr[i:i+k])))  
+
+# Efficient solution 
+from collections import Counter 
+def countDistinct(arr, k) : 
+    n=len(arr)
+    mp=Counter(arr[:k])
+    print(len(mp)) 
+    for i in range(k,n) : 
+        x=arr[i-k]   # first element of prev window 
+        mp[x]-=1     
+        mp[arr[i]]+=1  # last element of current window 
+        if mp[x]==0 : 
+            del mp[x] 
+        print(len(mp))
