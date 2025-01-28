@@ -296,3 +296,10 @@ def findLongest(arr) :
                 curr+=1 
             res=max(res, curr) 
     return res 
+
+
+## Count distinct elements in every window 
+# Naive solution 
+def printDistinct(arr, k) : 
+    for i in range(n-k+1) : 
+        print(len(set(arr[i:i+k])))  
