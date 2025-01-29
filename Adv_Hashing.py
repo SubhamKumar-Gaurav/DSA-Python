@@ -340,3 +340,31 @@ def printNbyK(arr, k) :
     for x in c : 
         if c[x] > n//k : 
             print(x, end=" ")
+
+
+## More than n/k occurences  [ O(nk) solution ]  
+# Using mooore's voting algorithm 
+from collections import defaultdict 
+def printNbyK(arr,k) : 
+    n=len(arr) 
+    m={} 
+    for num in arr : 
+        if num in m : 
+            m[num]+=1 
+        elif len(m)<k-1 : 
+            m[num]=1 
+        else : 
+            keys_to_delete=[] 
+            for key in list(m.keys()) : 
+                m[key]-=1 
+                if m[key]==0 : 
+                    keys_to_delete.append(key) 
+            for key in keys_to_delete : 
+                del m[key] 
+    count_map=defaultdict(int)  
+    for num in arr : 
+        if num in m : 
+            count_map[num]+=1 
+    for key, count in count_map.items() : 
+        if count>n//k : 
+            print(key, end=" ") 
