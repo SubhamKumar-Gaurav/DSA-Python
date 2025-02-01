@@ -77,3 +77,23 @@ def RabinKarp(txt, pat, q) :
     if flag : 
         print("Not Found")
     
+
+## Longest Proper Prefix Suffix array 
+# Naive solution 
+def longProPrefixSuffix(str, n) : 
+    for length in range(n-1, -1, -1) : 
+        for j in range(length) : 
+            if str[j]!=str[n-length+j] : 
+                break 
+        else : 
+            return length 
+    return 0 
+def fillLPS(str, lps) : 
+    lps[0]=0 
+    for i in range(1, len(str)) : 
+        lps[i]=longProPrefixSuffix(str, i+1) 
+    return lps
+s="abbabb" 
+lps=[0]*len(s)
+fillLPS(s, lps)
+print(lps)
