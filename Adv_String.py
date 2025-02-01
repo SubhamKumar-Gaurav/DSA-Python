@@ -93,10 +93,10 @@ def fillLPS(str, lps) :
     for i in range(1, len(str)) : 
         lps[i]=longProPrefixSuffix(str, i+1) 
     return lps
-s="abbabb" 
-lps=[0]*len(s)
-fillLPS(s, lps)
-print(lps)
+# s="abbabb" 
+# lps=[0]*len(s)
+# fillLPS(s, lps)
+# print(lps)
 
 # Efficient solution 
 def fillLPS(s, lps ) : 
@@ -116,6 +116,6 @@ def fillLPS(s, lps ) :
             else : 
                 length=lps[length-1] 
     return lps 
-s="abacabad" 
-lps=[0]*len(s) 
-print(fillLPS(s, lps)) 
+# s="abacabad" 
+# lps=[0]*len(s) 
+# print(fillLPS(s, lps)) 
