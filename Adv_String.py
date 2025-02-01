@@ -180,4 +180,25 @@ def isPresent(pat, txt) :
         if areAnagram(pat, txt, i) : 
             return True 
     return False 
-    
+
+# Efficient solution 
+CHAR=256 
+def areSame(CT, CP) : 
+    for i in range(CHAR) : 
+        if CT[i]!=CP[i] : 
+            return False 
+    return True 
+def isAnagram(txt, pat) : 
+    n=len(txt)
+    m=len(pat) 
+    CT=[0]*CHAR 
+    CP=[0]*CHAR 
+    for i in range(m) : 
+        CT[ord(txt[i])]+=1 
+        CP[ord(pat[i])]+=1 
+    for i in range(m,n) : 
+        if areSame(CT, CP) : 
+            return True 
+        CT[ord(txt[i])]+=1 
+        CT[ord(txt[i-m])]-=1 
+    return False 
