@@ -158,3 +158,26 @@ def KMP(pattern, text) :
                 i+=1 
             else : 
                 j=lps[j-1] 
+
+
+## Anagram    
+# Naive solution 
+CHAR=256 
+def areAnagram(pat, txt, i) : 
+    count=[0]*CHAR 
+    for j in range(len(pat)) : 
+        count[ord(pat[j])]+=1 
+        count[ord(txt[i+j])]-=1  
+    for j in range(CHAR) : 
+        if count[j]!=0 : 
+            return False 
+    return True 
+
+def isPresent(pat, txt) : 
+    n=len(txt) 
+    m=len(pat) 
+    for i in range(n-m+1) : 
+        if areAnagram(pat, txt, i) : 
+            return True 
+    return False 
+    
