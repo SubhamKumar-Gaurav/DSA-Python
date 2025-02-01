@@ -97,3 +97,25 @@ s="abbabb"
 lps=[0]*len(s)
 fillLPS(s, lps)
 print(lps)
+
+# Efficient solution 
+def fillLPS(s, lps ) : 
+    n=len(s)
+    lps[0]=0 
+    i=1 
+    length=0 
+    while i<n : 
+        if s[i]==s[length] : 
+            length+=1 
+            lps[i]=length 
+            i+=1 
+        else : 
+            if length==0 : 
+                lps[i]=0 
+                i+=1 
+            else : 
+                length=lps[length-1] 
+    return lps 
+s="abacabad" 
+lps=[0]*len(s) 
+print(fillLPS(s, lps)) 
