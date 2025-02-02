@@ -228,4 +228,21 @@ def lexRank(s) :
         for j in range(ord(s[i]), CHAR) : 
             count[j]-=1 
     return res 
-print(lexRank("STRING")) 
+
+
+## Longest Substring with distinct characters 
+def areDistinct(s, i, j) : 
+    visited=[0]*256 
+    for k in range(i, j+1) : 
+        if visited[ord(s[k])] : 
+            return False 
+        visited[ord(s[k])]=True 
+    return True 
+def longestDistinct(s) :  
+    n=len(s) 
+    res=0 
+    for i in range(n) : 
+        for j in range(i, n) : 
+            if areDistinct(s, i, j) : 
+                res=max(res, j-i+1) 
+    return res 
