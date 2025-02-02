@@ -248,8 +248,7 @@ def longestDistinct(s) :
                 res=max(res, j-i+1) 
     return res 
  
-
-# Better approach 
+# Better approach     Time : O(n^2)
 def longestDistinctChar(s) : 
     n=len(s) 
     res=0 
@@ -261,4 +260,17 @@ def longestDistinctChar(s) :
             else : 
                 res=max(res, j-i+1) 
                 visited[ord(s[j])]=True 
+    return res 
+
+# Efficient approach         Time : O(n)
+def lSubDistChar(s) : 
+    n=len(s) 
+    res=0 
+    prev=[-1]*256 
+    i=0 
+    for j in range(n) : 
+        i=max(i, prev[ord(s[j])]+1) 
+        maxEnd=j-i+1 
+        res=max(res, maxEnd) 
+        prev[ord(s[j])]=j 
     return res 
