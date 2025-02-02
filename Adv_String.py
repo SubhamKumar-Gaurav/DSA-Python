@@ -202,3 +202,30 @@ def isAnagram(txt, pat) :
         CT[ord(txt[i])]+=1 
         CT[ord(txt[i-m])]-=1 
     return False 
+
+
+## Lexicographic rank of a string 
+# Efficient approach - Assumption : No duplicate characters
+def fact(n) : 
+    if n==0 : 
+        return 1 
+    return n*fact(n-1)
+CHAR=256 
+def lexRank(s) :  
+    res=1 
+    n=len(s) 
+    mul=fact(n) 
+    count=[0]*CHAR 
+    for i in range(n) : 
+        count[ord(s[i])]+=1 
+
+    for i in range(1, CHAR) : 
+        count[i]+=count[i-1] 
+
+    for i in range(n-1) : 
+        mul = mul//(n-i)   
+        res+=count[ord(s[i])-1] * mul 
+        for j in range(ord(s[i]), CHAR) : 
+            count[j]-=1 
+    return res 
+print(lexRank("STRING")) 
