@@ -109,3 +109,33 @@ head.next.next.next.next.next.next = Node(70)   # 70 to 30 loop
 head.next.next.next.next.next.next.next = head.next.next  # when we want to create a loop, we need to link the reference 
 print("Detect loop using Floyd's algo : ", isLoopFloyd(head)) 
 print("\n") 
+# print(head) - Don't try this line for a LL with loop. Since head.next is never equal to None. it will return for infinite time
+
+
+## Detect and Remove loop in Linked List 
+def detectRemoveLoops(head) : 
+    slow=head 
+    fast=head 
+    while fast!=None and fast.next!=None : 
+        slow=slow.next 
+        fast=fast.next.next 
+        if slow==fast : 
+            break 
+    if slow!=fast : 
+        return 
+    while slow.next!=fast.next : 
+        slow=slow.next 
+        fast=fast.next  
+    fast.next=None 
+head = Node(10)
+head.next = Node(20)
+head.next.next = Node(30)
+head.next.next.next = Node(40)
+head.next.next.next.next = Node(50)
+head.next.next.next.next.next = Node(60)
+head.next.next.next.next.next.next = Node(70)   
+head.next.next.next.next.next.next.next = head.next.next # 70 to 30 loop 
+detectRemoveLoops(head) 
+print("After removing the loop")
+printList(head) 
+print("\n") 
