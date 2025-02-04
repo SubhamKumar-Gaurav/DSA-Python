@@ -144,7 +144,7 @@ print("\n")
 
 ## Intersection point of two linked list  
 # Approach 1 : Using a set 
-def getIntersection(head1, head2) : 
+def getIntersection1(head1, head2) : 
     s=set() 
     curr=head1 
     while curr!=None : 
@@ -169,6 +169,35 @@ head1.next.next.next.next=Node(15)
 head2=Node(9) 
 head2.next=head1.next.next.next 
 
-print("Intersection point of Linked List : ")
-print(getIntersection(head1, head2)) 
+print("Intersection point of Linked List: Using Hashing ")
+print(getIntersection1(head1, head2)) 
+print("\n") 
+
+# Approach 2 : in constant space 
+def getIntersection2(d, head1, head2) : 
+    curr1=head1 
+    curr2=head2 
+    for i in range(d) : 
+        if curr1==None : 
+            return -1 
+        curr1=curr1.next 
+    while curr1!=None and curr2!=None : 
+        if curr1==curr2.next : 
+            return curr1.key 
+        curr1=curr1.next 
+        curr2.next 
+## LL - 1
+head1=Node(5)
+head1.next=Node(8)
+head1.next.next=Node(7)
+head1.next.next.next=Node(10)
+head1.next.next.next.next=Node(12)
+head1.next.next.next.next=Node(15) 
+
+# LL - 2 
+head2=Node(9) 
+head2.next=head1.next.next.next 
+
+print("Intersection point of Linked List: In constant space ")
+print(getIntersection2(2, head1, head2)) 
 print("\n") 
