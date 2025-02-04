@@ -127,6 +127,7 @@ def detectRemoveLoops(head) :
         slow=slow.next 
         fast=fast.next  
     fast.next=None 
+
 head = Node(10)
 head.next = Node(20)
 head.next.next = Node(30)
@@ -138,4 +139,36 @@ head.next.next.next.next.next.next.next = head.next.next # 70 to 30 loop
 detectRemoveLoops(head) 
 print("After removing the loop")
 printList(head) 
+print("\n") 
+
+
+## Intersection point of two linked list  
+# Approach 1 : Using a set 
+def getIntersection(head1, head2) : 
+    s=set() 
+    curr=head1 
+    while curr!=None : 
+        s.add(curr) 
+        curr=curr.next 
+    curr=head2 
+    while curr!=None : 
+        if curr in s : 
+            return curr.key 
+        curr=curr.next 
+    return -1 
+
+## LL - 1
+head1=Node(5)
+head1.next=Node(8)
+head1.next.next=Node(7)
+head1.next.next.next=Node(10)
+head1.next.next.next.next=Node(12)
+head1.next.next.next.next=Node(15) 
+
+# LL - 2 
+head2=Node(9) 
+head2.next=head1.next.next.next 
+
+print("Intersection point of Linked List : ")
+print(getIntersection(head1, head2)) 
 print("\n") 
