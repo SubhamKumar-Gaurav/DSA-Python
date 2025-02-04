@@ -230,3 +230,30 @@ swapNodes(head)
 print("Swap nodes pairwise: Naive")
 printList(head) 
 print("\n") 
+
+# Efficient approach 
+def pairwiseSwap(head) : 
+    if head==None or head.next==None : 
+        return head 
+    curr=head.next.next 
+    prev=head 
+    head=head.next 
+    head.next=prev 
+    while curr!=None and curr.next!=None : 
+        prev.next = curr.next 
+        prev=curr 
+        next=curr.next.next 
+        curr.next.next=curr 
+        curr=next 
+    prev.next=curr 
+    return head 
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30)
+head.next.next.next=Node(40)
+head.next.next.next.next=Node(50) 
+head.next.next.next.next.next=Node(60) 
+new = pairwiseSwap(head) 
+print("Pair wise swap: Efficient")
+printList(new) 
+print("\n") 
