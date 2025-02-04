@@ -20,8 +20,9 @@ class Node :
 def printList(head) : 
     curr=head 
     while curr!=None : 
-        print(curr.key) 
+        print(curr.key, end=" ") 
         curr=curr.next 
+
 
 ## Reverse a linked list in group of size k 
 # Recursive solution  
@@ -50,7 +51,7 @@ head.next.next.next.next.next = Node(60)
 head.next.next.next.next.next.next = Node(70)
 head=recRevK(head, 3)
 printList(head) 
-print() 
+print("\n") 
 
 # Iterative solution 
 def iteRevK(head, k) : 
@@ -81,6 +82,30 @@ head.next.next.next = Node(40)
 head.next.next.next.next = Node(50)
 head.next.next.next.next.next = Node(60)
 head.next.next.next.next.next.next = Node(70)
+head.next.next.next.next.next.next.next = Node(80)
 head=iteRevK(head, 3) 
 printList(head)
-print() 
+print("\n") 
+
+
+## Detect loop using floyd's cycle detection algorithm    
+def isLoopFloyd(head) : 
+    slow=head 
+    fast=head  
+    while fast!=None and fast.next!=None : 
+        slow=slow.next 
+        fast=fast.next.next 
+        if slow==fast : 
+            return True  
+    return False 
+
+head = Node(10)
+head.next = Node(20)
+head.next.next = Node(30)
+head.next.next.next = Node(40)
+head.next.next.next.next = Node(50)
+head.next.next.next.next.next = Node(60)
+head.next.next.next.next.next.next = Node(70)   # 70 to 30 loop 
+head.next.next.next.next.next.next.next = head.next.next  # when we want to create a loop, we need to link the reference 
+print("Detect loop using Floyd's algo : ", isLoopFloyd(head)) 
+print("\n") 
