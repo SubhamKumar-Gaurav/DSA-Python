@@ -173,6 +173,7 @@ print("Intersection point of Linked List: Using Hashing ")
 print(getIntersection1(head1, head2)) 
 print("\n") 
 
+
 # Approach 2 : in constant space 
 def getIntersection2(d, head1, head2) : 
     curr1=head1 
@@ -200,4 +201,32 @@ head2.next=head1.next.next.next
 
 print("Intersection point of Linked List: In constant space ")
 print(getIntersection2(2, head1, head2)) 
+print("\n") 
+
+
+
+## Segregate even and add nodes 
+# Naive approach - traverse the list first and mark the end pointer , then agaib while traversing if odd element encountered 
+# then move to the end and update the pointers accordingly 
+
+# Efficient approach 
+ # Doubt --------------->>>>>>>>>>> 
+
+
+## Pair wise swap nodes 
+# Naive approach 
+def swapNodes(head) : 
+    curr=head 
+    while curr!=None and curr.next!=None : 
+        curr.key, curr.next.key = curr.next.key, curr.key 
+        curr=curr.next.next 
+    return head 
+head=Node(10) 
+head.next=Node(20) 
+head.next.next=Node(30) 
+head.next.next.next=Node(40) 
+head.next.next.next.next=Node(50)  
+swapNodes(head)
+print("Swap nodes pairwise: Naive")
+printList(head) 
 print("\n") 
