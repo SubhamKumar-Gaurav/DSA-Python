@@ -297,6 +297,7 @@ def clone(h1) :
         curr=curr.next 
     return h2 
 
+
 ## Merge two sorted linked lists 
 def sortedMerge(a, b) : 
     if a==None : 
@@ -325,3 +326,38 @@ def sortedMerge(a, b) :
     else : 
         tail.next = a 
     return head 
+
+
+## Palindrome Linked List 
+# Naive approach (Using stack) 
+def isPalindromeStack(head) : 
+    stack=[]
+    curr=head 
+    while curr!=None : 
+        stack.append(curr.key)
+        curr=curr.next 
+    curr=head 
+    while curr!=None : 
+        if stack.pop()!=curr.key : 
+            return False 
+        curr=curr.next 
+    return True 
+
+
+from Linked_List_2 import reverseList2
+# Efficient approach 
+def isPalindromeSF(head) : 
+    if head==None : 
+        return True 
+    slow, fast = head, head 
+    while fast.next!=None and fast.next.next!=None : 
+        slow=slow.next 
+        fast=fast.next.next 
+    rev=reverseList2(slow.next) 
+    curr=head 
+    while rev!=head : 
+        if rev.data!=head : 
+            return False 
+        rev=rev.next 
+        curr=curr.next 
+    return True 
