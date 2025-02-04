@@ -257,3 +257,42 @@ new = pairwiseSwap(head)
 print("Pair wise swap: Efficient")
 printList(new) 
 print("\n") 
+
+
+
+## Clone a linked list with random pointer  
+# Naive Approach  (Using Hashing)
+def cloneHash(h1) : 
+    d={None : None }
+    curr=head 
+    while curr!=None : 
+        d[curr]=Node(curr.key) 
+        curr=curr.next 
+    curr=head 
+    while curr!=None : 
+        d[curr].next = d[curr.next] 
+        d[curr].random = d[curr.random] 
+        curr=curr.next 
+    return d[h1] 
+
+# Efficient approach 
+def clone(h1) : 
+    curr=h1 
+    while curr!=None : 
+        next=curr.next 
+        curr.next = Node(curr.key) 
+        curr.next.next = next 
+        curr=next 
+    curr=h1 
+    while curr!=None : 
+        curr.next.random=curr.random.next 
+        curr=curr.next.next 
+    h2=h1.next 
+    clone=h2 
+    curr=h1 
+    while curr!=None : 
+        curr.next=curr.next.next 
+        clone.next=None if clone.next==None else clone.next.next 
+        clone=clone.next 
+        curr=curr.next 
+    return h2 
