@@ -153,7 +153,7 @@ arr=[15, 10, 18, 12, 4, 6, 2, 8]
 prevGreat1(arr)
 print("\n") 
 
-
+# Efficient solution
 def prevGreat2(arr) : 
     n=len(arr) 
     st=[]  
@@ -168,4 +168,41 @@ def prevGreat2(arr) :
         st.append(arr[i])
 print("Previous greater element: Efficient")
 prevGreat2(arr) 
+print("\n")
+
+
+## Next greater element 
+# Naive solution 
+def nextGreater1(arr) : 
+    n=len(arr) 
+    for i in range(n) : 
+        ng=-1 
+        for j in range(i+1, n) : 
+            if arr[j]>arr[i] : 
+                ng=arr[j] 
+                break 
+        print(ng, end=" ") 
+print("Next greater element: Naive") 
+arr=[5, 15, 10, 8, 6, 12, 7] 
+nextGreater1(arr)
+print("\n")
+
+
+def nextGreater2(arr) : 
+    n=len(arr) 
+    st=[] 
+    ans=[None]*n
+    for i in reversed(range(n)) : 
+        while len(st)>0 and st[-1]<=arr[i] : 
+            st.pop() 
+        if len(st)==0 : 
+            ans[i]=-1 
+        else : 
+            ans[i]=st[-1] 
+        st.append(arr[i]) 
+    for x in ans : 
+        print(x, end=" ") 
+print("Next greater element: Efficient") 
+arr=[5, 15, 10, 8, 6, 12, 7]
+nextGreater2(arr)
 print("\n")
