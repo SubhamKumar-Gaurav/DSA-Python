@@ -14,6 +14,7 @@
 #   Evaluation of Prefix 
 
 
+
 ## Implement two stacks in an array 
 class TwoStacks : 
     def __init__(self, n) :  
@@ -67,3 +68,33 @@ print(ts.push2(60))
 print(ts.pop1()) 
 print(ts.pop2()) 
 print("\n") 
+
+
+
+## Implement K stacks in an array   
+class KStacks : 
+    def __init__(self, n, k) : 
+        self.cap=n 
+        self.k=k 
+        self.arr=[None]*n 
+        self.top=[-1]*k 
+        self.next=[i+1 for i in range(n)] 
+        self.next[n-1]=-1 
+        self.free_top=0 
+    
+    def push(self, sn, x) : 
+        i=self.free_top 
+        self.free_top=self.next[self.free_top] 
+        self.arr[i]=x 
+        self.next[i]=self.top[sn] 
+        self.top[sn]=i 
+    
+    def pop(self, sn) : 
+        prev_top=self.top[sn] 
+        self.top[sn]=self.next[prev_top] 
+        self.next[prev_top]=self.free_top 
+        self.free_top=prev_top 
+        return self.arr[prev_top] 
+    
+    def isEmpty(self, sn) : 
+        return self.top[sn]==-1 
