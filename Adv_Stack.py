@@ -104,17 +104,34 @@ class KStacks :
 ## Stock Span Problem 
 # Naive approach 
 def stockSpan1(arr) : 
-    n=len(arr)
-    res=[] 
+    n=len(arr) 
     for i in range(n) :
         span=1 
         j=i-1 
         while j>=0 and arr[i]>=arr[j] : 
             span+=1 
             j-=1 
-        res.append(span)
-    return res 
+        print(span, end=" ")
 print("Stock Span Problem: Naive") 
 arr=[13, 15, 12, 14, 16, 8, 6, 4, 10, 30] 
-print(stockSpan1(arr))
+stockSpan1(arr)
+print("\n") 
+
+# Efficient approach 
+def stockSpan2(arr) : 
+    n=len(arr)
+    st=[] 
+    st.append(0) 
+    print(1, end=" ") 
+    for i in range(1, n) : 
+        while len(st)>0 and arr[st[-1]]<=arr[i] : 
+            st.pop() 
+        if len(st)==0 : 
+            span=(i+1) 
+        else : 
+            span=i-st[-1] 
+        print(span, end=" ") 
+        st.append(i) 
+print("Stock Span Problem: Efficient")
+stockSpan2(arr)
 print("\n") 
