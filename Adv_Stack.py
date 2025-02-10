@@ -98,3 +98,23 @@ class KStacks :
     
     def isEmpty(self, sn) : 
         return self.top[sn]==-1 
+
+
+
+## Stock Span Problem 
+# Naive approach 
+def stockSpan1(arr) : 
+    n=len(arr)
+    res=[] 
+    for i in range(n) :
+        span=1 
+        j=i-1 
+        while j>=0 and arr[i]>=arr[j] : 
+            span+=1 
+            j-=1 
+        res.append(span)
+    return res 
+print("Stock Span Problem: Naive") 
+arr=[13, 15, 12, 14, 16, 8, 6, 4, 10, 30] 
+print(stockSpan1(arr))
+print("\n") 
