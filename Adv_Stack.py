@@ -135,3 +135,37 @@ def stockSpan2(arr) :
 print("Stock Span Problem: Efficient")
 stockSpan2(arr)
 print("\n") 
+
+
+## Previous greater element 
+# Naive solution 
+def prevGreat1(arr) : 
+    n=len(arr)
+    for i in range(n) : 
+        pg=-1 
+        for j in range(i-1, -1, -1) : 
+            if arr[j]>arr[i] : 
+                pg=arr[j] 
+                break 
+        print(pg, end=" ") 
+print("Previous greater element: Naive")
+arr=[15, 10, 18, 12, 4, 6, 2, 8] 
+prevGreat1(arr)
+print("\n") 
+
+
+def prevGreat2(arr) : 
+    n=len(arr) 
+    st=[]  
+    for i in range(n) : 
+        while len(st)>0 and st[-1]<=arr[i] : 
+            st.pop() 
+        if len(st)==0 : 
+            ans=-1
+        else : 
+            ans=st[-1] 
+        print(ans, end=" ")
+        st.append(arr[i])
+print("Previous greater element: Efficient")
+prevGreat2(arr) 
+print("\n")
