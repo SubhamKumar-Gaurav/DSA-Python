@@ -206,3 +206,58 @@ print("Next greater element: Efficient")
 arr=[5, 15, 10, 8, 6, 12, 7]
 nextGreater2(arr)
 print("\n")
+
+
+
+## Largest Area in Histogram 
+# Naive approach 
+def areaHist(arr) : 
+    n=len(arr)
+    res=0 
+    for i in range(n) : 
+        curr=arr[i] 
+        for j in range(i-1, -1, -1) : 
+            if arr[j]>=arr[i] : 
+                curr+=arr[i] 
+            else : 
+                break
+        for j in range(i+1,n) : 
+            if arr[j]>=arr[i] : 
+                curr+=arr[i] 
+            else : 
+                break 
+        res=max(res, curr) 
+    return res 
+print("Largest area in Histogram: Naive")
+arr=[6,2,5,4,1,5,6] 
+print(areaHist(arr))
+print("\n") 
+
+# Efficient approach 
+def getMaxArea(arr) : 
+    n=len(arr)
+    st=[] 
+    res=0 
+    for i in range(n) : 
+        while st and arr[st[-1]]>=arr[i] : 
+            tp=st[-1] 
+            st.pop() 
+            if st :
+                curr_width=(i-st[-1]-1) 
+            else : 
+                curr_width=i 
+            res=max(res, curr_width*arr[tp]) 
+        st.append(i) 
+    while st : 
+        tp=st[-1] 
+        st.pop() 
+        if st :
+            curr_width=(n-st[-1]-1) 
+        else : 
+            curr_width=n 
+        res=max(res, curr_width*arr[tp]) 
+    return res 
+print("Largest area in Histogram: Efficient")
+arr=[60,20,50,40,10,50,60] 
+print(getMaxArea(arr)) 
+print("\n") 
