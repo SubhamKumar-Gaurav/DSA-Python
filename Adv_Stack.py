@@ -261,3 +261,20 @@ print("Largest area in Histogram: Efficient")
 arr=[60,20,50,40,10,50,60] 
 print(getMaxArea(arr)) 
 print("\n") 
+
+
+##  Largest Rectangle with all 1's   
+def maxRectangle(mat) : 
+    rows=len(mat) 
+    cols=len(mat[0]) 
+    res=getMaxArea(mat[0]) 
+    for r in range(1,rows) : 
+        for c in range(cols) :  
+            if mat[r][c] :
+                mat[r][c]+=mat[r-1][c] 
+        res=max(res, getMaxArea(mat[r]))
+    return res 
+print("Largest Rectangle with all 1's ")
+mat=[[0,1,1], [1,1,1], [0,1,1]] 
+print(maxRectangle(mat)) 
+print("\n") 
