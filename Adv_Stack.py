@@ -278,3 +278,127 @@ print("Largest Rectangle with all 1's ")
 mat=[[0,1,1], [1,1,1], [0,1,1]] 
 print(maxRectangle(mat)) 
 print("\n") 
+
+
+
+## Stack with getMin() in O(1) 
+# Method 1 : All elements are positive
+class Stack1 : 
+    def __init__(self) : 
+        self.s=[] 
+        self.min_val=None 
+
+    def push(self, x) :  
+        if not self.s : 
+            self.min_val=x 
+            self.s.append(x) 
+        elif x<=self.min_val : 
+            self.s.append(x-self.min_val)
+            self.min_val=x 
+        else : 
+            self.s.append(x) 
+
+    def getMin(self) : 
+        if self.s : 
+            return self.min_val 
+        else : 
+            return None 
+
+    def peek(self) : 
+        if not self.s : 
+            return None 
+        t=self.s[-1] 
+        if t<=0 : 
+            return self.min_val 
+        else : 
+            return t 
+
+    def pop(self) : 
+        if not self.s : 
+            return None 
+        t=self.s.pop() 
+        if t<=0 : 
+            res=self.min_val 
+            self.min_val=self.min_val-t 
+            return res 
+        else : 
+            return t 
+print("Stack 1 : handles only positive") 
+s=Stack1() 
+s.push(5) 
+s.push(10) 
+s.push(20) 
+s.push(2) 
+s.push(6) 
+s.push(4)     # [5, 10, 20, 2, 6, 4]
+print("Get min : ",s.getMin()) 
+s.pop()       # [5, 10, 20, 2, 6]
+s.pop()       # [5, 10, 20, 2]
+s.pop()       # [5, 10, 20]
+print("Get min : ",s.getMin()) 
+s.push(1)     # [5, 10, 20, 1]
+s.push(2)     # [5, 10, 20, 1, 2]
+print("Get min : ",s.getMin()) 
+s.pop()       # [5, 10, 20, 1]
+print("Get min : ",s.getMin()) 
+s.pop()       # [5, 10, 20]
+print("Get min : ",s.getMin())
+
+# Method - 2 : Handles negative elements as well 
+class Stack2 :
+    def __init__(self) : 
+        self.s=[] 
+        self.min_val=None 
+
+    def push(self, x) :  
+        if not self.s : 
+            self.min_val=x 
+            self.s.append(x) 
+        elif x<=self.min_val : 
+            self.s.append(2*x-self.min_val)
+            self.min_val=x 
+        else : 
+            self.s.append(x) 
+
+    def getMin(self) : 
+        if self.s : 
+            return self.min_val 
+        else : 
+            return None 
+
+    def peek(self) : 
+        if not self.s : 
+            return None 
+        t=self.s[-1] 
+        if t<=self.min_val : 
+            return self.min_val 
+        else : 
+            return t 
+
+    def pop(self) : 
+        if not self.s : 
+            return None 
+        t=self.s.pop() 
+        if t<=self.min_val : 
+            res=self.min_val 
+            self.min_val=2*self.min_val-t 
+            return res 
+        else : 
+            return t  
+print("Stack 2 : Handles negatives as well")
+st=Stack2() 
+st.push(5)
+st.push(2)
+st.push(6)
+print("Get min: ", st.getMin())
+st.push(-10)
+st.push(4)
+st.pop() 
+print("Get min: ", st.getMin())
+st.pop() 
+st.push(-20)
+print("Get min: ", st.getMin())
+st.pop()
+st.push(2)  
+st.push(1)
+print("Get min: ", st.getMin())
