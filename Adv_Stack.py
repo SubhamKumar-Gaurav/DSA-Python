@@ -475,3 +475,46 @@ print(obj.infixToPostfix(exp))
 print("\n") 
 
 
+## Evaluation of Postfix 
+class Evaluate1 : 
+    def __init__(self, capacity) : 
+        self.top=-1 
+        self.capacity=capacity 
+        self.array=[] 
+    
+    def isEmpty(self) : 
+        return self.top==-1
+    
+    def peek(self) : 
+        return self.array[-1] 
+    
+    def pop(self) : 
+        if not self.isEmpty() : 
+            self.top-=1 
+            return self.array.pop() 
+        else : 
+            return "None" 
+    
+    def push(self, op) : 
+        self.top+=1 
+        self.array.append(op) 
+    
+    def evaluatePostfix(self, exp) : 
+        for i in exp : 
+            if i.isdigit() : 
+                self.push(i) 
+            else : 
+                val1=self.pop() 
+                val2=self.pop() 
+                self.push(str(eval(val2+i+val1))) 
+        return int(self.pop()) 
+
+print("Evaluation of Postfix :") 
+exp="231*+9-"
+obj=Evaluate1(len(exp)) 
+print(obj.evaluatePostfix(exp)) 
+
+exp=['10', '2', '*', '3', '+']
+obj=Evaluate1(len(exp)) 
+print(obj.evaluatePostfix(exp)) 
+print("\n") 
