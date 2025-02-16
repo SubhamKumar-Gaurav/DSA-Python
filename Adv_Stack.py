@@ -402,3 +402,76 @@ st.pop()
 st.push(2)  
 st.push(1)
 print("Get min: ", st.getMin())
+print("\n")
+
+
+
+## Infix to Postfix conversion 
+class Conversion1 : 
+    def __init__(self, capacity) :
+        self.top=-1 
+        self.capacity=capacity 
+        self.array=[] 
+        self.output=[] 
+        self.precedence={"+": 1 , "-": 1, "*": 2, "/": 2, "^": 3} 
+    
+    def isEmpty(self) :  
+        return self.top==-1 
+    
+    def peek(self) : 
+        return self.array[-1] if not self.isEmpty() else None 
+    
+    def pop(self) : 
+        if not self.isEmpty() : 
+            self.top-=1 
+            return self.array.pop() 
+        else : 
+            return "None" 
+    
+    def push(self, op) : 
+        self.top+=1 
+        self.array.append(op) 
+    
+    def isOperand(self, ch) : 
+        return ch.isalnum() 
+    
+    def notGreater(self, i) : 
+        if self.isEmpty() : 
+            return False 
+        else : 
+            self.precedence.get(i,0) <= self.precedence.get(self.peek(), 0)
+    
+    def infixToPostfix(self, exp) : 
+        for i in exp : 
+            if self.isOperand(i) : 
+                self.output.append(i) 
+            elif i=="(" : 
+                self.push(i) 
+            elif i==")" : 
+                while not self.isEmpty() and self.peek()!="(" :     
+                    self.output.append(self.pop()) 
+                if not self.isEmpty() and self.peek()=="(" : 
+                    self.pop() 
+            else : 
+                while not self.isEmpty() and self.notGreater(i) : 
+                    self.output.append(self.pop()) 
+                self.push(i) 
+        while not self.isEmpty() : 
+            self.output.append(self.pop()) 
+        return "".join(self.output) 
+
+print("Infix to Postfix Conversion: ") 
+exp = "a+b*(c^d-e)^(f+g*h)-i"
+obj = Conversion1(len(exp))
+print(obj.infixToPostfix(exp))
+
+exp = "(a+b)*(c+d)"
+obj = Conversion1(len(exp))
+print(obj.infixToPostfix(exp))
+
+exp = "a+b*c"
+obj = Conversion1(len(exp))
+print(obj.infixToPostfix(exp))
+print("\n") 
+
+
