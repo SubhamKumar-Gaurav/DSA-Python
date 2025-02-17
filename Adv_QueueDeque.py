@@ -40,7 +40,6 @@ class myQueue:
             rear=(rear+1)%self.cap 
             self.l[rear]=x 
             self.size=self.size+1 
-        return self.l
     
     def deque(self) : 
         if self.size==0 : 
@@ -69,8 +68,48 @@ print(q)
 print(q.deque())
 print(q)
 print(q.size)
-print(q.l)
 print(q.getFront())
 print(q.getRear()) 
 print(q.isEmpty())
-print("\n") 
+print("\n") \
+
+
+## Implement Stack using Queue 
+# push - O(n) ;  other ops - constant time 
+from collections import deque
+class myStack: 
+    def __init__(self) : 
+        self.q1=deque() 
+        self.q2=deque()  
+    
+    def push(self, x) : 
+        self.q2.append(x) 
+        while self.q1 : 
+            self.q2.append(self.q1.popleft()) 
+        self.q1, self.q2 = self.q2, self.q1 
+    
+    def pop(self) : 
+        if self.q1 : 
+            return self.q1.popleft()
+        return None 
+
+    def top(self) : 
+        if self.q1 : 
+            return self.q1[0] 
+        else : 
+            return None 
+        
+    def size(self) : 
+        return len(self.q1) 
+
+    def __str__(self):    # Custom string representation of the stack
+        return "Stack (Top -> Bottom): " + " -> ".join(map(str, self.q1))
+
+
+q=myStack()
+q.push(10)
+q.push(20)
+q.push(30)
+print(q)
+print(q.pop()) 
+print(q)
