@@ -258,3 +258,45 @@ print("Maximum in all subarrays of size k : ")
 arr=[10,8,5,12,15,7,6]
 printMaxSubK(arr, 3)
 print("\n")  
+
+
+## First Circular Tour    
+# 1. Naive solution 
+def Tour(pet, dist) : 
+    n=len(pet) 
+    for start in range(n) : 
+        curr_pet=0 
+        end=start 
+        while True : 
+            curr_pet+=(pet[end]-dist[end]) 
+            if curr_pet<0 : 
+                break 
+            end=(end+1)%n
+            if end==start :  
+                return start+1 
+    return -1 
+print("Circular Tour: ")
+petrol=[4,8,7,4]
+dist=[6,5,3,5] 
+print("Naive solution: ",Tour(petrol, dist)) 
+
+
+# Efficient solution 
+def printTour(pet, dist) : 
+    n=len(pet)
+    start=0 
+    curr_pet=0 
+    prev_pet=0 
+    for i in range(n) : 
+        curr_pet+=(pet[i]-dist[i]) 
+        if curr_pet<0 : 
+            start=i+1 
+            prev_pet+=curr_pet 
+            curr_pet=0 
+    if (curr_pet+prev_pet >= 0) : 
+        return start+1 
+    else : 
+        return -1 
+petrol=[4,8,7,4]
+dist=[6,5,3,5] 
+print("Efficient solution : ",printTour(petrol, dist)) 
