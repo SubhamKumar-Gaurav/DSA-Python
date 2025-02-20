@@ -153,3 +153,39 @@ print("Before : ",q)
 revQ(q)
 print("After : ",q)
 print("\n") 
+
+
+## Generate first n numbers with the given digits - 5, 6
+# Simple efficient approach 
+def printFirstN(n) : 
+    q=deque() 
+    q.append("5")
+    q.append("6")
+    for i in range(n) : 
+        curr=q.popleft() 
+        print(curr, end=" ") 
+        q.append(curr+"5") 
+        q.append(curr+"6") 
+print("Generate first n numbers with the given digits : ")
+print("Simple solution: ", end=" ")
+printFirstN(10) 
+print()
+
+# Optimised efficient approach 
+def firstN(n) : 
+    q=deque() 
+    q.append("5")
+    q.append("6")
+    i=0
+    while (i+len(q))<n : 
+        curr=q.popleft() 
+        print(curr, end=" ")
+        q.append(curr+"5") 
+        q.append(curr+"6") 
+        i+=1 
+    while i<n : 
+        print(q.popleft(), end=" ")
+        i+=1 
+print("Optimised solution : ", end=" ")
+firstN(10) 
+print("\n") 
