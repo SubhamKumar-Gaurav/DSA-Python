@@ -189,3 +189,72 @@ def firstN(n) :
 print("Optimised solution : ", end=" ")
 firstN(10) 
 print("\n") 
+
+
+## Design a data structure with min/max operations  
+from collections import deque 
+class myDS : 
+    def __init__(self) : 
+        self.dq=deque() 
+
+    def insertMin(self, x) : 
+        self.dq.appendleft(x) 
+    
+    def insertMax(self, x) : 
+        self.dq.append(x) 
+    
+    def extractMin(self) :
+        return self.dq.popleft() 
+    
+    def extractMax(self) : 
+        return self.dq.pop() 
+    
+    def getMin(self) : 
+        return self.dq[0]
+    
+    def getMax(self) : 
+        return self.dq[-1] 
+# Deque class 
+print("getMin(), getMax() in O(1) time : ")
+d=myDS() 
+d.insertMin(10)
+d.insertMin(5)
+d.insertMax(20)
+d.insertMin(3) 
+print(d.extractMin())
+print(d.extractMax()) 
+print(d.getMin()) 
+print(d.getMax()) 
+print("\n") 
+
+
+## Maximum in all subarrays of size k 
+# 1. Naive solution 
+def printMaxK(arr, k) : 
+    for i in range(n-k+1) : 
+        res=arr[i] 
+        for j in range(i+1, i+k) : 
+            res=max(res, arr[j]) 
+        print(res, end=" ") 
+
+
+# 2. Efficient approach       Time : O(n)
+def printMaxSubK(arr, k) : 
+    n=len(arr)
+    dq=deque() 
+    for i in range(k) : 
+        while dq and arr[i]>=arr[dq[-1]] : 
+            dq.pop() 
+        dq.append(i) 
+    print(arr[dq[0]], end=" ") 
+    for i in range(k, n) : 
+        while dq and dq[0]<=i-k : 
+            dq.popleft() 
+        while dq and arr[i]>=arr[dq[-1]] : 
+            dq.pop() 
+        dq.append(i) 
+        print(arr[dq[0]], end=" ")
+print("Maximum in all subarrays of size k : ")
+arr=[10,8,5,12,15,7,6]
+printMaxSubK(arr, 3)
+print("\n")  
