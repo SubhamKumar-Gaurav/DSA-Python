@@ -59,7 +59,7 @@ class myQueue:
             items.append(str(self.l[index]))
         return " -> ".join(items)
 
-print("Queue implementation using circular list")
+print("Queue implementation using circular list : ")
 q=myQueue(4) 
 q.enque(10)
 q.enque(20)
@@ -104,8 +104,7 @@ class myStack:
 
     def __str__(self):    # Custom string representation of the stack
         return "Stack (Top -> Bottom): " + " -> ".join(map(str, self.q1))
-
-
+print("Stack implementation using Queue : ")
 q=myStack()
 q.push(10)
 q.push(20)
@@ -113,3 +112,44 @@ q.push(30)
 print(q)
 print(q.pop()) 
 print(q)
+print('\n') 
+
+
+## Reverse a Queue 
+print("Reversing a Queue : ")
+# 1. Iterative solution 
+from collections import deque
+def reverseQueue(q) : 
+    st=[] 
+    while q : 
+        st.append(q.popleft())
+    while st : 
+        q.append(st.pop())
+    return q
+print("Iterative solution: ")
+q=deque() 
+q.append(20)
+q.append(30)
+q.append(10)
+q.appendleft(40)
+print("Before : ",q)
+print("After : ", reverseQueue(q)) 
+print()
+
+# 2. Recursive solution 
+print("Recursive solution: ")
+def revQ(q) : 
+    if len(q)==0 : 
+        return 
+    x=q.popleft() 
+    revQ(q)
+    q.append(x) 
+q=deque() 
+q.append(1)
+q.append(3)
+q.append(2)
+q.appendleft(4)
+print("Before : ",q)
+revQ(q)
+print("After : ",q)
+print("\n") 
