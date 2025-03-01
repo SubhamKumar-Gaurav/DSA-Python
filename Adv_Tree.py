@@ -56,6 +56,7 @@ root.right.right=Node(70)
 printLevelOrder1(root) 
 print("\n")
 
+
 # Code - 2 
 def printLevelOrder2(root) : 
     if root is None : 
@@ -81,3 +82,39 @@ root.left.right=Node(50)
 root.right.left=Node(60)
 root.right.right=Node(70)
 printLevelOrder2(root) 
+print("\n")
+
+## Check for Balanced Binary Tree 
+# Naive approach         Time : O(n^2)
+def height(root) : 
+    if root==None : 
+        return 0 
+    else : 
+        return max(height(root.left),height(root.right))+1 
+
+def isBalanced1(root) : 
+    if root==None : 
+        return True 
+    lh=height(root.left)
+    rh=height(root.right) 
+    return abs(lh-rh)<=1 and isBalanced1(root.left) and isBalanced1(root.right) 
+
+
+# Efficient approach 
+def isBalanced(root) : 
+    if root==None : 
+        return True 
+    lh=isBalanced(root.left)
+    if lh==-1 : 
+        return -1 
+    rh=isBalanced(root.right)
+    if rh==-1 : 
+        return -1 
+    if abs(lh-rh)>1 : 
+        return -1 
+    return max(lh, rh)+1 
+
+def isBalancedMain(root) : 
+    if isBalanced(root)==-1 : 
+        return False
+    return True 
