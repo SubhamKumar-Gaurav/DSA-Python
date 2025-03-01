@@ -84,6 +84,7 @@ root.right.right=Node(70)
 printLevelOrder2(root) 
 print("\n")
 
+
 ## Check for Balanced Binary Tree 
 # Naive approach         Time : O(n^2)
 def height(root) : 
@@ -118,3 +119,41 @@ def isBalancedMain(root) :
     if isBalanced(root)==-1 : 
         return False
     return True 
+
+
+##  Vertical Traversal of Binary tree 
+def findMinMax(node, minimum, maximum, hd) : 
+    if node is None : 
+        return 
+    minimum[0]=min(minimum[0], hd) 
+    maximum[0]=max(maximum[0], hd) 
+    findMinMax(node.left, minimum, maximum, hd-1)
+    findMinMax(node.right, minimum, maximum, hd+1)
+
+def printVerticalLine(node, line_no, hd) : 
+    if node is None : 
+        return 
+    if hd==line_no :  
+        print(node.key, end=" ")
+    printVerticalLine(node.left, line_no, hd-1)
+    printVerticalLine(node.right, line_no, hd+1)
+
+def verticalOrder(root) : 
+    minimum=[0]
+    maximum=[0]
+    findMinMax(root, minimum, maximum, 0)
+
+    for line_no in range(minimum[0], maximum[0]+1) : 
+        printVerticalLine(root, line_no, 0)
+        print()
+        
+print("Vertical Traversal of Binary Tree : ")
+root=Node(30)
+root.left=Node(40)
+root.right=Node(80)
+root.left.left=Node(50)
+root.left.right=Node(70)
+root.left.right.left=Node(20)
+root.left.right.right=Node(10)
+root.right.left=Node(5)
+verticalOrder(root)
