@@ -121,7 +121,9 @@ def isBalancedMain(root) :
     return True 
 
 
+
 ##  Vertical Traversal of Binary tree 
+# Code - 1
 def findMinMax(node, minimum, maximum, hd) : 
     if node is None : 
         return 
@@ -157,3 +159,38 @@ root.left.right.left=Node(20)
 root.left.right.right=Node(10)
 root.right.left=Node(5)
 verticalOrder(root)
+print("\n")
+ 
+# Code 2 
+# Maintains the same order 
+import collections 
+def vTraversal(root) : 
+    mp={} 
+    q=[] 
+    q1=[] 
+    q.append(root) 
+    q1.append(0) 
+
+    while len(q)>0 :  
+        curr=q.pop(0) 
+        hd=q1.pop(0) 
+
+        if mp.get(hd) is None : 
+            mp[hd]=[] 
+        mp[hd].append(curr.key) 
+        if curr.left!=None : 
+            q.append(curr.left) 
+            q1.append(hd-1) 
+        if curr.right!=None : 
+            q.append(curr.right)
+            q1.append(hd+1) 
+    sorted_mp=collections.OrderedDict(sorted(mp.items())) 
+    for i in sorted_mp.values() : 
+        for j in i : 
+            print(j, end=" ") 
+        print() 
+print("Vertical Traversal 2 ")
+vTraversal(root)
+print("\n") 
+
+
