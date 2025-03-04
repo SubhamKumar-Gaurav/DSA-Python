@@ -190,7 +190,42 @@ def vTraversal(root) :
             print(j, end=" ") 
         print() 
 print("Vertical Traversal 2 ")
+root=Node(30)
+root.left=Node(40)
+root.right=Node(80)
+root.left.left=Node(50)
+root.left.right=Node(70)
+root.left.right.left=Node(20)
+root.left.right.right=Node(10)
+root.left.right.right.left=Node(3)
+root.left.right.right.left.left=Node(25)
+root.right.left=Node(5)
 vTraversal(root)
 print("\n") 
 
 
+## Bottom View of Binary Tree 
+def bottomView(root) : 
+    mp={} 
+    q=[] 
+    q1=[] 
+
+    q.append(root)
+    q1.append(0)
+
+    while len(q)>0 : 
+        curr=q.pop(0)
+        hd=q1.pop(0) 
+
+        mp[hd]=curr.key 
+        if curr.left != None : 
+            q.append(curr.left)
+            q1.append(hd-1)
+        if curr.right != None : 
+            q.append(curr.right)
+            q1.append(hd+1)
+    for i in sorted(mp) : 
+        print(mp[i], end=" ")
+print("Bottom view of Binary Tree ")
+bottomView(root) 
+print("\n")
