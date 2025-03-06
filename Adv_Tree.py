@@ -23,8 +23,6 @@ class Node :
         self.left=None 
         self.right=None 
         self.key=k 
-        self.prev=None 
-        self.next=None 
 
 ## Level Order Traversal by Line
 # Code - 1 
@@ -258,12 +256,26 @@ print("\n")
 
 ## Convert Binary Tree to Doubly Linked List inplace  (by Inorder traversal)
 # DLL 
-
-def printList(head) : 
+# Tree Definition 
+class Node : 
+    def __init__(self, k): 
+        self.left=None 
+        self.right=None 
+        self.key=k 
+        self.prev=None 
+        self.next=None 
+# print DLL
+def printDLL(head) : 
     curr=head 
     while curr != None : 
         print(curr.key, end=" ")
         curr=curr.right
+# inorder Traversal
+def inorder(root) : 
+    if root!=None : 
+        inorder(root.left)
+        print(root.key, end=" ") 
+        inorder(root.right)  
 
 prev=None 
 def convert(root) : 
@@ -284,8 +296,9 @@ root.left=Node(20)
 root.right=Node(30)
 root.left.left=Node(40)
 print("Binary Tree to DLL ")
-print("Binary Tree : ")
-printLevelOrder2(root)
+print("Binary Tree (inorder): ", end=" ")
+inorder(root)
+print()
 print("DLL : ", end=" ")
-printList(convert(root))
+printDLL(convert(root))
 print("\n") 
