@@ -328,7 +328,6 @@ printLevelOrder2(buildTree1(pre, io, 0, 7))
 
 # Approach - 2     Time : O(n)
 mp={val: idx for idx, val in enumerate(io)}
-
 pre_ind=0 
 def buildTree2(pre, io, isi, iei, mp) : 
     if isi>iei : 
@@ -345,3 +344,47 @@ def buildTree2(pre, io, isi, iei, mp) :
 print("Construct Tree from Preorder and Inorder - 2")
 printLevelOrder2(buildTree2(pre, io, 0, 7, mp))
 print("\n")
+
+
+## Tree Traversal in Spiral Form 
+# Approach - 1 
+def printSpiral(root) : 
+    if root is None : 
+        return 
+    q=deque() 
+    s=[] 
+    rev=False 
+    q.append(root)
+    while q : 
+        count=len(q) 
+        for i in range(count) : 
+            temp=q.popleft() 
+            if rev : 
+                s.append(temp.key) 
+            else : 
+                if i<count-1 :
+                    print(temp.key, end=" ")
+                else : 
+                    print(temp.key) 
+            if temp.left : 
+                q.append(temp.left)
+            if temp.right : 
+                q.append(temp.right) 
+        if rev : 
+            while s: 
+                print(s.pop(), end=" ")
+            print() 
+        rev = not rev 
+root=Node(30)
+root.left=Node(40)
+root.right=Node(80)
+root.left.left=Node(50)
+root.left.right=Node(70)
+root.left.right.left=Node(20)
+root.left.right.right=Node(10)
+root.left.right.right.left=Node(3)
+root.left.right.right.left.left=Node(25)
+root.right.left=Node(5)
+print("Tree Traversal in Spiral Form - 1")
+printSpiral(root)
+print("\n") 
