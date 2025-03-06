@@ -292,9 +292,9 @@ def convert(root) :
     convert(root.right) 
     return head 
 root=Node(10)
-root.left=Node(20)
+root.left=Node(5)
 root.right=Node(30)
-root.left.left=Node(40)
+root.right.left=Node(20)
 print("Binary Tree to DLL ")
 print("Binary Tree (inorder): ", end=" ")
 inorder(root)
