@@ -54,7 +54,7 @@ root.left.left=Node(40)
 
 
 
-##  Inorder Traversal  
+##  Inorder Traversal    (left --> root --> right)
 class Node : 
     def __init__(self, k): 
         self.key=k 
@@ -76,7 +76,7 @@ inorder(root)
 print("\n") 
 
 
-##  Preorder Traversal  
+##  Preorder Traversal      (root --> left --> right)
 class Node : 
     def __init__(self, k): 
         self.key=k 
@@ -99,7 +99,7 @@ print("\n")
 
 
 
-##  Postorder Traversal  
+##  Postorder Traversal        (left --> right --> root)
 class Node : 
     def __init__(self, k): 
         self.key=k 
