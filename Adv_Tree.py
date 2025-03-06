@@ -23,7 +23,8 @@ class Node :
         self.left=None 
         self.right=None 
         self.key=k 
-
+        self.prev=None 
+        self.next=None 
 
 ## Level Order Traversal by Line
 # Code - 1 
@@ -229,3 +230,62 @@ def bottomView(root) :
 print("Bottom view of Binary Tree ")
 bottomView(root) 
 print("\n")
+
+
+
+## Maximum width of Binary Tree 
+def maxWidth(root) : 
+    if root is None : 
+        return 0 
+    q=deque() 
+    q.append(root)
+    res=0 
+    while q : 
+        count=len(q)
+        for i in range(count) : 
+            node=q.popleft() 
+            if node.left : 
+                q.append(node.left) 
+            if node.right : 
+                q.append(node.right)
+        res=max(res, count)
+    return res 
+print("Maximum width of Binary Tree ")
+print(maxWidth(root)) 
+print("\n")
+
+
+
+## Convert Binary Tree to Doubly Linked List inplace  (by Inorder traversal)
+# DLL 
+
+def printList(head) : 
+    curr=head 
+    while curr != None : 
+        print(curr.key, end=" ")
+        curr=curr.right
+
+prev=None 
+def convert(root) : 
+    if root is None : 
+        return root 
+    global prev 
+    head=convert(root.left)
+    if prev is None : 
+        head=root 
+    else : 
+        prev.right=root 
+        root.left=prev 
+    prev=root 
+    convert(root.right) 
+    return head 
+root=Node(10)
+root.left=Node(20)
+root.right=Node(30)
+root.left.left=Node(40)
+print("Binary Tree to DLL ")
+print("Binary Tree : ")
+printLevelOrder2(root)
+print("DLL : ", end=" ")
+printList(convert(root))
+print("\n") 
