@@ -302,3 +302,46 @@ print()
 print("DLL : ", end=" ")
 printDLL(convert(root))
 print("\n") 
+
+
+## Construct Binary Tree from Inorder and Preorder
+# Approach - 1     Time : O(n^2) 
+pre_ind=0 
+def buildTree1(pre, io, isi, iei) : 
+    if isi>iei : 
+        return None 
+    global pre_ind 
+    root=Node(pre[pre_ind])
+    pre_ind+=1 
+    if isi==iei : 
+        return root 
+    for i in range(isi, iei+1) : 
+        if io[i]==root.key : 
+            break 
+    root.left=buildTree1(pre, io, isi, i-1)
+    root.right=buildTree1(pre, io, i+1, iei) 
+    return root 
+io=[40, 20, 50, 10, 30, 80, 70, 90]
+pre=[10, 20, 40, 50, 30, 70, 80, 90]
+print("Construct Tree from Preorder and Inorder - 1")
+printLevelOrder2(buildTree1(pre, io, 0, 7))
+
+# Approach - 2     Time : O(n)
+mp={val: idx for idx, val in enumerate(io)}
+
+pre_ind=0 
+def buildTree2(pre, io, isi, iei, mp) : 
+    if isi>iei : 
+        return None 
+    global pre_ind 
+    root=Node(pre[pre_ind]) 
+    pre_ind+=1 
+    if isi==iei : 
+        return root 
+    i=mp[root.key] 
+    root.left=buildTree2(pre, io, isi, i-1, mp) 
+    root.right=buildTree2(pre, io, i+1, iei, mp) 
+    return root 
+print("Construct Tree from Preorder and Inorder - 2")
+printLevelOrder2(buildTree2(pre, io, 0, 7, mp))
+print("\n")
