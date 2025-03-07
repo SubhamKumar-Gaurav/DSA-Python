@@ -388,3 +388,48 @@ root.right.left=Node(5)
 print("Tree Traversal in Spiral Form - 1")
 printSpiral(root)
 print("\n") 
+
+
+## Diameter of Tree 
+# Naive approach     Time : O(n^2)
+def height(root) : 
+    if root is None : 
+        return 0
+    else : 
+        return max(height(root.left), height(root.right))+1 
+def diameter1(root) : 
+    if root is None : 
+        return 0 
+    d1=1+height(root.left)+height(root.right)
+    d2=diameter1(root.left)
+    d3=diameter1(root.right) 
+    return max(d1, d2, d3)-1 
+root=Node(10)
+root.left=Node(20) 
+root.right=Node(30) 
+root.right.left=Node(40) 
+root.right.left.left=Node(50) 
+root.right.right=Node(60) 
+root.right.right.right=Node(70) 
+print("Diameter of Tree (Naive)")
+print(diameter1(root))
+
+# Efficient approach       Time : O(n)
+def diameter2(root, res) : 
+    if root is None : 
+        return 0 
+    lh=diameter2(root.left, res)
+    rh=diameter2(root.right, res)  
+    res[0]=max(res[0], lh+rh) 
+    return 1+max(lh, rh)
+root=Node(10)
+root.left=Node(20) 
+root.right=Node(30) 
+root.right.left=Node(40) 
+root.right.left.left=Node(50) 
+root.right.right=Node(60) 
+root.right.right.right=Node(70) 
+res=[0]
+print("Diameter of Tree (Efficient)")
+print(diameter2(root, res))
+print("\n") 
