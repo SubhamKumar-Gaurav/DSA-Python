@@ -433,3 +433,62 @@ res=[0]
 print("Diameter of Tree (Efficient)")
 print(diameter2(root, res))
 print("\n") 
+
+
+## LCA [Lowest Common Ancestor] of Tree 
+# Naive approach          Time : O(n) - 3 traversals 
+def findPath(root, path, x) : 
+    if root is None : 
+        return False 
+    path.append(root.key)
+    if root.key==x : 
+        return True 
+    if (root.left!=None and findPath(root.left, path, x)) or (root.right!=None and findPath(root.right, path, x)) : 
+        return True 
+    path.pop() 
+    return False 
+ 
+def findLCA(root, n1, n2) : 
+    p1=[] 
+    p2=[] 
+    if not findPath(root, p1, n1) or not findPath(root, p2, n2) : 
+        return None 
+    i=0 
+    while i<len(p1) and i<len(p2) : 
+        if p1[i]!=p2[i] : 
+            break 
+        i+=1 
+    return p1[i-1]  
+
+root=Node(10)
+root.left=Node(20)
+root.right=Node(30)
+root.right.left=Node(40)
+root.right.left.left=Node(60)
+root.right.right=Node(50)
+root.right.right.left=Node(70)
+root.right.right.right=Node(80)
+print("Lowest Common Ancestor : (Naive)")
+print("LCA(70, 80) : ",findLCA(root, 70, 80))
+print("LCA(30, 80) : ",findLCA(root, 30, 80))
+print("LCA(20, 80) : ",findLCA(root, 20, 80)) 
+print("\n") 
+
+
+# Efficient approach 
+def LCA(root, n1, n2) : 
+    if root is None : 
+        return None 
+    if root.key==n1 or root.key==n2 : 
+        return root.key 
+    lca1=LCA(root.left, n1, n2)
+    lca2=LCA(root.right, n1, n2)
+    if lca1 and lca2 : 
+        return root.key 
+    return lca1 if lca1 else lca2 
+print("Lowest Common Ancestor : (Efficient)")
+print("LCA(80, 70) : ",LCA(root, 80, 70))
+print("LCA(80, 30) : ",LCA(root, 80, 30))
+print("LCA(80, 20) : ",LCA(root, 80, 20))
+print("LCA(80, 5) : ",LCA(root, 80, 5))  # 5 does not exist in tree, so it will return 80 
+print("\n")
