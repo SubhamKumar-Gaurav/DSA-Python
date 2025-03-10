@@ -522,3 +522,54 @@ root.right.right=Node(60)
 dist=[-1]
 print("Burn Tree from leaf node : ",burnTime(root, 60, dist)) 
 print("\n")
+
+
+## Count nodes in a Complete Binary Tree (2 solutions)
+# Naive solution       Time: O(n)
+def countNodes(root) : 
+    if root is None : 
+        return 0 
+    return 1+countNodes(root.left)+countNodes(root.right) 
+root=Node(10)
+root.left=Node(20)
+root.left.left=Node(40)
+root.left.right=Node(50)
+root.right=Node(30)
+print("Count Nodes (Naive) : " ,countNodes(root))
+
+# Efficient approach    Time: O(logn * logn)
+def left_height(node) : 
+    curr=node
+    lh=0  
+    while curr : 
+        lh+=1 
+        curr=curr.left 
+    return lh 
+def right_height(node) : 
+    curr=node 
+    rh=0 
+    while curr : 
+        rh+=1  
+        curr=curr.right
+    return rh 
+
+def totalNodes(root) : 
+    if root is None : 
+        return 0 
+    lh=left_height(root) 
+    rh=right_height(root)
+    if lh==rh : 
+        return (1<<lh)-1 
+    return 1+totalNodes(root.left)+totalNodes(root.right) 
+root=Node(10)
+root.left=Node(20)
+root.left.left=Node(40)
+root.left.left.left=Node(80)
+root.left.left.right=Node(90)
+root.left.right=Node(50)
+root.left.right.left=Node(100)
+root.right=Node(30)
+root.right.left=Node(60)
+root.right.right=Node(70)
+print("Count Nodes  (Efficient) : ", totalNodes(root))
+print("\n")
