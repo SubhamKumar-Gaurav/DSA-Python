@@ -633,3 +633,39 @@ def iterInorder(root) :
 print("Iterative inorder : ", end=" ") 
 iterInorder(root)
 print("\n")
+
+
+
+## Iterative Preorder Traversal 
+# Naive approach    Time : O(n) , Space : O(h)
+def iterPreorder(root) : 
+    if root is None : 
+        return 
+    st=[root] 
+    while len(st)>0 : 
+        curr=st.pop() 
+        print(curr.key, end=" ") 
+        if curr.right is not None : 
+            st.append(curr.right) 
+        if curr.left is not None : 
+            st.append(curr.left)
+print("Iterative Preorder - 1 : ", end=" ") 
+iterPreorder(root)
+print()
+
+## Optimized approach 
+def IterPreorder(root) : 
+    if root is None : 
+        return 
+    st=[] 
+    curr=root 
+    while st or curr!=None : 
+        while curr!=None : 
+            print(curr.key, end=" ") 
+            if curr.right!=None : 
+                st.append(curr.right) 
+            curr=curr.left 
+        if st : 
+            curr=st.pop()
+print("Iterative Preorder - 1 : ", end=" ") 
+IterPreorder(root)
