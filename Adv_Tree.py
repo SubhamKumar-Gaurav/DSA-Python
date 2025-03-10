@@ -492,3 +492,33 @@ print("LCA(80, 30) : ",LCA(root, 80, 30))
 print("LCA(80, 20) : ",LCA(root, 80, 20))
 print("LCA(80, 5) : ",LCA(root, 80, 5))  # 5 does not exist in tree, so it will return 80 
 print("\n")
+
+
+## Burn a Tree from a leaf , code needs to be reviewed 
+res=0 
+def burnTime(root, leaf, dist) : 
+    global res 
+    if root is None : 
+        return 0 
+    if root.key==leaf : 
+        dist[0]=0 
+        return 1 
+    ldist, rdist=[-1], [-1] 
+    lh=burnTime(root.left, leaf, ldist) 
+    rh=burnTime(root.right, leaf, rdist) 
+    if ldist[0]!=-1 : 
+        dist[0] = ldist[0]+1 
+        res=max(res, rh+dist[0]) 
+    elif rdist[0]!=-1 :
+        dist[0] = rdist[0]+1 
+        res=max(res, lh+dist[0]) 
+    return max(lh, rh)+1
+root=Node(10)
+root.left=Node(20)
+root.left.left=Node(40)
+root.left.right=Node(50)
+root.right=Node(30) 
+root.right.right=Node(60) 
+dist=[-1]
+print("Burn Tree from leaf node : ",burnTime(root, 60, dist)) 
+print("\n")
