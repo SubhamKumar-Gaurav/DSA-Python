@@ -612,3 +612,24 @@ print("Serialize : ",arr)
 print("Deserialize : ", end=" ") 
 inorder(deserialize(arr))
 print("\n") 
+
+ 
+## Iterative inorder traversal 
+def iterInorder(root) : 
+    if root is None : 
+        return 
+    st=[] 
+    curr=root 
+    while curr is not None : 
+        st.append(curr) 
+        curr=curr.left 
+    while len(st)>0 : 
+        curr=st.pop() 
+        print(curr.key, end=" ") 
+        curr=curr.right 
+        while curr is not None : 
+            st.append(curr) 
+            curr=curr.left
+print("Iterative inorder : ", end=" ") 
+iterInorder(root)
+print("\n")
