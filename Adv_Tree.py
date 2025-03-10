@@ -573,3 +573,42 @@ root.right.left=Node(60)
 root.right.right=Node(70)
 print("Count Nodes  (Efficient) : ", totalNodes(root))
 print("\n")
+
+
+
+## Serialize and Deserialize a Binary Tree  
+empty=-1 
+def serialize(root, arr) : 
+    if root is None :
+        arr.append(empty) 
+        return 
+    arr.append(root.key)
+    serialize(root.left, arr) 
+    serialize(root.right, arr) 
+
+index=0 
+def deserialize(arr) : 
+    global index 
+    if index==len(arr) :  
+        return None 
+    val=arr[index] 
+    index+=1 
+    if val==empty : 
+        return None 
+    root=Node(val) 
+    root.left=deserialize(arr) 
+    root.right=deserialize(arr) 
+    return root 
+
+root=Node(10)
+root.left=Node(20)
+root.left.left=Node(40)
+root.left.right=Node(50)
+root.right=Node(30)
+root.right.right=Node(60)
+arr=[]
+serialize(root, arr)
+print("Serialize : ",arr)
+print("Deserialize : ", end=" ") 
+inorder(deserialize(arr))
+print("\n") 
