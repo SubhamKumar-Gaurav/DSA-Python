@@ -161,3 +161,55 @@ def isBSTUtil(root, minval, maxval) :
     if root.key<=minval or root.key>=maxval : 
         return False 
     return isBSTUtil(root.left, minval, root.key) and isBSTUtil(root.right, root.key, maxval) 
+
+
+
+## Fix BST with Two Nodes Swapped 
+def inorder(root) : 
+    if root : 
+        inorder(root.left)
+        print(root.key, end=" ")
+        inorder(root.right) 
+
+prevv=None 
+first=None 
+second=None 
+def correctBSTutil(root, first, middle, last, prev) : 
+    if root : 
+        correctBSTutil(root.left, first, middle, last, prev) 
+        if prev[0] and root.key<prev[0].key : 
+            if (not first[0]) : 
+                first[0]=prev[0] 
+                middle[0]=root 
+            else :
+                last[0]=root 
+        prev[0]=root 
+        correctBSTutil(root.right, first, middle, last, prev)
+
+def correctBST(root) : 
+    first=[None]
+    middle=[None]
+    last=[None]
+    prev=[None]
+    correctBSTutil(root, first, middle, last, prev) 
+    if first[0] and last[0] : 
+        first[0].key, last[0].key = last[0].key, first[0].key 
+    elif first[0] and middle[0] : 
+        first[0].key, middle[0].key = middle[0].key, first[0].key 
+print("Fix BST with Two Nodes Swapped")
+root=Node(18)
+root.left=Node(60)
+root.left.left=Node(4)
+root.right=Node(70)
+root.right.left=Node(8)
+root.right.right=Node(80) 
+print("Before swapping : ", end=" ")
+inorder(root)
+print()
+correctBST(root)
+print("After swapping : ", end=" ")
+inorder(root)
+print("\n") 
+
+
+##
