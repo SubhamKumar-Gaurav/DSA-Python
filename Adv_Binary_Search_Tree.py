@@ -6,6 +6,14 @@
 #   Pair sum with given BST  
 
 
+# Class Defn. 
+class Node : 
+    def __init__(self, k) : 
+        self.key=k 
+        self.left=None 
+        self.right=None 
+
+
 ## Ceiling on the left side in an array 
 # Naive solution      Time: O(n^2) 
 def print_Ceiling(arr) : 
@@ -43,5 +51,65 @@ arr=[2,8,30,15,25,12]
 print("Efficient : ", end=" ")
 printCeiling(arr) 
 print("\n") 
+
+
+
+## Find Kth smallest in BST 
+# Naive solution   Time : O(n)
+def printKth(root, k) : 
+    if root!=None : 
+        printKth(root.left, k) 
+        printKth.count+=1 
+        if printKth.count==k : 
+            print(root.key) 
+            return 
+        printKth(root.right, k) 
+root=Node(50) 
+root.left=Node(20) 
+root.left.left=Node(10) 
+root.left.right=Node(40) 
+root.right=Node(100) 
+root.right.left=Node(70) 
+root.right.left.left=Node(60) 
+root.right.left.right=Node(80) 
+root.right.right=Node(120) 
+printKth.count=0
+print("Kth smallest in BST ")
+print("Naive : ", end=" ")
+k=3
+printKth(root, k)
+
+
+# Efficient solution    Time: O(logn) 
+def kthSmallest(root, k, count) : 
+    if root is None : 
+        return None 
+    left=kthSmallest(root.left, k, count) 
+    if left is not None : 
+        return left 
+    count[0]+=1  
+    if count[0]==k : 
+        return root.key
+    return kthSmallest(root.right, k, count) 
+
+def printKthSmallest(root, k): 
+    count=[0] 
+    res=kthSmallest(root, k, count)  
+    if res is None : 
+        print("There are less than k nodes in the BST") 
+    else :
+	    print("Efficient : ", res)
+
+root=Node(50) 
+root.left=Node(20) 
+root.left.left=Node(10) 
+root.left.right=Node(40) 
+root.right=Node(100) 
+root.right.left=Node(70) 
+root.right.left.left=Node(60) 
+root.right.left.right=Node(80) 
+root.right.right=Node(120)
+printKthSmallest(root, k) 
+print("\n")
 
 
