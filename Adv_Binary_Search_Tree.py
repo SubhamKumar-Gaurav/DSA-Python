@@ -8,7 +8,6 @@
 
 ## Ceiling on the left side in an array 
 # Naive solution      Time: O(n^2) 
- 
 def print_Ceiling(arr) : 
     n=len(arr) 
     print("-1", end=" ") 
