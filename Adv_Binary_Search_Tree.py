@@ -8,16 +8,16 @@
 
 ## Ceiling on the left side in an array 
 # Naive solution      Time: O(n^2) 
-import sys 
+ 
 def print_Ceiling(arr) : 
     n=len(arr) 
     print("-1", end=" ") 
     for i in range(1, n) : 
-        diff=sys.maxsize 
+        diff=float("inf") 
         for j in range(i) : 
             if arr[j]>=arr[i] : 
                 diff=min(diff, arr[j]-arr[i]) 
-        if diff==sys.maxsize : 
+        if diff==float("inf") : 
             print("-1", end=" ") 
         else : 
             print(arr[i]+diff , end=" ")
@@ -44,3 +44,5 @@ arr=[2,8,30,15,25,12]
 print("Efficient : ", end=" ")
 printCeiling(arr) 
 print("\n") 
+
+
