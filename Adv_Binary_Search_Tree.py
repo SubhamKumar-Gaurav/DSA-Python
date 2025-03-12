@@ -113,3 +113,51 @@ printKthSmallest(root, k)
 print("\n")
 
 
+
+## Check for BST 
+# Naive approach   Time: O(n^2)
+INT_MIN=float("-inf")
+def maxvalue(root) : 
+    if root is None : 
+        return INT_MIN  
+    res=root.key 
+    lres=maxvalue(root.left)
+    rres=maxvalue(root.right)
+    if lres>res : 
+        res=lres 
+    if rres>res : 
+        res=rres 
+    return res 
+
+INT_MAX=float("inf") 
+def minvalue(root) : 
+    if root is None : 
+        return INT_MAX   
+    res=root.key 
+    lres=minvalue(root.left)
+    rres=minvalue(root.right)
+    if lres<res : 
+        res=lres 
+    if rres<res : 
+        res=rres 
+    return res 
+
+def isBST(root) : 
+    if root is None : 
+        return True 
+    if root.left!=None and maxvalue(root.left)>root.key : 
+        return False  
+    if root.right!=None and minvalue(root.right)<root.key : 
+        return False   
+    if (not isBST(root.left) or not isBST(root.right)) : 
+        return False  
+    return True  
+
+
+# Efficient approach    
+def isBSTUtil(root, minval, maxval) : 
+    if root is None : 
+        return True 
+    if root.key<=minval or root.key>=maxval : 
+        return False 
+    return isBSTUtil(root.left, minval, root.key) and isBSTUtil(root.right, root.key, maxval) 
