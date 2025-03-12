@@ -212,4 +212,28 @@ inorder(root)
 print("\n") 
 
 
-##
+## Pair sum with given BST   , x=sum_val , s=set()
+def isPairSum(root, x, s) : 
+    if root is None :  
+        return False 
+    if isPairSum(root.left, x, s) : 
+        return True 
+    if x-root.key in s : 
+        print(f"Pair Found : {x-root.key} + {root.key} = {x}") 
+    else : 
+        s.add(root.key) 
+    return isPairSum(root.right, x, s) 
+root=Node(10)
+root.left=Node(8)
+root.left.left=Node(4)
+root.left.right=Node(9)
+root.right=Node(20)
+root.right.left=Node(11)
+root.right.right=Node(30)
+root.right.right.left=Node(25)
+s=set()
+isPairSum(root, 18, s)
+s=set()
+isPairSum(root, 19, s)  # Prints all the pairs 
+s=set() 
+print(isPairSum(root, 2, s))
