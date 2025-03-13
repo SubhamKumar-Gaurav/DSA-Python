@@ -86,3 +86,43 @@ k=4
 print("K Largest elements :")
 kLargestElements(arr, k)
 print("\n")
+
+
+## K closest element 
+# Naive approach     Time: O(nk)
+def kClosest(arr, x, k) : 
+    for i in range(k) :
+        mi=0 
+        for i in range(1, len(arr)) : 
+            if abs(arr[mi]-x) > abs(arr[i]-x) : 
+                mi=i 
+        print(arr[mi], end=" ") 
+        arr.pop(mi) 
+arr=[10,31,5,40, 38, 80]
+x=35 
+k=3
+print("K closest elements (Naive) ")
+kClosest(arr, x, k) 
+print()
+
+# Efficient approach 
+def kClosestElements(arr, x, k) :
+    n=len(arr) 
+    h=[] 
+    for i in range(k) : 
+        heapq.heappush(h, (-abs(arr[i]-x), i))
+    for i in range(k, n) : 
+        curr=-abs(arr[i]-x) 
+        p, pi = h[0] 
+        if curr>p : 
+            heapq.heappop(h) 
+            heapq.heappush(h, (curr,i)) 
+    while h : 
+        p, pi = heapq.heappop(h) 
+        print(arr[pi], end=" ")
+arr=[30,40,32,33,36,37]
+x=38 
+k=3 
+print("K closest elements (Efficient) ")
+kClosestElements(arr, x, k) 
+print("\n") 
