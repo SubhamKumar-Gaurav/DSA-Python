@@ -28,3 +28,38 @@ arr=[10,9,7,8,4,30,50,60]
 k=4
 print(sortK(arr, k))
 print("\n") 
+
+
+## Purchase maximum items 
+# Naive approach 
+def purchase(cost, x) : 
+    cost.sort() 
+    res=0 
+    for i in cost : 
+        if i<=x : 
+            res+=1 
+            x-=i 
+        else : 
+            break 
+    return res 
+cost=[20,10,5,30,100]
+x=35
+print("Purchase maximum items (Naive) : ", purchase(cost, x))
+
+
+# Effcient approach 
+def purchaseMax(cost, x) : 
+    pq=cost 
+    heapq.heapify(pq) 
+    res=0 
+    for i in pq : 
+        temp=heapq.heappop(pq) 
+        if temp<=x : 
+            res+=1 
+            x-=temp 
+        else : 
+            break 
+    return res 
+print("Purchase maximum items (using Heap) :",purchaseMax(cost, x)) 
+print("\n")
+
