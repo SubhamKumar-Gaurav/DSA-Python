@@ -63,3 +63,26 @@ def purchaseMax(cost, x) :
 print("Purchase maximum items (using Heap) :",purchaseMax(cost, x)) 
 print("\n")
 
+
+## K Largest items 
+# PS: Print K largest elements (in increasing order) 
+# Naive approach - sort array , print last k elements 
+
+# Efficient approach 
+def kLargestElements(arr, k) : 
+    n=len(arr)
+    pq=arr[:k]
+    heapq.heapify(pq) 
+    for i in range(k, n) :
+        if pq[0]>arr[i] : 
+            continue 
+        else : 
+            heapq.heappop(pq) 
+            heapq.heappush(pq, arr[i]) 
+    while pq : 
+        print(heapq.heappop(pq), end=" ")
+arr=[11, 3, 2, 1, 15, 5, 4, 45, 88, 96, 50, 45]
+k=4
+print("K Largest elements :")
+kLargestElements(arr, k)
+print("\n")
