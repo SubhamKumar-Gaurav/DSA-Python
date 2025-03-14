@@ -144,3 +144,23 @@ arr=[[10,20], [5,15], [4,9,11]]
 print("Merge K sorted array")
 print(mergeKsortedArr(arr))
 print("\n")
+
+
+
+## Median of a stream
+from heapq import heappush, heappop 
+def streamMedian(arr) : 
+    s=[]
+    g=[] 
+    for i in range(len(arr)) : 
+        heappush(s, -arr[i]) 
+        heappush(g, -heappop(s))
+        if len(g)>len(s) : 
+            heappush(s, -heappop(g)) 
+        if len(g)<len(s) : 
+            print(-s[0], end=" ") 
+        else : 
+            print((g[0]-s[0])/2, end=" ") 
+print("Median of a stream")
+arr=[25,7,10,15,20]
+streamMedian(arr)
