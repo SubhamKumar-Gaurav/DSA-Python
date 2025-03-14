@@ -126,3 +126,21 @@ k=3
 print("K closest elements (Efficient) ")
 kClosestElements(arr, x, k) 
 print("\n") 
+
+
+## Merge K sorted arrays 
+def mergeKsortedArr(arr) : 
+    res=[] 
+    h=[] 
+    for i in range(len(arr)) : 
+        heapq.heappush(h, (arr[i][0], i, 0)) 
+    while h : 
+        val, ap, vp = heapq.heappop(h) 
+        res.append(val) 
+        if vp+1<len(arr[ap]) :  
+            heapq.heappush(h, (arr[ap][vp+1], ap, vp+1)) 
+    return res 
+arr=[[10,20], [5,15], [4,9,11]]
+print("Merge K sorted array")
+print(mergeKsortedArr(arr))
+print("\n")
