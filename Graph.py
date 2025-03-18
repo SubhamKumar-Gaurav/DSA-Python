@@ -118,3 +118,22 @@ print(BFSConnect(adj))
 print("\n") 
 
 
+## Depth First Search 
+def DFSrec(adj, s, visited) : 
+    visited[s]=True 
+    print(s, end=" ") 
+    for u in adj[s] : 
+        if visited[u]==False : 
+            DFSrec(adj, u, visited) 
+def DFS(adj, s) :  
+    visited=[False]*len(adj) 
+    DFSrec(adj, s, visited)
+adj=[[1,4], [0,2], [1,3], [2], [0,5,6], [4,6], [4,5]]
+s=0 
+print("Depth First Search (DFS) ")
+DFS(adj, s) 
+print()
+adj=[[1,2], [0,3,4], [0,3], [1,2], [1,5], [4]]
+s=0 
+DFS(adj, s)
+print("\n")
