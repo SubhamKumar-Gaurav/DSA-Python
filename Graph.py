@@ -247,7 +247,7 @@ def DFS(adj) :
             if DFSrec(adj, i, visited, recSt) : 
                 return True 
     return False 
-    
+
 print("Detect cycle in directed graph ")
 adj=[[1], [], [1,3], [4], [5], [3]]
 if DFS(adj) : 
@@ -267,5 +267,71 @@ if DFS(adj) :
 else : 
     print("No Cycle found") 
 print("\n")
+
+
+## Topological sorting (Kahn's BFS Based algorithm)
+from collections import defaultdict
+def topologicalSort(adj):
+    V=len(adj)		 
+    in_degree = [0]*V 
+    for i in range(len(adj)) :
+    	for j in adj[i]:
+    		in_degree[j] += 1
+    queue = []
+    for i in range(V):
+    	if in_degree[i] == 0:
+    		queue.append(i)
+    cnt = 0
+    top_order = []
+    while queue:
+    	u = queue.pop(0)
+    	top_order.append(u)
+    	for i in adj[u]:
+    		in_degree[i] -= 1
+    		if in_degree[i] == 0:
+    			queue.append(i)
+    	cnt += 1
+    if cnt != V:
+    	print ("There exists a cycle in the graph")
+    else :
+    	print (top_order)
+print("Topological Sorting ")
+adj=[[1,2], [3], [3], [4,5], [], []]
+topologicalSort(adj)
+adj=[[2,3], [3,4], [], [], []]
+topologicalSort(adj)
+print("\n")
+
+
+
+## Detect cycle using Kahn's 
+def DetectCycleKahns(adj) : 
+    V=len(adj) 
+    indegree=[0]*V 
+    for u in range(V) : 
+        for x in adj[u] : 
+            indegree[x]+=1 
+    q=deque() 
+    for i in range(V) : 
+        if indegree[i]==0 : 
+            q.append(i) 
+    count=0 
+    while q : 
+        u=q.popleft() 
+        for x in adj[u] : 
+            indegree[x]-=1 
+            if indegree[x]==0 : 
+                q.append(x)
+        count+=1 
+    if count!=V : 
+        print("Cycle exists")
+    else : 
+        print("No Cycle exists")
+print("Detect Cycle using Kahn's Algorithm ")
+adj=[[1], [2], [], [1], [1]]
+DetectCycleKahns(adj)
+adj=[[1], [2], [3], [1]]
+DetectCycleKahns(adj)
+print("\n") 
 
 
