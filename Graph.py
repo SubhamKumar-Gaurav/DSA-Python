@@ -161,3 +161,24 @@ print()
 adj=[[1,3], [0,3,2], [1,4], [0,1], [2]]
 disconDFS(adj)
 print("\n")
+
+
+## Connected Components in an undirected graph using BFS 
+def DFSrec(adj, s, visited) : 
+    visited[s]=True 
+    for u in adj[s] : 
+        if visited[u]==False : 
+            DFSrec(adj, u, visited) 
+def DFScon(adj) : 
+    visited=[False]*len(adj) 
+    res=0 
+    for u in range(len(adj)) : 
+        if visited[u]==False : 
+            res+=1 
+            DFSrec(adj, u, visited) 
+    return res
+adj=[[1,2], [0,2], [0,1], [4], [3]]
+print("Connected comp in undirected graph : ",DFScon(adj))
+print("\n")
+
+
