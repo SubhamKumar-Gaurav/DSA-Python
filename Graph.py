@@ -87,4 +87,34 @@ def BFSDis(adj) :
 adj=[[1,2], [0,3], [0,3], [1,2], [5,6], [4,6] ,[4,5]]
 print("BFS for disconnected graph")
 BFSDis(adj)
-print("\n")
+print("\n") 
+
+
+## Connected Components in an undirected graph using BFS 
+def BFS(adj, s, visited) : 
+    q=deque() 
+    q.append(s) 
+    visited[s]=True
+    while q : 
+        s=q.popleft() 
+        for u in adj[s] : 
+            if visited[u]==False : 
+                q.append(u) 
+                visited[u]=True 
+def BFSConnect(adj) : 
+    visited=[False]*len(adj)
+    res=0  
+    for u in range(len(adj)) : 
+        if visited[u]==False : 
+            res+=1 
+            BFS(adj, u, visited) 
+    return res 
+print("Connected Components in an undirected graph using BFS ")
+adj=[[1,2], [0,2], [0,1], [4], [3], [6,7], [5], [5]]
+print(BFSConnect(adj))
+
+adj=[[1,2], [2], [1]]
+print(BFSConnect(adj))
+print("\n") 
+
+
