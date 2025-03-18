@@ -46,6 +46,7 @@ print("Graph adjacency list representation : ", end=" ")
 printGraph(adj)
 print("\n")
 
+
 ## Breadth First Search in Python 
 from collections import deque 
 def BFS(adj, s) : 
@@ -65,3 +66,25 @@ print("BFS (first version) : ", end=" ")
 BFS(adj, 0)
 print("\n") 
 
+
+## BFS for disconnected graph
+def BFS(adj, s, visited) : 
+    q=deque() 
+    q.append(s) 
+    visited[s]=True 
+    while q : 
+        s=q.popleft() 
+        print(s, end=" ")
+        for u in adj[s] : 
+            if visited[u]==False : 
+                q.append(u) 
+                visited[u]=True 
+def BFSDis(adj) : 
+    visited=[False]*len(adj) 
+    for u in range(len(adj)) : 
+        if visited[u]==False : 
+            BFS(adj, u, visited) 
+adj=[[1,2], [0,3], [0,3], [1,2], [5,6], [4,6] ,[4,5]]
+print("BFS for disconnected graph")
+BFSDis(adj)
+print("\n")
