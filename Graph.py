@@ -227,3 +227,45 @@ adj=[[1], [0,2,3], [1,3,4], [1,2], [2]]
 print("Detect cycle in undirected graph : ",DFS(adj)) 
 print("\n") 
 
+
+## Detect cycle in a directed graph
+def DFSrec(adj, s, visited, recSt) : 
+    visited[s]=True 
+    recSt[s]=True 
+    for u in adj[s] : 
+        if visited[u]==False and DFSrec(adj, u, visited, recSt) : 
+            return True 
+        elif recSt[u]==True : 
+            return True 
+    recSt[s]=False 
+    return False 
+def DFS(adj) : 
+    visited=[False]*len(adj)
+    recSt=[False]*len(adj) 
+    for i in range(len(adj)) : 
+        if visited[i]==False : 
+            if DFSrec(adj, i, visited, recSt) : 
+                return True 
+    return False 
+    
+print("Detect cycle in directed graph ")
+adj=[[1], [], [1,3], [4], [5], [3]]
+if DFS(adj) : 
+    print("Cycle found")
+else : 
+    print("No Cycle found") 
+
+adj=[[1], [2], [3], [1]]
+if DFS(adj) : 
+    print("Cycle found")
+else : 
+    print("No Cycle found") 
+
+adj=[[1], [3], [1,3], []]
+if DFS(adj) : 
+    print("Cycle found")
+else : 
+    print("No Cycle found") 
+print("\n")
+
+
