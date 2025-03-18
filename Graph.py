@@ -137,3 +137,27 @@ adj=[[1,2], [0,3,4], [0,3], [1,2], [1,5], [4]]
 s=0 
 DFS(adj, s)
 print("\n")
+
+
+## DFS for Disconnected Graph
+def DFSrec(adj, s, visited) : 
+    visited[s]=True 
+    print(s, end=" ")
+    for u in adj[s] : 
+        if visited[u]==False : 
+            DFSrec(adj, u, visited) 
+def disconDFS(adj) :
+    visited=[False]*len(adj)
+    for u in range(len(adj)) : 
+        if visited[u]==False : 
+            DFSrec(adj, u, visited)
+adj=[[1,2], [0,2], [0,1], [4], [3]] 
+print("DFS for disconnected graph ")
+disconDFS(adj)
+print()
+adj=[[1,2], [0,2,3], [0,1], [1,4], [3]]
+disconDFS(adj)
+print() 
+adj=[[1,3], [0,3,2], [1,4], [0,1], [2]]
+disconDFS(adj)
+print("\n")
