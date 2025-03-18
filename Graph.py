@@ -182,3 +182,48 @@ print("Connected comp in undirected graph : ",DFScon(adj))
 print("\n")
 
 
+## Shortest path in an unweighted graph 
+from collections import deque 
+INT_MAX=float("inf")
+
+def BFS(adj, s, dist) : 
+    visited=[False]*len(adj) 
+    q=deque() 
+    dist[s]=0
+    visited[s]=True 
+    q.append(s) 
+    while q : 
+        u=q.popleft() 
+        for v in adj[u] : 
+            if visited[v]==False : 
+                dist[v]=dist[u]+1 
+                visited[v]=True 
+                q.append(v) 
+adj=[[1,2], [0,2,3], [0,1,3], [1,2]]
+dist=[INT_MAX]*len(adj)
+BFS(adj, 0, dist)
+print("Shortest path in undirected graph : ",dist)
+print("\n")
+
+
+## Detect cycle in undirected graph 
+def DFSrec(adj, s, visited, parent) : 
+    visited[s]=True 
+    for u in adj[s] : 
+        if visited[u]==False : 
+            if DFSrec(adj, u, visited, s) : 
+                return True 
+        elif u!=parent : 
+            return True 
+    return False 
+def DFS(adj) : 
+    visited=[False]*len(adj)
+    for i in range(len(adj)) : 
+        if visited[i]==False : 
+            if DFSrec(adj, i, visited, -1) : 
+                return True 
+    return False 
+adj=[[1], [0,2,3], [1,3,4], [1,2], [2]]
+print("Detect cycle in undirected graph : ",DFS(adj)) 
+print("\n") 
+
