@@ -294,7 +294,7 @@ def topologicalSort(adj):
     if cnt != V:
     	print ("There exists a cycle in the graph")
     else :
-    	print (top_order)
+    	print(top_order)
 print("Topological Sorting ")
 adj=[[1,2], [3], [3], [4,5], [], []]
 topologicalSort(adj)
@@ -333,5 +333,27 @@ DetectCycleKahns(adj)
 adj=[[1], [2], [3], [1]]
 DetectCycleKahns(adj)
 print("\n") 
+
+
+## Topological sorting (DFS based algorithm)
+def topologicalSortUtil(adj, v, visited, stack):
+	visited[v] = True
+	for i in adj[v]:
+		if visited[i] == False:
+			topologicalSortUtil(adj, i, visited, stack)
+	stack.append(v)
+
+def topologicalSort(adj): 
+    V=len(adj)
+    visited = [False]*V
+    stack = []
+    for i in range(V):
+    	if visited[i] == False:
+    		topologicalSortUtil(adj, i, visited, stack)
+    print(stack[::-1]) 
+print("Topological sorting (DFS based)")
+adj=[[1], [3], [3,4], [4], []]
+topologicalSort(adj)
+print("\n")
 
 
