@@ -411,4 +411,44 @@ g.shortestPath(s)
 print("\n")
 
 
+
+# Shortest path in DAG (Code-2)
+def topologicalSortUtil(adj,v,visited,stack):
+	visited[v] = True
+	if v in adj.keys() :
+		for node,weight in adj[v]:
+			if visited[node] == False:
+				topologicalSortUtil(adj,node,visited,stack)
+	stack.append(v)
+
+def shortestPath(adj, s) :
+    V=len(adj)
+    visited = [False]*V
+    stack =[]
+    for i in range(V):
+    	if visited[i] == False:
+    		topologicalSortUtil(adj,s,visited,stack)
+    dist = [float("Inf")] * V
+    dist[s] = 0
+    while stack:
+    	i = stack.pop()
+    	for node,weight in adj[i] :
+    		if dist[node] > dist[i] + weight :
+    			dist[node] = dist[i] + weight
+    for i in range(V):
+    	print (("%d" %dist[i]) if dist[i] != float("Inf") else "Inf" ,end=" ")
+
+adj=defaultdict(list)
+adj[0]=[(1,5), (2,3)] 
+adj[1]=[(2,2), (3,6)]
+adj[2]=[(3,7), (4,4), (5,2)] 
+adj[3]=[(4,-1)]
+adj[4]=[(5,-2)]
+adj[5]=[]
+print ("Following are shortest distances from source %d " % s)
+s=1
+shortestPath(adj, s)
+print("\n")
+
+
 ## Prim's Algorithm / Minimum Spanning Tree  
