@@ -452,3 +452,23 @@ print("\n")
 
 
 ## Prim's Algorithm / Minimum Spanning Tree  
+def primMST(graph) :  
+    V=len(graph) 
+    key=[float("inf") for i in range(V)] 
+    key[0]=0 
+    res=0 
+    mSet=[False for i in range(V)] 
+    for count in range(V) : 
+        u=-1 
+        for i in range(V) :
+            if mSet[i]==False and (u==-1 or key[i]<key[u]) : 
+                u=i 
+        mSet[u]=True 
+        res+=key[u] 
+        for v in range(V) :  
+            if mSet[v]==False and graph[u][v]!=0 and graph[u][v]<key[v] : 
+                key[v]=graph[u][v]
+    return res 
+graph=[[0,2,0,6,0], [2,0,3,8,5], [0,3,0,0,7], [6,8,0,0,9], [0,5,7,9,0]] 
+print("Prim's Algo (MST) : ",primMST(graph))
+print("\n")
