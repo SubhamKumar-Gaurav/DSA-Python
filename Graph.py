@@ -472,3 +472,31 @@ def primMST(graph) :
 graph=[[0,2,0,6,0], [2,0,3,8,5], [0,3,0,0,7], [6,8,0,0,9], [0,5,7,9,0]] 
 print("Prim's Algo (MST) : ",primMST(graph))
 print("\n")
+
+
+## Dijkstra's Shortest path algorithm
+def dijkstra(graph, src) : 
+    V=len(graph)
+    dist=[float("inf") for i in range(V)] 
+    dist[src]=0 
+    fin=[False for i in range(V)] 
+    for count in range(V-1) : 
+        u=-1 
+        for i in range(V) : 
+            if fin[i]==False and (u==-1 or dist[i]<dist[u]) : 
+                u=i 
+        fin[u]=True 
+        for v in range(V) : 
+            if fin[v]==False and graph[u][v]!=0 : 
+                dist[v]=min(dist[v], dist[u]+graph[u][v])
+    return dist 
+print("Dijkstra's Algorithm : ")
+graph=[[0,5,10,0], [5,0,3,20], [10,3,0,2], [0,20,2,0]]
+src=0 
+print(dijkstra(graph, src))
+graph=[[0,5,3], [5,0,1], [3,1,0]] 
+src=1 
+print(dijkstra(graph, src))
+print("\n")
+
+
