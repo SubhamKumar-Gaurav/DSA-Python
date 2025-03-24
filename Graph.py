@@ -558,3 +558,36 @@ print_sccs(adj)
 print("\n") 
 
 
+## Bellman Ford shortest path algorithm 
+def printArr(adj, dist):
+	print("Vertex Distance from Source")
+	for i in range(V):
+		print("{0}\t\t{1}".format(i, dist[i]))
+
+def BellmanFord(adj, src):
+    V=len(adj)
+    dist = [float("Inf")] * V
+    dist[src] = 0
+    for _ in range(V-1):
+        for u in adj :
+    	    for v, w in adj[u] : 
+    		    if dist[u] != float("Inf") and dist[u] + w < dist[v]:
+    			    dist[v] = dist[u] + w
+    for u in adj : 
+        for v, w in adj[u] :
+    	    if dist[u] != float("Inf") and dist[u] + w < dist[v]:
+    		    print("Graph contains negative weight cycle")
+    		    return
+    printArr(adj, dist)
+
+adj=defaultdict(list) 
+adj[0]=[(1,-1), (2,4)]
+adj[1]=[(2,3), (3,2), (4,2)] 
+adj[2]=[]
+adj[3]=[(1,1), (2,5)] 
+adj[4]=[(3,-3)]
+print("Bellman Ford Algo")
+BellmanFord(adj, 0)
+print("\n") 
+
+
