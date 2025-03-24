@@ -500,3 +500,61 @@ print(dijkstra(graph, src))
 print("\n")
 
 
+## Kosaraju's Algorithm  
+from collections import defaultdict
+
+def dfs_util(adj, v, visited):
+    visited[v] = True
+    print(v, end=" ")
+    for i in adj[v]:
+        if not visited[i]:
+            dfs_util(adj, i, visited)
+
+def fill_order(adj, v, visited, stack):
+    visited[v] = True
+    for i in adj[v] :
+        if not visited[i] :
+            fill_order(adj, i, visited, stack)
+    stack.append(v)
+
+def get_transpose(adj):
+    g = defaultdict(list)
+    for v in adj :
+        for i in adj[v]:
+            g[i].append(v)
+    return g
+
+def print_sccs(adj) :
+    V=len(adj)
+    stack = []
+    visited = [False] * V
+
+    # Step 1: Fill vertices in stack according to their finishing times
+    for i in range(V):
+        if not visited[i]:
+            fill_order(adj, i, visited, stack)
+
+    # Step 2: Create a reversed graph
+    gr = get_transpose(adj)
+
+    # Step 3: Mark all vertices as not visited (for second DFS)
+    visited = [False] * V
+
+    # Step 4: Process all vertices in order defined by Stack
+    while stack:
+        v = stack.pop()
+        if not visited[v]:
+            dfs_util(adj, v, visited)
+            print()
+
+adj=defaultdict(list) 
+adj[0]=[2]
+adj[1]=[0]
+adj[2]=[1,3]
+adj[3]=[4]
+adj[4]=[3]
+print("Kosaraju's Algorithm : ")
+print_sccs(adj)
+print("\n") 
+
+
