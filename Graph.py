@@ -732,3 +732,47 @@ print("\n")
 
 
 ## Bridges in Graph 
+def bridgeUtil(adj, u, visited, parent, low, disc, Time) : 
+    visited[u]=True 
+    disc[u]=Time[0] 
+    low[u]=Time[0] 
+    Time[0]+=1 
+    for v in adj[u] : 
+        if visited[v]==False : 
+            parent[v]=u 
+            bridgeUtil(adj, v, visited, parent, low, disc, Time) 
+            low[u]=min(low[u], low[v]) 
+            if low[v]>disc[u] : 
+                print("%d %d" %(u,v)) 
+        elif v!=parent[u] : 
+            low[u]=min(low[u], disc[v]) 
+
+def bridge(adj) :  
+    V=len(adj) 
+    visited=[False]*V 
+    disc=[float("inf")]*V 
+    low=[float("inf")]*V  
+    parent=[-1]*V 
+    Time=[0]
+    for i in range(V) : 
+        if visited[i]==False : 
+            bridgeUtil(adj, i, visited, parent, low, disc, Time) 
+adj=defaultdict(list)
+adj[0]=[2,3]
+adj[1]=[0]
+adj[2]=[1]
+adj[3]=[4] 
+adj[4]=[] 
+
+print("Bridges in first graph : ") 
+bridge(adj) 
+
+adj=defaultdict(list) 
+adj[0]=[1]
+adj[1]=[2]
+adj[2]=[3]
+adj[3]=[]
+print("Bridges in second graph : ") 
+bridge(adj) 
+print("\n") 
+
