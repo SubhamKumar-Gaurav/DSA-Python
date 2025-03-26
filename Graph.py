@@ -776,3 +776,49 @@ print("Bridges in second graph : ")
 bridge(adj) 
 print("\n") 
 
+
+
+## Tarjans algorithm 
+from collections import defaultdict 
+def SCCUtil(u, graph, low, disc, stackMember, st, Time) : 
+    disc[u]=Time[0]
+    low[u]=Time[0]
+    Time[0]+=1 
+    stackMember[u]=True 
+    st.append(u) 
+    for v in graph[u] : 
+        if disc[v]==-1 : 
+            SCCUtil(v, graph, low, disc, stackMember, st, Time) 
+            low[u]=min(low[u], low[v]) 
+        elif stackMember[v] : 
+            low[u]=min(low[u], disc[v]) 
+    if low[u]==disc[u] : 
+        while st : 
+            w=st.pop() 
+            print(w, end=" ")
+            stackMember[w]=False 
+            if w==u : 
+                break 
+        print() 
+
+def SCC(vertices, edges) : 
+    graph=defaultdict(list) 
+    for u,v in edges : 
+        graph[u].append(v) 
+    
+    disc=[-1]*vertices 
+    low=[-1]*vertices 
+    stackMember=[False]*vertices 
+    st=[] 
+    Time=[0] 
+    for i in range(vertices) : 
+        if disc[i]==-1 : 
+            SCCUtil(i, graph, low, disc, stackMember, st, Time)
+
+print("Strongly Connected Components in graph")
+SCC(5, [(1, 0), (0, 2), (2, 1), (0, 3), (3, 4)])
+print("\n")
+
+
+
+## Kruskal's algorithm 
