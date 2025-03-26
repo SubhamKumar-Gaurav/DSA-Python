@@ -822,3 +822,51 @@ print("\n")
 
 
 ## Kruskal's algorithm 
+def find(parent, i) : 
+    if parent[i]==i : 
+        return i 
+    parent[i]=find(parent, parent[i]) 
+    return parent[i] 
+
+def apply_union(parent, rank, x, y) : 
+    xroot=find(parent, x)
+    yroot=find(parent, y) 
+    if rank[xroot]<rank[yroot] : 
+        parent[xroot]=yroot 
+    elif rank[xroot]>rank[yroot] : 
+        parent[yroot]=xroot 
+    else : 
+        parent[yroot]=xroot 
+        rank[xroot]+=1 
+
+def kruskal_algo(vertices, edges) : 
+    result=[] 
+    i=0 
+    e=0 
+    edges=sorted(edges, key=lambda item: item[2]) 
+    parent=[i for i in range(vertices)] 
+    rank=[0]*vertices 
+
+    while e<vertices-1 and i<len(edges) : 
+        u,v,w=edges[i] 
+        i+=1 
+        x=find(parent, u)
+        y=find(parent, v) 
+
+        if x!=y : 
+            e+=1 
+            result.append([u,v,w]) 
+            apply_union(parent, rank, x, y) 
+    
+    for u, v, weight in result : 
+        print(f"{u} - {v}: {weight}")
+
+edges = [
+    (0, 1, 4), (0, 2, 4), (1, 2, 2), (1, 0, 4),
+    (2, 0, 4), (2, 1, 2), (2, 3, 3), (2, 5, 2),
+    (2, 4, 4), (3, 2, 3), (3, 4, 3), (4, 2, 4),
+    (4, 3, 3), (5, 2, 2), (5, 4, 3)
+]
+
+print("Minimum Spanning Tree using Kruskal's Algorithm:")
+kruskal_algo(6, edges)
