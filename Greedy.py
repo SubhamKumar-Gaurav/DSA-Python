@@ -42,3 +42,22 @@ print()
 
 
 
+## Fractional Knapsack Problem 
+# weight,value
+arr=[[50,600], [20,500], [30,400]] 
+def fractionalKnapsack(arr, capacity) :  
+    for i in range(len(arr)) :
+        u=arr[i][0]   # weight
+        v=arr[i][1]   # value 
+        arr[i].append(v/u) 
+    arr.sort(reverse=True, key= lambda x:x[2]) 
+    res=0
+    for curr in arr : 
+        if curr[0]<=capacity :   # curr weight <= knapsack capacity
+            res+=curr[1]         # adding value to the answer 
+            capacity-=curr[0]    # reducing the knapsack capacity, since we have filled it with curr weight
+        else : 
+            res+=curr[1]*(capacity/curr[0])  # the remaining quantity: adding only a portion of the weight and not complete 
+            return res 
+print("Fractional Knapsack : ",fractionalKnapsack(arr, 70))
+print()
