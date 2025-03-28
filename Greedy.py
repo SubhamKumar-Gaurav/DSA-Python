@@ -61,3 +61,23 @@ def fractionalKnapsack(arr, capacity) :
             return res 
 print("Fractional Knapsack : ",fractionalKnapsack(arr, 70))
 print()
+
+
+
+## Job Scheduling
+def jobScheduling(arr,t) : 
+    n=len(arr)
+    arr.sort(key= lambda x:x[1], reverse=True)
+    result=[False]*t 
+    res=0 
+    for i in range(n) : 
+        for j in range(min(t-1, arr[i][0]-1), -1, -1) : 
+            if result[j]==False : 
+                result[j]=True 
+                res+=arr[i][1] 
+                break 
+    return res 
+arr=[[4,70], [1,80], [1,30], [1,100]]
+t=4 
+print(jobScheduling(arr,t))
+print()
