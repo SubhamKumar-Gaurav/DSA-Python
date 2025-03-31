@@ -47,3 +47,49 @@ print("Permutations of ABC (Backtracking)")
 permute(s, 0 , 2)
 print("\n")
 
+
+
+## Rat in a Maze 
+# Top left - start ,  Bottom right - end 
+# Movements - only two direction - either bottom or right 
+def printSol(sol) :
+    N=len(sol) 
+    for i in range(N) :
+        for j in range(N) :  
+            print(sol[i][j], end=" ")
+        print() 
+
+def isSafe(maze, i, j) : 
+    return i<len(maze) and j<len(maze) and maze[i][j]==1 
+
+def solveMaze(maze) : 
+    N=len(maze) 
+    sol=[[0 for j in range(N)] for i in range(N)]  
+
+    if solveMazeRec(maze, 0, 0, sol)==False : 
+        print("Solution does not exists") 
+        return False 
+    printSol(sol) 
+    return True 
+
+def solveMazeRec(maze, i, j, sol) : 
+    if i==len(maze)-1 and j==len(maze)-1 and maze[i][j]==1 : 
+        sol[i][j]=1 
+        return True 
+    if isSafe(maze, i, j) : 
+        sol[i][j]=1 
+        if solveMazeRec(maze, i+1, j, sol) :
+            return True 
+        if solveMazeRec(maze, i, j+1, sol) : 
+            return True 
+        sol[i][j]=0 
+    return False 
+maze=[  [1,0,0,0], 
+        [1,1,0,0], 
+        [0,1,1,0], 
+        [0,1,1,1] ] 
+print("Rat in a maze : ")
+solveMaze(maze)
+print("\n") 
+
+
