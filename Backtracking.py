@@ -93,3 +93,49 @@ solveMaze(maze)
 print("\n") 
 
 
+
+## N Queen problems
+def isSafe(row, col) : 
+    for i in range(col) : 
+        if board[row][i] : 
+            return False 
+    i, j = row, col 
+    while i>=0 and j>=0 : 
+        if board[i][j] : 
+            return False 
+        i-=1 
+        j-=1 
+    i, j = row, col 
+    while i<N and j>0 : 
+        if board[i][j] : 
+            return False 
+        i+=1 
+        j-=1 
+    return True 
+
+def solve() : 
+    if solveRec(0)==False : 
+        return False 
+    for i in range(N) : 
+        for j in range(N) : 
+            print(board[i][j], end=" ") 
+        print() 
+    return True 
+
+def solveRec(col) : 
+    if col==N : 
+        return True 
+    for i in range(N) : 
+        if isSafe(i, col) : 
+            board[i][col]=1 
+            if solveRec(col+1) : 
+                return True 
+            board[i][col]=0 
+    return False 
+N=4 
+board=[[0 for j in range(N)] for i in range(N)] 
+solve()
+print("\n")  
+
+
+
