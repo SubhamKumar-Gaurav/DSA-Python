@@ -132,10 +132,78 @@ def solveRec(col) :
                 return True 
             board[i][col]=0 
     return False 
-N=4 
+N=5 
 board=[[0 for j in range(N)] for i in range(N)] 
+print("N Queens ")
 solve()
 print("\n")  
 
+
+
+## Sudoku problem 
+import math 
+
+def isSafe(board, row, col, num) :  
+    N=len(board) 
+    for d in range(N) : 
+        if board[row][d]==num : 
+            return False 
+    for r in range(N) : 
+        if board[r][col]==num : 
+            return False 
+    s=int(math.sqrt(N)) 
+    boxRowStart = row-(row%s) 
+    boxColStart = col-(col%s) 
+
+    for r in range(boxRowStart, boxRowStart+s) : 
+        for d in range(boxColStart, boxColStart+s) : 
+            if board[r][d]==num : 
+                return False 
+    return True 
+
+def solve(board) : 
+    N=len(board) 
+    row=-1 
+    col=-1 
+    isEmpty=True 
+    for i in range(N) : 
+        for j in range(N) : 
+            if board[i][j]==0 : 
+                row=i 
+                col=j 
+                isEmpty=False 
+                break 
+        if not isEmpty : 
+            break 
+    if isEmpty : 
+        return True 
+    for num in range(1, N+1) : 
+        if isSafe(board, row, col, num) : 
+            board[row][col]=num 
+            if solve(board) : 
+                return True 
+            else : 
+                board[row][col]=0 
+    return False 
+
+def printBoard(board) : 
+    N=len(board)
+    for i in range(N) : 
+        for j in range(N) : 
+            print(board[i][j], end=" ") 
+        print() 
+
+board=[ [1,0,3,0],
+        [0,0,2,1], 
+        [0,1,0,2], 
+        [2,4,0,0]
+                  ]
+
+print("Sudoku problem ") 
+print("Before solving : ")
+printBoard(board)
+print("After Solving : ")
+solve(board) 
+printBoard(board) 
 
 
