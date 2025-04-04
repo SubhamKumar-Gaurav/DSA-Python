@@ -21,7 +21,7 @@
 #   Allocate Minimum Pages 
 
 
-# Memoization 
+## Memoization 
 # Fibonacci using Recursion 
 def fibo(n) : 
     if n==0 or n==1 : 
@@ -30,7 +30,7 @@ def fibo(n) :
 print("Fibonacci (Recursion) : ",fibo(7))
 
 
-# Fibonacci using DP 
+# Fibonacci using DP (memoization) 
 memo=[None]*100   # Assumption n<100 
 def fib(n) : 
     if memo[n]!=None : 
@@ -40,5 +40,20 @@ def fib(n) :
     else : 
         memo[n]=fib(n-1)+fib(n-2) 
     return memo[n] 
-print("Fibonacci (DP) : ", fib(7)) 
-print("\n")
+print("Fibonacci (Memoization) : ", fib(7)) 
+
+
+## Tabulation 
+def fibo(n) : 
+    dp=[0]*(n+1) 
+    dp[0]=0 
+    dp[1]=1 
+    for i in range(2, n+1) : 
+        dp[i]=dp[i-1]+dp[i-2] 
+    return dp[n] 
+n=7
+print("Fibonacci (Tabulation) : ", fibo(n))
+print("\n") 
+
+
+## Longest Common Subsequence 
