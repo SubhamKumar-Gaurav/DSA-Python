@@ -176,3 +176,42 @@ print("Edit Distance (DP) : ",edDP(s1, s2))
 print("\n")
 
 
+
+## Longest Increasing Subsequence 
+# Naive approach  ;  Time: O(n^2)
+def lis1(arr) : 
+    n=len(arr) 
+    lis=[1]*n 
+    for i in range(1,n) : 
+        for j in range(i) : 
+            if arr[i]>arr[j] : 
+                lis[i]=max(lis[i], lis[j]+1) 
+    return max(lis) 
+arr=[3,4,2,8,10,5,1] 
+print("Longest Increasing Subsequence : ",lis1(arr)) 
+
+
+# Efficient approach   ;   Time: O(n logn)
+def lis2(arr) : 
+    n=len(arr) 
+    tail=[arr[0]] 
+    for i in range(1, n) :  
+        if arr[i]>tail[-1] : 
+            tail.append(arr[i])
+        else : 
+            c=ceilIdx(tail,arr[i]) 
+            tail[c]=arr[i]
+    return len(tail) 
+
+def ceilIdx(tail,x) : 
+    l=0 
+    r=len(tail) 
+    while l<r : 
+        m=l+(l+r)//2 
+        if tail[m]>x : 
+            r=m 
+        else : 
+            l=m+1 
+    return m
+print("Longest Increasing Subsequence : ",lis2(arr))
+print("\n")
