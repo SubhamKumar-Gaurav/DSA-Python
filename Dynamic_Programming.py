@@ -137,3 +137,42 @@ print("Coin Change (DP) : ",coinChangeDP(coins, s))
 print("\n")
 
 
+
+## Edit Distance 
+# Recursive 
+def edRec(s1, s2, m, n) : 
+    if n==0 : 
+        return m 
+    if m==0 : 
+        return n 
+    if s1[m-1]==s2[n-1] : 
+        return edRec(s1, s2, m-1, n-1)
+    else : 
+        return 1+min(edRec(s1, s2, m-1, n), edRec(s1, s2, m, n-1), edRec(s1, s2, m-1, n-1)) 
+s1="saturday"
+s2="sunday" 
+print("Edit Distance (Recursive) : ",edRec(s1, s2, len(s1), len(s2))) 
+
+
+# DP approach 
+def edDP(s1, s2) : 
+    m=len(s1)
+    n=len(s2) 
+    dp=[[0 for x in range(n+1)] for x in range(m+1)]  
+    for i in range(m+1) : 
+        dp[i][0]=i  
+    for j in range(n+1) : 
+        dp[0][j]=j 
+    for i in range(1,m+1) : 
+        for j in range(1,n+1) : 
+            if s1[i-1]==s2[j-1] : 
+                dp[i][j]=dp[i-1][j-1]
+            else : 
+                dp[i][j]=1+min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) 
+    return dp[m][n] 
+s1="sunday"
+s2="saturday" 
+print("Edit Distance (DP) : ",edDP(s1, s2))
+print("\n")
+
+
