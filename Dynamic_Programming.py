@@ -104,3 +104,36 @@ print("LCS using Tabulation : ", lcsTabu(s1, s2))
 print("\n") 
 
 
+
+## Coin Change 
+# Recursive 
+def coinChangeRec(coins, n, s) : 
+    if s==0 : 
+        return 1 
+    if s<0 : 
+        return 0 
+    if n==0 : 
+        return 0 
+    return coinChangeRec(coins, n, s-coins[n-1])+coinChangeRec(coins, n-1, s)
+coins=[2,5,3,6] 
+s=10 
+print("Coin Change (Recursive) : ",coinChangeRec(coins, 4, s)) 
+
+# DP approach 
+def coinChangeDP(coins, s) : 
+    n=len(coins) 
+    dp=[[0 for x in range(s+1)] for x in range(n+1)] 
+    for i in range(n+1) : 
+        dp[i][0]=1 
+    for i in range(1,n+1) : 
+        for j in range(1, s+1) :  
+            dp[i][j]=dp[i-1][j] 
+            if j>=coins[i-1] : 
+                dp[i][j]+=dp[i][j-coins[i-1]] 
+    return dp[n][s]
+coins=[2,5,3,6] 
+s=10 
+print("Coin Change (DP) : ",coinChangeDP(coins, s)) 
+print("\n")
+
+
