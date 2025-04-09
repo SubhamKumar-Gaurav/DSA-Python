@@ -184,7 +184,7 @@ def lis1(arr) :
     lis=[1]*n 
     for i in range(1,n) : 
         for j in range(i) : 
-            if arr[i]>arr[j] : 
+            if arr[j]<arr[i] : 
                 lis[i]=max(lis[i], lis[j]+1) 
     return max(lis) 
 arr=[3,4,2,8,10,5,1] 
@@ -205,13 +205,67 @@ def lis2(arr) :
 
 def ceilIdx(tail,x) : 
     l=0 
-    r=len(tail) 
+    r=len(tail)-1 
     while l<r : 
-        m=l+(l+r)//2 
+        m=l+(r-l)//2 
         if tail[m]>x : 
             r=m 
         else : 
             l=m+1 
-    return m
+    return l
 print("Longest Increasing Subsequence : ",lis2(arr))
 print("\n")
+
+
+## Variations of LIS 
+# Maximum Sum Increasing Subsequence 
+def maxSIS(arr) : 
+    n=len(arr)
+    msis=[x for x in arr] 
+    for i in range(1,n) : 
+        for j in range(i) :  
+            if arr[j]<arr[i] : 
+                msis[i]=max(msis[i], arr[i]+msis[j]) 
+    return max(msis) 
+arr=[3,1,10,4,7] 
+print("Maximum Sum Increasing Subsequence : ",maxSIS(arr))
+print("\n")
+
+# Maximum length Bitonic sequence 
+def bts(arr) : 
+    n=len(arr) 
+    lis=[1]*n 
+    for i in range(1, n) : 
+        for j in range(i) : 
+            if arr[j]<arr[i] : 
+                lis[i]=max(lis[i], lis[j]+1)
+    lds=[1]*n 
+    arr=arr[::-1]
+    for i in range(1,n) : 
+        for j in range(i) : 
+            if arr[j]<arr[i] : 
+                lds[i]=max(lds[i], lds[j]+1)
+    lds=lds[::-1] 
+    res=1 
+    for i in range(n) : 
+        res=max(res, lis[i]+lds[i]-1) 
+    return res 
+arr=[1,11,2,10,4,5,2,1]
+print("Max length Bitonic sequence : ",bts(arr))  
+print("\n")  
+
+
+
+## Building Bridges 
+arr=[[1,8], [1,2], [4,3], [3,4], [2,6], [6,7], [7,8], [5,5]] 
+def buildBridges(arr) : 
+    arr.sort(key=lambda x: (x[0],x[1]))  
+    new_arr=[] 
+    for i in range(len(arr)) : 
+        new_arr.append(arr[i][1]) 
+    return lis2(new_arr)
+print("Build bridges : ",buildBridges(arr)) 
+print("\n")  
+
+
+ 
