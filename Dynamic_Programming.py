@@ -268,4 +268,35 @@ print("Build bridges : ",buildBridges(arr))
 print("\n")  
 
 
- 
+
+## Longest Chain of Pairs 
+#  O(n^2) solution 
+arr=[[5,24], [39,60], [15,28], [27,40], [50,90]] 
+def longestChainPairs(arr) : 
+    n=len(arr)
+    arr.sort(key=lambda x: x[0]) 
+    lis=[1]*n 
+    for i in range(1,n) : 
+        for j in range(i) : 
+            if arr[i][0]>arr[j][1] : 
+                lis[i]=max(lis[i], lis[j]+1) 
+    return max(lis)
+print("Longest Chain of Pairs ")   
+print("O(n^2) solution : ", longestChainPairs(arr)) 
+
+
+# O(n logn) solution 
+def longestChainofPairs(arr) : 
+    n=len(arr)
+    arr.sort(key=lambda x: x[0]) 
+    last_end=arr[0][1] 
+    count=0 
+    for i in range(1,n) : 
+        if arr[i][0]>last_end : 
+            count+=1 
+            last_end=arr[i][1] 
+    return count
+print("O(n logn) solution : ",longestChainofPairs(arr))
+print("\n") 
+
+
