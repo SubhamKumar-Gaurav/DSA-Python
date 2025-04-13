@@ -300,3 +300,35 @@ print("O(n logn) solution : ",longestChainofPairs(arr))
 print("\n") 
 
 
+## Rope cutting 
+# Recursive solution 
+def ropeCuttingRec(n,a,b,c) : 
+    if n==0 : 
+        return 0 
+    if n<0 : 
+        return -1 
+    res=max(ropeCuttingRec(n-a, a, b, c), ropeCuttingRec(n-b, a, b, c), ropeCuttingRec(n-c, a, b, c)) 
+    if res==-1 : 
+        return res 
+    return res+1 
+print("Rope cutting (Recursive) : ", ropeCuttingRec(5,1,2,3)) 
+
+
+# DP solution 
+def ropeCuttingDP(n,a,b,c) : 
+    dp=[-1 for i in range(n+1)] 
+    dp[0]=0
+    for i in range(1,n+1) : 
+        if i>=a : 
+            dp[i]=dp[i-a]
+        if i>=b : 
+            dp[i]=max(dp[i], dp[i-b])
+        if i>=c : 
+            dp[i]=max(dp[i], dp[i-c])
+        if dp[i]!=-1 : 
+            dp[i]=dp[i]+1
+    return dp[n]
+print("Rope cutting (DP) : ", ropeCuttingDP(5,1,2,3))
+print("\n") 
+
+
