@@ -332,3 +332,21 @@ print("Rope cutting (DP) : ", ropeCuttingDP(5,1,2,3))
 print("\n") 
 
 
+
+## Minimum coins to make a given value 
+# Recursive solution 
+def minCoinsRec(coins, val) : 
+    if val==0 : 
+        return 0 
+    n=len(coins) 
+    res=-1 
+    for i in range(n) : 
+        if coins[i]<=val : 
+            sub_res=minCoinsRec(coins, val-coins[i]) 
+            if sub_res!=-1 : 
+                if res==-1 or (sub_res+1)<res : 
+                    res=sub_res+1 
+    return res 
+coins=[25,10,5]
+val=30
+print("Minimum Coins to make a value (Recursive) : ",minCoinsRec(coins, val))
