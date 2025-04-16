@@ -475,6 +475,7 @@ print("\n")
 
 
 ## Dijkstra's Shortest path algorithm
+# Time : O(V^2)
 def dijkstra(graph, src) : 
     V=len(graph)
     dist=[float("inf") for i in range(V)] 
@@ -491,13 +492,41 @@ def dijkstra(graph, src) :
                 dist[v]=min(dist[v], dist[u]+graph[u][v])
     return dist 
 print("Dijkstra's Algorithm : ")
-graph=[[0,5,10,0], [5,0,3,20], [10,3,0,2], [0,20,2,0]]
+graph=[[0,5,10,0], [5,0,3,20], [10,3,0,2], [0,20,2,0]] 
 src=0 
 print(dijkstra(graph, src))
 graph=[[0,5,3], [5,0,1], [3,1,0]] 
 src=1 
 print(dijkstra(graph, src))
 print("\n")
+
+# Time: O((V+E)*logV)
+import heapq 
+def dijkstra(V, edges, src) :  
+    adj=[[] for _ in range(V)] 
+    for u,v,w in edges : 
+        adj[u].append((w,v)) 
+        adj[v].append((w,u)) 
+    dist=[float("inf") for _ in range(V)] 
+    dist[src]=0 
+    pq=[] 
+    heapq.heappush(pq,(0,src)) 
+
+    while pq : 
+        wt,u=heapq.heappop(pq) 
+        for w,v in adj[u] : 
+            if dist[v]>wt+w : 
+                dist[v]=wt+w 
+                heapq.heappush(pq, (dist[v], v)) 
+    return dist 
+V = 4
+edges = [[0,1,5], [1,0,5], [0,2,10], [2,0,10],
+         [1,2,3], [2,1,3], [1,3,20], [3,1,20], 
+         [2,3,2], [3,2,2]]
+src = 0
+print("Dijkstra (efficient) : ", dijkstra(V, edges, src))
+print("\n")
+
 
 
 ## Kosaraju's Algorithm  
