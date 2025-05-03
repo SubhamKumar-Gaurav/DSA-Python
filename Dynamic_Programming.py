@@ -407,17 +407,17 @@ print("\n")
 
 ## 0-1 knapsack problem 
 # Recursive solution   
-def knspSackRec(W, wt, val, n) : 
+def knapSackRec(W, wt, val, n) : 
     if n==0 or W==0 : 
         return 0 
     if wt[n-1]>W : 
-        return knspSackRec(W, wt, val, n-1) 
+        return knapSackRec(W, wt, val, n-1) 
     else :  
-        return max(val[n-1]+knspSackRec(W-wt[n-1], wt, val, n-1), knspSackRec(W, wt, val, n-1)) 
+        return max(val[n-1]+knapSackRec(W-wt[n-1], wt, val, n-1), knapSackRec(W, wt, val, n-1)) 
 val=[60,100,120]
 wt=[10,20,30] 
 W=50
-print("0-1 Knapsack (Recursive) : ", knspSackRec(W, wt, val, 3)) 
+print("0-1 Knapsack (Recursive) : ", knapSackRec(W, wt, val, 3)) 
 
 # DP solution 
 def knapSackDP(W, wt, val) : 
