@@ -350,3 +350,19 @@ def minCoinsRec(coins, val) :
 coins=[25,10,5]
 val=30
 print("Minimum Coins to make a value (Recursive) : ",minCoinsRec(coins, val))
+
+# DP solution 
+def minCoinsDP(coins, val) : 
+    dp=[float("inf")]*(val+1) 
+    dp[0]=0 
+
+    for amount in range(1,val+1) : 
+        for coin in coins : 
+            if coin<=amount : 
+                dp[amount]=min(dp[amount], dp[amount-coin]+1) 
+    if dp[val]!=float("inf") : 
+        return dp[val] 
+    return -1 
+coins=[25,10,5]
+val=30
+print("Minimum Coins to make a value (Bottom-Up DP) : ",minCoinsDP(coins, val))
