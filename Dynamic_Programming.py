@@ -404,6 +404,7 @@ print("Min Jumps to reach end (DP) : ", minJumpsDP(arr))
 print("\n") 
 
 
+
 ## 0-1 knapsack problem 
 # Recursive solution   
 def knspSackRec(W, wt, val, n) : 
@@ -418,9 +419,8 @@ wt=[10,20,30]
 W=50
 print("0-1 Knapsack (Recursive) : ", knspSackRec(W, wt, val, 3)) 
 
-
 # DP solution 
-def knspSackDP(W, wt, val) : 
+def knapSackDP(W, wt, val) : 
     n=len(wt) 
     dp=[[0 for _ in range(W+1)] for x in range(n+1)]  
     for i in range(1,n+1) : 
@@ -433,6 +433,7 @@ def knspSackDP(W, wt, val) :
 val=[60,100,120]
 wt=[10,20,30] 
 W=50
-print("0-1 Knapsack (DP) : ", knspSackDP(W, wt, val))  
+print("0-1 Knapsack (DP) : ", knapSackDP(W, wt, val))  
 print("\n")
+
 
