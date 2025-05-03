@@ -366,3 +366,41 @@ def minCoinsDP(coins, val) :
 coins=[25,10,5]
 val=30
 print("Minimum Coins to make a value (Bottom-Up DP) : ",minCoinsDP(coins, val))
+print("\n")
+
+
+
+## Minimum Jumps to reach the end 
+# Recursive solution      Time: O(n^n)
+def minJumpsRec(arr, n) :
+    if n==1 : 
+        return 0 
+    res=float("inf") 
+    for i in range(n-1) : 
+        if i+arr[i]>=n-1 : 
+            sub_res=minJumpsRec(arr, i+1) 
+            if sub_res!=float("inf") : 
+                res=min(res, sub_res+1) 
+    return res 
+arr=[3,4,2,1,2,1]
+n=len(arr) 
+print("Min Jumps to reach end (Recursive) : ", minJumpsRec(arr,n)) 
+
+
+# DP solution         Time: O(n^2)
+def minJumpsDP(arr) : 
+    n=len(arr) 
+    dp=[float("inf")]*n 
+    dp[0]=0 
+    for i in range(1,n) : 
+        for j in range(i) : 
+            if (i<=j+arr[j]) and (dp[j]!=float("inf")) : 
+                dp[i]=min(dp[i], dp[j]+1) 
+                break 
+    return dp[n-1] 
+arr=[3,4,2,1,2,1]
+n=len(arr) 
+print("Min Jumps to reach end (DP) : ", minJumpsDP(arr)) 
+print("\n") 
+
+
