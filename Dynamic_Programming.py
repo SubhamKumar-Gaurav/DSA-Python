@@ -437,3 +437,26 @@ print("0-1 Knapsack (DP) : ", knapSackDP(W, wt, val))
 print("\n")
 
 
+
+## Optimal strategy for a Game 
+# Recursive solution - 1
+def mVRec(arr, i, j, sum) : 
+    if i+1==j : 
+        return max(arr[i], arr[j]) 
+    return max(sum-mVRec(arr, i+1, j, sum-arr[i]), sum-mVRec(arr, i, j-1, sum-arr[j])) 
+
+def maxVal(arr) : 
+    return mVRec(arr, 0, len(arr)-1, sum(arr)) 
+
+arr=[8,15,7,3] 
+print("Max val in a game (Recursive-1) : ", maxVal(arr))
+
+# Recursive solution - 2 
+def mV(arr, i, j) : 
+    if i+1==j : 
+        return max(arr[i], arr[j]) 
+    return max( min(mV(arr, i+2, j), mV(arr, i+1, j-1)) +arr[i], 
+                min(mV(arr, i, j-2), mV(arr, i+1, j-1)) +arr[j] )
+arr=[25, 30, 4, 11, 6, 5] 
+print("Max val in a game (Recursive-2) : ", mV(arr, 0, 5)) 
+
