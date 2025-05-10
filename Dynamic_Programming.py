@@ -448,7 +448,7 @@ def mVRec(arr, i, j, sum) :
 def maxVal(arr) : 
     return mVRec(arr, 0, len(arr)-1, sum(arr)) 
 
-arr=[8,15,7,3] 
+arr=[25, 30, 4, 11, 6, 5] 
 print("Max val in a game (Recursive-1) : ", maxVal(arr))
 
 # Recursive solution - 2 
@@ -459,4 +459,23 @@ def mV(arr, i, j) :
                 min(mV(arr, i, j-2), mV(arr, i+1, j-1)) +arr[j] )
 arr=[25, 30, 4, 11, 6, 5] 
 print("Max val in a game (Recursive-2) : ", mV(arr, 0, 5)) 
+
+# DP Solution 
+def maxValDP(arr) : 
+    n=len(arr) 
+    dp=[[0 for x in range(n)] for y in range(n)] 
+
+    for i in range(n-1) : 
+        dp[i][i+1]=max(arr[i], arr[i+1]) 
+    
+    for gap in range(3, n, 2) : 
+        for i in range(n-gap) : 
+            j=i+gap 
+            dp[i][j]=max( arr[i]+ min(dp[i+2][j], dp[i+1][j-1]), 
+                          arr[j]+ min(dp[i][j-2], dp[i+1][j-1]) ) 
+    return dp[0][n-1] 
+# arr=[20,5,4,6,8,3] 
+print("Max val in a game (DP) : ", maxValDP(arr)) 
+print("\n") 
+
 
