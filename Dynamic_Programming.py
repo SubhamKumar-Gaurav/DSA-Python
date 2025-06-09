@@ -508,3 +508,25 @@ def countBST(n) :
 print("Count BST with n keys")
 print("n=3 : ", countBST(3))
 print("n=5 : ", countBST(5)) 
+print("\n")
+
+
+# Using Catalan Numbers : 1/(n+1)* 2nCn 
+def factorials_upto_n(n) : 
+    dp=[0]*(n+1) 
+    dp[0]=1 
+    for i in range(1, n+1) : 
+        dp[i]=i*dp[i-1] 
+    return dp 
+
+def Catalan(n) : 
+    dp=factorials_upto_n(2*n + 1) 
+    return dp[2*n] // (dp[n]*dp[n]*(n+1)) 
+
+print("Count BST using n nodes (Using Catalan Numbers)")  
+print("n=3 : ", Catalan(3))
+print("n=5 : ", Catalan(5))
+print("\n")   
+
+
+
