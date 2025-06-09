@@ -539,4 +539,22 @@ def maxSum(arr, n) :
 
 arr=[10,5,15,20,2,30]
 print("Maximum sum with no consecutives ")
-print("Recursive solution: ",maxSum(arr, 4)) 
+print("Recursive solution: ",maxSum(arr, 6)) 
+
+
+def maxSumDP(arr) : 
+    n=len(arr) 
+    if n==1 : 
+        return arr[0] 
+    elif n==2 : 
+        return max(arr[0], arr[1]) 
+    dp=[0]*(n+1)
+    dp[1]=arr[0]
+    dp[2]=max(arr[0], arr[1]) 
+    for i in range(3, n+1) : 
+        dp[i]=max(dp[i-1], dp[i-2]+arr[i-1]) 
+    return dp[n] 
+print("DP solution: ",maxSumDP(arr)) 
+print("\n") 
+
+
