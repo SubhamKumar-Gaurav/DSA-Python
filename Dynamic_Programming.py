@@ -576,3 +576,13 @@ print("Space optimized sol: ",maxSumDP2(arr))
 print("\n")  
 
 
+
+## Subset sum problem 
+# Recursive solution 
+def subsetSumRec(arr, n, s) :  
+    if n==0 : 
+        return 1 if s==0 else 0 
+    return subsetSumRec(arr, n-1, s) + subsetSumRec(arr, n-1, s-arr[n-1]) 
+arr=[10,5,2,3,6] 
+print("Subset Sum Problem")
+print("Recursive: ",subsetSumRec(arr, 5, 8)) 
