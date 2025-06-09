@@ -495,3 +495,16 @@ def eggDrop(f,e) :
 print("Egg dropping puzzle (f=10, e=2) : ", eggDrop(10,2))
 print("Egg dropping puzzle (f=10, e=1) : ", eggDrop(10,1))
 print("\n") 
+
+
+## Count BST with n keys 
+def countBST(n) : 
+    dp=[0]*(n+1) 
+    dp[0]=1 
+    for i in range(1, n+1) : 
+        for j in range(i) : 
+            dp[i]+=dp[j]*dp[i-j-1] 
+    return dp[n] 
+print("Count BST with n keys")
+print("n=3 : ", countBST(3))
+print("n=5 : ", countBST(5)) 
