@@ -530,6 +530,7 @@ print("\n")
 
 
 ## Maximum sum with no consecutives 
+# Recursive solution 
 def maxSum(arr, n) :  
     if n==1: 
         return arr[0]
@@ -541,7 +542,7 @@ arr=[10,5,15,20,2,30]
 print("Maximum sum with no consecutives ")
 print("Recursive solution: ",maxSum(arr, 6)) 
 
-
+# DP solution 
 def maxSumDP(arr) : 
     n=len(arr) 
     if n==1 : 
@@ -555,6 +556,23 @@ def maxSumDP(arr) :
         dp[i]=max(dp[i-1], dp[i-2]+arr[i-1]) 
     return dp[n] 
 print("DP solution: ",maxSumDP(arr)) 
-print("\n") 
+
+# Space optimized solution
+def maxSumDP2(arr) : 
+    n=len(arr)
+    if n==1 : 
+        return arr[0] 
+    elif n==2 : 
+        return max(arr[0], arr[1]) 
+    prev_prev=arr[0] 
+    prev=max(arr[0], arr[1]) 
+    res=prev 
+    for i in range(3, n+1) : 
+        res=max(prev, prev_prev+arr[i-1]) 
+        prev_prev=prev 
+        prev=res 
+    return res 
+print("Space optimized sol: ",maxSumDP2(arr))
+print("\n")  
 
 
