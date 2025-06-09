@@ -529,4 +529,14 @@ print("n=5 : ", Catalan(5))
 print("\n")   
 
 
+## Maximum sum with no consecutives 
+def maxSum(arr, n) :  
+    if n==1: 
+        return arr[0]
+    if n==2 : 
+        return max(arr[0], arr[1]) 
+    return max( maxSum(arr, n-1), maxSum(arr, n-2)+arr[n-1] )  
 
+arr=[10,5,15,20,2,30]
+print("Maximum sum with no consecutives ")
+print("Recursive solution: ",maxSum(arr, 4)) 
