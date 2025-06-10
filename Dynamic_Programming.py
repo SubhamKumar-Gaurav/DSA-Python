@@ -634,3 +634,42 @@ def mChainDP(arr) :
 print("DP solution: ",mChainDP(arr))
 print("\n") 
 
+
+## Palindrome Partitioning 
+# Recursive solution 
+def isPal(arr, i, j) : 
+    s=arr[i:j+1] 
+    return s==s[::-1] 
+
+def palPartRec(arr, i, j) : 
+    if isPal(arr, i, j) : 
+        return 0 
+    res=float("inf") 
+    for k in range(i,j) : 
+        res=min(res, 1 + palPartRec(arr, i, k) + palPartRec(arr, k+1, j)) 
+    return res 
+print("Palindrome Partitioning") 
+arr=['g', 'e', 'e', 'k'] 
+print("Recursive: ", palPartRec(arr, 0, 3))
+arr=['a', 'b', 'b', 'a', 'c']
+print("Recursive: ", palPartRec(arr, 0, 4))
+
+# DP solution 
+def palPartDP(arr) : 
+    n=len(arr)
+    dp=[[0 for i in range(n)] for j in range(n)]  
+    for gap in range(1,n) : 
+        for i in range(n-gap) : 
+            j=i+gap
+            if isPal(arr, i, j) : 
+                dp[i][j]=0 
+            else : 
+                dp[i][j]=float("inf") 
+                for k in range(i,j) : 
+                    dp[i][j]=min(dp[i][j], 1+dp[i][k]+dp[k+1][j]) 
+    return dp[0][n-1]  
+arr=['g', 'e', 'e', 'k']  
+print("DP solution: ", palPartDP(arr))
+arr=['a', 'b', 'b', 'a', 'c']
+print("DP solution: ", palPartDP(arr))
+print("\n")  
