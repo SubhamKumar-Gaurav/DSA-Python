@@ -605,3 +605,32 @@ print("DP solution: ",subsetSumDP(arr, 8))
 print("\n") 
 
 
+## Matrix chain multiplication 
+# Recursive solution 
+def mChain(arr, i, j) : 
+    if i+1==j : 
+        return 0 
+    res=float("inf") 
+    for k in range(i+1, j) : 
+        res=min(res, mChain(arr, i, k) + mChain(arr, k, j) + arr[i]*arr[j]*arr[k]) 
+    return res   
+arr=[2,1,3, 4] 
+print("Matrix Chain Multiplication ")
+print("Recursive: ",mChain(arr, 0, 3)) 
+
+# DP solution 
+def mChainDP(arr) : 
+    n=len(arr)
+    dp=[[0 for i in range(n+1)] for j in range(n+1)] 
+    for i in range(n-1) : 
+        dp[i][i+1]=0 
+    for gap in range(2,n) : 
+        for i in range(0, n-gap) : 
+            j=i+gap 
+            dp[i][j]=float("inf") 
+            for k in range(i+1, j) : 
+                dp[i][j]=min(dp[i][j], dp[i][k] + dp[k][j] + arr[i]*arr[k]*arr[j]) 
+    return dp[0][n-1] 
+print("DP solution: ",mChainDP(arr))
+print("\n") 
+
