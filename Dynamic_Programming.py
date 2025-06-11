@@ -673,3 +673,38 @@ print("DP solution: ", palPartDP(arr))
 arr=['a', 'b', 'b', 'a', 'c']
 print("DP solution: ", palPartDP(arr))
 print("\n")  
+
+
+## Allocate minimum pages 
+# Recursive solution 
+def minPagesRec(arr, n, k) : 
+    if k==1 : 
+        return sum(arr[:n]) 
+    if n==1 : 
+        return arr[0] 
+    res=float("inf") 
+    for i in range(1,n) : 
+        res=min(res, max(minPagesRec(arr, i, k-1), sum(arr[i:n])))
+    return res 
+arr=[10,20,30,40] 
+k=2 
+print("Allocate minimum no of pages ") 
+print("Recursive: ", minPagesRec(arr, 4, 2))  
+
+# DP Solution 
+def minPagesDP(arr, k) : 
+    n=len(arr) 
+    dp=[[0 for i in range(n+1)] for j in range(k+1)] 
+    for i in range(1, n+1) : 
+        dp[1][i]=sum(arr[:i])
+    for i in range(1, k+1) : 
+        dp[i][1]=arr[0] 
+    for i in range(2, k+1) : 
+        for j in range(2, n+1) : 
+            res=float("inf") 
+            for p in range(1, j) : 
+                res=min(res, max(dp[i-1][p], sum(arr[p:j]))) 
+            dp[i][j]=res 
+    return dp[k][n] 
+print("DP solution: ", minPagesDP(arr, 2))
+print("\n") 
