@@ -23,3 +23,25 @@ def search(node, key) :
         node=node.child[i] 
     return node.isEndOfWord 
 
+
+## delete 
+def delNode(rrot, key, i=0) : 
+    if root==None : 
+        return None 
+    if i==len(key) : 
+        if root.isEndOfWord : 
+            root.isEndOfWord=False 
+        if isEmpty(root) : 
+            root=None 
+        return root 
+    index=ord(key[i])-ord("a") 
+    root.child[index]=delNode(root.child[index], key, i+1)  
+    if isEmpty(root) and root.isEndOfWord==False : 
+        root=None 
+    return root 
+
+def isEmpty(root) : 
+    for x in root.child : 
+        if x!=None : 
+            return False 
+    return True 
