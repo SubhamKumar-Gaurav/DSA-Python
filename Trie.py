@@ -45,3 +45,28 @@ def isEmpty(root) :
         if x!=None : 
             return False 
     return True 
+
+
+
+## Count distinct rows in binary matrix 
+class TrieNode : 
+    def __init__(self) : 
+        self.child=[None]*2 
+
+def insert(node, row) : 
+    isNew=False 
+    for e in row : 
+        if not node.child[e] : 
+            node.child[e]=TrieNode() 
+            isNew=True 
+        node=node.child[e] 
+    return isNew 
+
+def countDist(mat) : 
+    res=0 
+    root=TrieNode() 
+    for i in range(len(mat)) : 
+        if insert(mat[i]) : 
+            res=res+1 
+    return res 
+    
