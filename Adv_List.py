@@ -49,7 +49,7 @@ leftRotate(l,d)
 print("\n")   
 
 # Using reverse function  Time: O(n) 
-print("Using reverse function : ")
+print("Left rotate using reverse function : ")
 def reverse(l,b,e) : 
     while b<e : 
         l[b], l[e]= l[e], l[b]
@@ -65,6 +65,21 @@ l=[10,20,30,40,50]
 d=3
 print(leftRotate(l,d)) 
 print("\n")   
+
+
+## Right rotate using reverse function 
+print("Right rotate using reverse function : ")
+def rightRotate(l,d) : 
+    n=len(l)
+    d=n-d 
+    reverse(l,0,d-1)
+    reverse(l,d,n-1) 
+    reverse(l,0,n-1)
+    return l 
+l=[1,2,3,4,5,6,7] 
+d=2 
+print(rightRotate(l,d)) 
+print("\n") 
 
 
 ## Maximum difference 
