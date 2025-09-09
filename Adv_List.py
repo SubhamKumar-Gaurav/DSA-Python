@@ -71,15 +71,16 @@ print("\n")
 print("Right rotate using reverse function : ")
 def rightRotate(l,d) : 
     n=len(l)
-    d=n-d 
-    reverse(l,0,d-1)
-    reverse(l,d,n-1) 
-    reverse(l,0,n-1)
+    d=d%n    ##### 
+    reverse(l,0,n-1)  # reverse whole array 
+    reverse(l,0,d-1)  # reverse 0 to d-1 
+    reverse(l,d,n-1)  # reverse d to n-1 
     return l 
 l=[1,2,3,4,5,6,7] 
 d=2 
 print(rightRotate(l,d)) 
 print("\n") 
+
 
 
 ## Maximum difference 
