@@ -47,3 +47,19 @@ def getSumRec(qs, qe, ss, se, si) :
 
 print("getSum(0,2) : ", getSumRec(0, 2, 0, 3, 0)) 
 print("getSum(1,3) : ", getSumRec(1, 3, 0, 3, 0)) 
+print("\n") 
+
+
+## Update Query in Segment Tree  
+print("Update Query in Segment Tree : ")   
+def update(ss, se, i, si, diff) : 
+    if si<ss or si>se : 
+        return 
+    tree[si]+=diff 
+    if se>ss : 
+        mid=(ss+se)//2 
+        update(ss, mid, i, 2*si+1, diff) 
+        update(mid+1, se, i, 2*si+2, diff)  
+
+update(0,3,1,0,5) 
+print("getSumRec(0,1,0,3,0) : ", getSumRec(0,1,0,3,0)) 
