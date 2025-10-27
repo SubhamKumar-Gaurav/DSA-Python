@@ -63,3 +63,38 @@ def update(ss, se, i, si, diff) :
 
 update(0,3,1,0,5) 
 print("getSumRec(0,1,0,3,0) : ", getSumRec(0,1,0,3,0)) 
+
+
+
+## Binary Indexed Tree 
+# Get Sum in Binary Indexed Tree 
+def getSumBIT(i) :
+    i=i+1 
+    res=0 
+    while i>0 : 
+        res=res+BITree[i] 
+        i=i-(i&(-i)) 
+    return res 
+
+# Update in Binary Indexed tree
+def updateBIT(i, x) : 
+    diff=x-arr[i] 
+    arr[i]=x 
+    i=i+1 
+    while i<len(BITree) : 
+        BITree[i]+=diff 
+        i=i+(i&(-i)) 
+
+
+# Construction of Binary Indexed Tree 
+arr=[10,20,30,40,50] 
+n=len(arr) 
+bITree=[0]*(n+1) 
+for i in range(n) : 
+    updateCBIT(i, arr[i]) 
+
+def updateCBIT(i, x) : 
+    i=i+1 
+    while i<=n : 
+        bITree[i]+=x 
+        i=i+(i&(-i)) 
