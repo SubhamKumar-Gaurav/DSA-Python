@@ -63,7 +63,8 @@ print("\n")
 
 
 ## Reverse a DLL 
-def reverseDLL(head) : 
+# Method - 1
+def reverseDLL1(head) : 
     if head==None : 
         return None 
     if head.next==None : 
@@ -82,6 +83,32 @@ head.next=temp1
 temp1.prev=head 
 temp1.next=temp2 
 temp2.prev=temp1 
-print("Reverse a DLL : ")
-printList(reverseDLL(head)) 
+print("1. Reverse a DLL : ")
+printList(reverseDLL1(head)) 
+print("\n")
+
+
+# Method - 2
+def reverseDLL2(head) : 
+    if head==None : 
+        return None 
+    if head.next==None : 
+        return head 
+    temp=None
+    curr=head  
+    while curr!=None : 
+        temp=curr.prev 
+        curr.prev=curr.next 
+        curr.next=temp 
+        curr=curr.prev  
+    return temp.prev 
+head=Node(10) 
+temp1=Node(20) 
+temp2=Node(30) 
+head.next=temp1 
+temp1.prev=head 
+temp1.next=temp2 
+temp2.prev=temp1 
+print("2. Reverse a DLL : ")
+printList(reverseDLL2(head)) 
 print("\n")
