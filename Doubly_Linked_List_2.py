@@ -112,3 +112,28 @@ temp2.prev=temp1
 print("2. Reverse a DLL : ")
 printList(reverseDLL2(head)) 
 print("\n")
+
+
+
+## Problem: Compare Circular Doubly Linked Lists
+class Solution:
+    def compareCLL(self,head1,head2): 
+        
+        if head1.data != head2.data : 
+            return 0 
+            
+        curr1=head1 
+        curr2=head2
+        
+        while True : 
+            if curr1.data != curr2.data : 
+                return 0 
+                
+            curr1=curr1.next 
+            curr2=curr2.next 
+            
+            if curr1==head1 and curr2==head2 : 
+                return 1 
+            
+            if (curr1==head1 and curr2 != head2) or (curr1 != head1 and curr2 == head2) : 
+                return 0 
