@@ -141,3 +141,44 @@ class Stack :
     def size(self) : 
         return len(self.q1) 
     
+
+
+## Implement Queue using array 
+class myQueue:
+    def __init__(self, n): 
+        self.queue=[0]*n  
+        self.cap=n 
+        self.front=0 
+        self.rear=0 
+        self.size=0 
+        
+    def isEmpty(self):
+        return self.size==0 
+
+    def isFull(self):
+        return self.size==self.cap 
+    
+    def enqueue(self, x):
+        if self.isFull() : 
+            return -1 
+        else : 
+            self.queue[self.rear]=x 
+            self.rear=(self.rear+1)%self.cap 
+            self.size+=1 
+
+    def dequeue(self):
+        if self.isEmpty() : 
+            return -1 
+        self.front=(self.front+1)%self.cap 
+        self.size-=1 
+    
+    def getFront(self):
+        if self.isEmpty() : 
+            return -1 
+        return self.queue[self.front]
+    
+    def getRear(self):
+        if self.isEmpty() : 
+            return -1 
+        return self.queue[(self.rear-1+self.cap)%self.cap]
+    
