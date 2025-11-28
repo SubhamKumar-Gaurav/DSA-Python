@@ -293,3 +293,28 @@ def checkIdentical(root1, root2) :
 
 
 
+## Children Sum in a Binary Tree 
+# If root value is equal to sum of its children 
+
+def childSum(root) : 
+    
+    if root is None or (root.left is None and root.right is None) : 
+        return True 
+    
+    if root.left : 
+        leftVal=root.left.key 
+    else : 
+        leftVal=0 
+    
+    if root.right : 
+        rightVal=root.right.key 
+    else : 
+        rightVal=0 
+    
+    if leftVal+rightVal != root.key : 
+        return False 
+    
+    return childSum(root.left) and childSum(root.right) 
+
+
+
