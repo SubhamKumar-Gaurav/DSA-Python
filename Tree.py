@@ -273,3 +273,23 @@ def getMax2(root) :
 print("Maximum in Binary Tree : ") 
 print(getMax2(root)) 
 print("\n") 
+
+
+
+
+## Check if two trees are identical 
+def checkIdentical(root1, root2) : 
+
+    if root1 is None and root2 is None : 
+        return True 
+    
+    if root1 is None or root2 is None : 
+        return False 
+    
+    if root1.key != root2.key : 
+        return False 
+    
+    return checkIdentical(root1.left, root2.left) and checkIdentical(root1.right, root2.right) 
+
+
+
