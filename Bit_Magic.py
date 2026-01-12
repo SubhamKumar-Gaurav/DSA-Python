@@ -211,3 +211,43 @@ def powSet(s) :
 s="abc" 
 print("Power set of 'abc' : ", end=" ")
 powSet(s) 
+
+
+## Count set bits from 1 to N 
+import math 
+def countSetBits(n): 
+    def sol(n) :
+        if n==0 : 
+            return 0 
+        x=int(math.log2(n)) 
+        
+        if x==0 : 
+            return 1 
+        
+        fB=x*(1<<(x-1)) 
+        msB=n-(1<<x)+1 
+        rem=n-(1<<x) 
+        remB=sol(rem) 
+        
+        return fB+msB+remB 
+    return sol(n) 
+
+
+## Maximum AND value between any pair 
+def maxAND(arr):  
+    n=len(arr) 
+    candidates=arr[:] 
+    
+    res=0 
+    for bit in range(31, -1, -1) : 
+        pat=res|(1<<bit) 
+        temp=[] 
+        
+        for x in candidates : 
+            if x&pat == pat : 
+                temp.append(x) 
+            
+        if len(temp)>=2 : 
+            res=pat 
+            candidates=temp 
+    return res 
