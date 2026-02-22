@@ -44,19 +44,25 @@ print("Palindrome check for 'abba' : " , isPalindrome("abba",0,3))
 
 
 ## Reverse a Stack using recursion 
-def reverseStack(st, i, j): 
-    if i==j : 
+def insertAtBottom(st, item) : 
+    if not st : 
+        st.append(item) 
         return 
-    if j==i+1 : 
-        st[i], st[j] = st[j], st[i] 
+    top=st.pop() 
+    insertAtBottom(st, item) 
+    st.append(top) 
+
+def reverseStack(st):
+    if not st : 
         return 
-    st[i], st[j] = st[j], st[i] 
-    reverseStack(st, i+1, j-1) 
+    top=st.pop() 
+    reverseStack(st) 
+    insertAtBottom(st, top)  
 
 st1=[1,2,3,4,5,6,7] 
-reverseStack(st1, 0, len(st1)-1) 
-print("st: " , st1) 
+reverseStack(st1) 
+print("st1: " , st1) 
 
 st2=[1,2,3,4,5,6,7,8] 
-reverseStack(st2, 0, len(st2)-1) 
-print("st: " , st2) 
+reverseStack(st2) 
+print("st2: " , st2) 
