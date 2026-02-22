@@ -40,3 +40,23 @@ def isPalindrome(s,start,end) :
     return (s[start]==s[end]) and (isPalindrome(s,start+1,end-1)) 
 print("Palindrome check for 'abca' : " , isPalindrome("abca",0,3)) 
 print("Palindrome check for 'abba' : " , isPalindrome("abba",0,3)) 
+
+
+
+## Reverse a Stack using recursion 
+def reverseStack(st, i, j): 
+    if i==j : 
+        return 
+    if j==i+1 : 
+        st[i], st[j] = st[j], st[i] 
+        return 
+    st[i], st[j] = st[j], st[i] 
+    reverseStack(st, i+1, j-1) 
+
+st1=[1,2,3,4,5,6,7] 
+reverseStack(st1, 0, len(st1)-1) 
+print("st: " , st1) 
+
+st2=[1,2,3,4,5,6,7,8] 
+reverseStack(st2, 0, len(st2)-1) 
+print("st: " , st2) 
